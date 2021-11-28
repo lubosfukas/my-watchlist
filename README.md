@@ -71,6 +71,8 @@ yarn build
 
 -   [Yarn 2](https://yarnpkg.com/)
 
+-   [React Query](https://react-query.tanstack.com/)
+
 -   [MUI](https://mui.com/)
 
 -   [Styled components](https://styled-components.com/)
