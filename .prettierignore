@@ -1,0 +1,15 @@
+# Ignore artifacts:
+build
+coverage
+public
+
+# Ignore dependencies
+.pnp.cjs
+.pnp.loader.mjs
+.yarn
+.yarnrc.yml
+node_modules
+
+# Ignore docs
+LICENSE
+README
