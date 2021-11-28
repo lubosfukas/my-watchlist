@@ -53,6 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:7.27.1"],
             ["eslint-plugin-react-hooks", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:4.3.0"],
             ["eslint-plugin-testing-library", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:5.0.0"],
+            ["prettier", "npm:2.5.0"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:17.0.2"],
             ["react-scripts", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:4.0.3"],
@@ -14753,6 +14754,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:7.27.1"],
             ["eslint-plugin-react-hooks", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:4.3.0"],
             ["eslint-plugin-testing-library", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:5.0.0"],
+            ["prettier", "npm:2.5.0"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:17.0.2"],
             ["react-scripts", "virtual:56d20a853108b64b926339de5dcaad304b1118df6542652d4c0ab06f8a331c4e20ad1d7a96b8c8fb246803b8447333a6cdc223ad0d953e32119cf0e131a6394e#npm:4.0.3"],
@@ -16837,6 +16839,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/prepend-http-npm-1.0.4-cd78a41247-01e7baf4ad.zip/node_modules/prepend-http/",
           "packageDependencies": [
             ["prepend-http", "npm:1.0.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["prettier", [
+        ["npm:2.5.0", {
+          "packageLocation": "./.yarn/cache/prettier-npm-2.5.0-f1121aaab1-aad1b35b73.zip/node_modules/prettier/",
+          "packageDependencies": [
+            ["prettier", "npm:2.5.0"]
           ],
           "linkType": "HARD",
         }]
