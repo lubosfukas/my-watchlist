@@ -52,7 +52,9 @@ yarn
 yarn install
 yarn start
 yarn lint
+yarn lint:fix
 yarn test
+yarn test:watch
 ```
 
 Build with
