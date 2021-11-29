@@ -52,9 +52,7 @@ yarn
 yarn install
 yarn start
 yarn lint
-yarn lint:fix
 yarn test
-yarn test:watch
 ```
 
 Build with
@@ -65,22 +63,14 @@ yarn build
 
 ## Built with
 
--   [React](https://reactjs.org/)
+[React](https://reactjs.org/)
 
--   [Yarn 2 Zero-Installs](https://yarnpkg.com/features/zero-installs)
+[Yarn 2 Zero-Installs](https://yarnpkg.com/features/zero-installs)
 
--   [Yarn 2](https://yarnpkg.com/)
+[Yarn 2](https://yarnpkg.com/)
 
--   [React Router](https://reactrouter.com/)
+[Jest](https://jestjs.io/)
 
--   [React Query](https://react-query.tanstack.com/)
+[Testing Library React](https://testing-library.com/)
 
--   [MUI](https://mui.com/)
-
--   [Styled components](https://styled-components.com/)
-
--   [Jest](https://jestjs.io/)
-
--   [Testing Library React](https://testing-library.com/)
-
--   [Trunk based development](https://trunkbaseddevelopment.com/)
+[Trunk based development](https://trunkbaseddevelopment.com/)
