@@ -65,9 +65,13 @@ yarn build
 
 [React](https://reactjs.org/)
 
+[Create React App](https://create-react-app.dev/)
+
 [Yarn 2 Zero-Installs](https://yarnpkg.com/features/zero-installs)
 
-[Yarn 2](https://yarnpkg.com/)
+[MUI](https://mui.com/)
+
+[Emotion](https://emotion.sh/docs/introduction)
 
 [Jest](https://jestjs.io/)
 
