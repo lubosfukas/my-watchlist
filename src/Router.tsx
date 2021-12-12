@@ -7,31 +7,31 @@ export const routes = [
         path: '',
         component: <Navigate to="popular" />,
         name: 'Homepage',
-        isVisible: false,
+        excludeFromNav: true,
     },
     {
         path: 'popular',
         component: <Popular />,
         name: 'Popular',
-        isVisible: true,
+        excludeFromNav: false,
     },
     {
         path: 'trending',
         component: <Trending />,
         name: 'Trending',
-        isVisible: true,
+        excludeFromNav: false,
     },
     {
         path: 'top-rated',
         component: <TopRated />,
         name: 'Top rated',
-        isVisible: true,
+        excludeFromNav: false,
     },
     {
         path: 'upcoming',
         component: <Upcoming />,
         name: 'Upcoming',
-        isVisible: true,
+        excludeFromNav: false,
     },
 ]
 

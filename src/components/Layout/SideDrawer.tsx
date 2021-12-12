@@ -21,7 +21,7 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
     let navigate = useNavigate()
 
     const routeLinks = routes
-        .filter((x) => x.isVisible)
+        .filter((x) => !x.excludeFromNav)
         .map((y) => {
             const isCurrent = pathname === `/${y.path}`
 
@@ -31,6 +31,10 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
                     disablePadding
                     sx={{
                         '& .Mui-selected': {
+                            backgroundColor: colors.primary,
+                            color: colors.white,
+                        },
+                        '&:hover': {
                             backgroundColor: colors.primary,
                             color: colors.white,
                         },

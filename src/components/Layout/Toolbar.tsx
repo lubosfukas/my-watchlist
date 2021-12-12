@@ -24,7 +24,7 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
 
     if (isLargerThanLaptop) {
         const routeLinks = routes
-            .filter((x) => x.isVisible)
+            .filter((x) => !x.excludeFromNav)
             .map((y) => {
                 const isCurrent = pathname === `/${y.path}`
 
@@ -41,7 +41,7 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
             })
 
         return (
-            <AppBar position="static">
+            <AppBar position="sticky">
                 <CoreToolbar>
                     <Stack direction="row" spacing={3}>
                         {routeLinks}
@@ -52,7 +52,7 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
     }
 
     return (
-        <AppBar position="static">
+        <AppBar position="sticky">
             <CoreToolbar>
                 <IconButton onClick={toggleDrawer}>
                     <MenuIcon sx={{ color: 'white' }} />

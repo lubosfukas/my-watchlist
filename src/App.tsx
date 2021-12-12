@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { Global, css } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 
@@ -13,15 +14,19 @@ const GlobalStyles = css`
     }
 `
 
+const queryClient = new QueryClient()
+
 function App() {
     return (
         <BrowserRouter>
-            <Global styles={GlobalStyles} />
-            <ThemeProvider theme={theme}>
-                <Layout>
-                    <Router />
-                </Layout>
-            </ThemeProvider>
+            <QueryClientProvider client={queryClient}>
+                <Global styles={GlobalStyles} />
+                <ThemeProvider theme={theme}>
+                    <Layout>
+                        <Router />
+                    </Layout>
+                </ThemeProvider>
+            </QueryClientProvider>
         </BrowserRouter>
     )
 }
