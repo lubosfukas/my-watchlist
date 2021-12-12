@@ -3,19 +3,19 @@ import { useInfiniteQuery } from 'react-query'
 import { API_BASE_URL, API_KEY } from '../../utils/constants'
 import { IInfiniteQueryResponse, PagedResponseDTO } from '../../types'
 
-const fetchTopRatedMovies = async (page = 1): Promise<PagedResponseDTO> => {
+const fetchNowPlayingMovies = async (page = 1): Promise<PagedResponseDTO> => {
     const response = await fetch(
-        `${API_BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=${page}`
+        `${API_BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`
     )
 
     const movieResponse: PagedResponseDTO = await response.json()
     return movieResponse
 }
 
-export const useFetchTopRatedMovies = (): IInfiniteQueryResponse => {
+export const useFetchNowPlayingMovies = (): IInfiniteQueryResponse => {
     const { data, ...rest } = useInfiniteQuery<PagedResponseDTO, string>(
-        `fetchTopRatedMovies`,
-        ({ pageParam }) => fetchTopRatedMovies(pageParam),
+        `fetchNowPlayingMovies`,
+        ({ pageParam }) => fetchNowPlayingMovies(pageParam),
         {
             getNextPageParam: (last) => last.page + 1,
         }

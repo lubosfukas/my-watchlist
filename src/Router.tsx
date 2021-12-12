@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { Popular, Trending, TopRated, Upcoming } from './pages'
+import { NowPlaying, Popular, TopRated, Upcoming } from './pages'
 
 export const routes = [
     {
@@ -16,9 +16,9 @@ export const routes = [
         excludeFromNav: false,
     },
     {
-        path: 'trending',
-        component: <Trending />,
-        name: 'Trending',
+        path: 'now-playing',
+        component: <NowPlaying />,
+        name: 'Now playing',
         excludeFromNav: false,
     },
     {
