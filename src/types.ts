@@ -1,4 +1,8 @@
-import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
+import {
+    FetchNextPageOptions,
+    InfiniteQueryObserverResult,
+    UseInfiniteQueryResult,
+} from 'react-query'
 
 export type MovieDTO = {
     adult: boolean
@@ -26,3 +30,8 @@ export type PagedResponseDTO = {
 export type FetchNextPage = (
     options?: FetchNextPageOptions
 ) => Promise<InfiniteQueryObserverResult<PagedResponseDTO, string>>
+
+export interface IInfiniteQueryResponse
+    extends Omit<UseInfiniteQueryResult<PagedResponseDTO, string>, 'data'> {
+    data: Omit<PagedResponseDTO, 'page'>
+}

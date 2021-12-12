@@ -2,15 +2,15 @@ import { useLocation } from 'react-router-dom'
 import { Alert, AlertTitle, CircularProgress } from '@mui/material'
 
 import { MovieScroll } from '../../components'
-import { useFetchLatestMovies } from './api'
 import { useSetPageTitle } from '../../hooks'
+import { useFetchTopRatedMovies } from './api'
 
-export const Popular = () => {
+export const TopRated = () => {
     const { pathname } = useLocation()
     useSetPageTitle(pathname)
 
     const { data, isLoading, error, fetchNextPage, hasNextPage } =
-        useFetchLatestMovies()
+        useFetchTopRatedMovies()
 
     if (isLoading) return <CircularProgress />
 
