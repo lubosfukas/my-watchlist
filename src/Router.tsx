@@ -1,44 +1,57 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { NowPlaying, Popular, TopRated, Upcoming } from './pages'
+import { Detail, NowPlaying, Popular, TopRated, Upcoming } from './pages'
 
-export const routes = [
+export const routerMap: Record<
+    string,
     {
+        path: string
+        component: JSX.Element
+        name: string
+        excludeFromNav: boolean
+    }
+> = {
+    homepage: {
         path: '',
         component: <Navigate to="popular" />,
         name: 'Homepage',
         excludeFromNav: true,
     },
-    {
+    popular: {
         path: 'popular',
         component: <Popular />,
         name: 'Popular',
         excludeFromNav: false,
     },
-    {
+    'now-playing': {
         path: 'now-playing',
         component: <NowPlaying />,
         name: 'Now playing',
         excludeFromNav: false,
     },
-    {
+    'top-rated': {
         path: 'top-rated',
         component: <TopRated />,
         name: 'Top rated',
         excludeFromNav: false,
     },
-    {
+    upcoming: {
         path: 'upcoming',
         component: <Upcoming />,
         name: 'Upcoming',
         excludeFromNav: false,
     },
-]
-
-export const Router = () => {
-    const routeComponents = routes.map(({ path, component }, key) => (
-        <Route path={path} element={component} key={key} />
-    ))
-
-    return <Routes>{routeComponents}</Routes>
+    detail: {
+        path: 'detail/:id',
+        component: <Detail />,
+        name: 'detail',
+        excludeFromNav: true,
+    },
 }
+
+const routes = Object.keys(routerMap).map((key) => {
+    const { component, path } = routerMap[key as keyof typeof routerMap]
+    return <Route key={key} element={component} path={path} />
+})
+
+export const Router = () => <Routes>{routes}</Routes>

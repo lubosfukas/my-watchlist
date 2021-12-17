@@ -1,13 +1,17 @@
 import { Typography, useMediaQuery } from '@mui/material'
 
-import { Poster } from './Poster'
+import { Poster } from '../Poster'
 import { colors } from '../../theme'
 import { MovieDTO } from '../../types'
 import { device } from '../../utils/device'
 
 import { StyledBox, StyledPaper } from './MovieCard.styled'
 
-export const MovieCard = (props: MovieDTO) => {
+interface IMovie extends MovieDTO {
+    onClick: () => void
+}
+
+export const MovieCard = (props: IMovie) => {
     const isMobileOrLarger = useMediaQuery(device.mobileL)
     const isDesktopOrLarger = useMediaQuery(device.desktop)
 
@@ -24,6 +28,7 @@ export const MovieCard = (props: MovieDTO) => {
         <StyledPaper
             elevation={8}
             mobile={(!isMobileOrLarger).toString()}
+            onClick={props.onClick}
             width={width}
         >
             <Poster

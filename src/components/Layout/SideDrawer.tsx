@@ -8,7 +8,7 @@ import {
     ListItemText,
 } from '@mui/material'
 
-import { routes } from '../../Router'
+import { routerMap } from '../../Router'
 import { colors } from '../../theme'
 
 type Props = {
@@ -20,7 +20,7 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
     const { pathname } = useLocation()
     let navigate = useNavigate()
 
-    const routeLinks = routes
+    const routeLinks = Object.values(routerMap)
         .filter((x) => !x.excludeFromNav)
         .map((y) => {
             const isCurrent = pathname === `/${y.path}`

@@ -35,3 +35,45 @@ export interface IInfiniteQueryResponse
     extends Omit<UseInfiniteQueryResult<PagedResponseDTO, string>, 'data'> {
     data: Omit<PagedResponseDTO, 'page'>
 }
+
+export type BelongsToCollection = {
+    backdrop_path: string
+    id: number
+    name: string
+    poster_path: string
+} | null
+
+export type Genres = Array<{ id: number; name: string }>
+
+export type ProductionCompanies = Array<{
+    id: number
+    logo_path: string | null
+    name: string
+    origin_country: string
+}>
+
+export type ProductionCountries = Array<{
+    iso_3166_1: string
+    name: string
+}>
+
+export type SpokenLanguages = Array<{
+    english_name: string
+    iso_639_1: string
+    name: string
+}>
+
+export interface MovieDetailDTO extends MovieDTO {
+    belongs_to_collection: BelongsToCollection
+    budget: number
+    genres: Genres
+    homepage: string
+    imdb_id: string
+    production_companies: ProductionCompanies
+    production_countries: ProductionCountries
+    revenue: number
+    runtime: number
+    spoken_languages: SpokenLanguages
+    status: string
+    tagline: string
+}

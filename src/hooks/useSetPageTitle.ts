@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
-import { routes } from '../Router'
+import { getRoute } from '../utils/helpers'
 
 export const useSetPageTitle = (pathname: string) => {
     useEffect(() => {
-        const title = routes.find((x) => pathname === `/${x.path}`)?.name
+        const title = getRoute(pathname)?.name
 
         if (title) document.title = title
     }, [pathname])

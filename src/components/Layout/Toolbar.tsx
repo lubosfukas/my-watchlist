@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 
-import { routes } from '../../Router'
+import { routerMap } from '../../Router'
 import { device } from '../../utils/device'
 
 type Props = {
@@ -23,7 +23,7 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
     const isLargerThanLaptop = useMediaQuery(device.laptop)
 
     if (isLargerThanLaptop) {
-        const routeLinks = routes
+        const routeLinks = Object.values(routerMap)
             .filter((x) => !x.excludeFromNav)
             .map((y) => {
                 const isCurrent = pathname === `/${y.path}`
@@ -41,7 +41,7 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
             })
 
         return (
-            <AppBar position="sticky">
+            <AppBar position="static">
                 <CoreToolbar>
                     <Stack direction="row" spacing={3}>
                         {routeLinks}
@@ -52,7 +52,7 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
     }
 
     return (
-        <AppBar position="sticky">
+        <AppBar position="static">
             <CoreToolbar>
                 <IconButton onClick={toggleDrawer}>
                     <MenuIcon sx={{ color: 'white' }} />

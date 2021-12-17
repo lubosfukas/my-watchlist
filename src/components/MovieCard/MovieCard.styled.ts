@@ -12,6 +12,7 @@ export const StyledPaper = styled(Paper)`
         props.mobile === 'true' ? '15px 10px' : '30px'};
     overflow: hidden;
     position: relative;
+    cursor: pointer;
     width: ${(props: Props) => `${props.width}px`};
 
     &:hover {
