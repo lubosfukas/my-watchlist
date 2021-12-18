@@ -1,22 +1,26 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
     AppBar,
+    Container,
     IconButton,
     Stack,
-    Toolbar as CoreToolbar,
+    Toolbar as ToolbarMui,
     Typography,
     useMediaQuery,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 
+import { MovieContext } from '../../MovieContext'
 import { routerMap } from '../../Router'
 import { device } from '../../utils/device'
+import { useContext } from 'react'
 
 type Props = {
     toggleDrawer: () => void
 }
 
 export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
+    const { title } = useContext(MovieContext)
     const { pathname } = useLocation()
     let navigate = useNavigate()
 
@@ -26,7 +30,7 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
         const routeLinks = Object.values(routerMap)
             .filter((x) => !x.excludeFromNav)
             .map((y) => {
-                const isCurrent = pathname === `/${y.path}`
+                const isCurrent = pathname.split('/')[1] === y.path
 
                 return (
                     <Typography
@@ -42,22 +46,27 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
 
         return (
             <AppBar position="static">
-                <CoreToolbar>
-                    <Stack direction="row" spacing={3}>
-                        {routeLinks}
-                    </Stack>
-                </CoreToolbar>
+                <ToolbarMui disableGutters>
+                    <Container maxWidth="xl">
+                        <Stack direction="row" spacing={3}>
+                            {routeLinks}
+                        </Stack>
+                    </Container>
+                </ToolbarMui>
             </AppBar>
         )
     }
 
     return (
         <AppBar position="static">
-            <CoreToolbar>
+            <ToolbarMui>
                 <IconButton onClick={toggleDrawer}>
                     <MenuIcon sx={{ color: 'white' }} />
                 </IconButton>
-            </CoreToolbar>
+                <Typography sx={{ ml: 2 }} variant="subtitle1">
+                    {title}
+                </Typography>
+            </ToolbarMui>
         </AppBar>
     )
 }

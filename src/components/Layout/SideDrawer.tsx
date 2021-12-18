@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import { useLocation, useNavigate } from 'react-router-dom'
+import { css } from '@emotion/react'
 import {
     Box,
     Drawer,
@@ -27,18 +29,18 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
 
             return (
                 <ListItem
-                    key={y.path}
                     disablePadding
-                    sx={{
-                        '& .Mui-selected': {
-                            backgroundColor: colors.primary,
-                            color: colors.white,
-                        },
-                        '&:hover': {
-                            backgroundColor: colors.primary,
-                            color: colors.white,
-                        },
-                    }}
+                    key={y.path}
+                    css={css`
+                        .Mui-selected {
+                            background-color: ${colors.primary} !important;
+                            color: ${colors.white} !important;
+                        }
+                        :hover {
+                            background-color: ${colors.primary};
+                            color: ${colors.white};
+                        }
+                    `}
                 >
                     <ListItemButton
                         onClick={() => navigate(`/${y.path}`)}

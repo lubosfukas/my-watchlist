@@ -1,9 +1,8 @@
-import { Typography, useMediaQuery } from '@mui/material'
+import { Typography } from '@mui/material'
 
 import { Poster } from '../Poster'
 import { colors } from '../../theme'
 import { MovieDTO } from '../../types'
-import { device } from '../../utils/device'
 
 import { StyledBox, StyledPaper } from './MovieCard.styled'
 
@@ -12,11 +11,6 @@ interface IMovie extends MovieDTO {
 }
 
 export const MovieCard = (props: IMovie) => {
-    const isMobileOrLarger = useMediaQuery(device.mobileL)
-    const isDesktopOrLarger = useMediaQuery(device.desktop)
-
-    const width = isDesktopOrLarger ? 400 : 300
-
     const releaseYear = props['release_date']
         ? props['release_date'].split('-')[0]
         : ''
@@ -25,17 +19,8 @@ export const MovieCard = (props: IMovie) => {
         : props['title']
 
     return (
-        <StyledPaper
-            elevation={8}
-            mobile={(!isMobileOrLarger).toString()}
-            onClick={props.onClick}
-            width={width}
-        >
-            <Poster
-                path={props['poster_path']}
-                title={props['title']}
-                width={width}
-            />
+        <StyledPaper elevation={8} onClick={props.onClick}>
+            <Poster path={props['poster_path']} title={props['title']} />
             <StyledBox>
                 {props['vote_average'] > 0 && (
                     <Typography

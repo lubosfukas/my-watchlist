@@ -44,7 +44,7 @@ export const routerMap: Record<
     detail: {
         path: 'detail/:id',
         component: <Detail />,
-        name: 'detail',
+        name: 'Detail',
         excludeFromNav: true,
     },
 }

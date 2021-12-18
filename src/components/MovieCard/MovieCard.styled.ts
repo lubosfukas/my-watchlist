@@ -1,22 +1,21 @@
 import styled from '@emotion/styled'
 import { Box, Paper } from '@mui/material'
-
-type Props = {
-    mobile: string
-    width: number
-}
+import { device } from '../../utils/device'
 
 export const StyledPaper = styled(Paper)`
     border-radius: 10px;
-    margin: ${(props: Props) =>
-        props.mobile === 'true' ? '15px 10px' : '30px'};
+    cursor: pointer;
+    margin: 8px;
     overflow: hidden;
     position: relative;
-    cursor: pointer;
-    width: ${(props: Props) => `${props.width}px`};
+    width: 300px;
 
     &:hover {
         transform: scale(1.075);
+    }
+
+    @media ${device.tablet} {
+        margin: 16px;
     }
 `
 

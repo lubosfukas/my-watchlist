@@ -1,13 +1,16 @@
+import { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Alert, AlertTitle, CircularProgress } from '@mui/material'
 
+import { useFetchNowPlayingMovies } from './api'
 import { MovieScroll } from '../../components'
 import { useSetPageTitle } from '../../hooks'
-import { useFetchNowPlayingMovies } from './api'
+import { MovieContext } from '../../MovieContext'
 
 export const NowPlaying = () => {
+    const { setTitle } = useContext(MovieContext)
     const { pathname } = useLocation()
-    useSetPageTitle(pathname)
+    useSetPageTitle(pathname, setTitle)
 
     const { data, isLoading, error, fetchNextPage, hasNextPage } =
         useFetchNowPlayingMovies()
