@@ -1,8 +1,16 @@
 import { Box, Chip, Stack, Typography, useMediaQuery } from '@mui/material'
 
+import { EmbeddedVideo } from '../EmbeddedVideo'
 import { Poster } from '../Poster'
+import {
+    getAverageVote,
+    getGenres,
+    getPrice,
+    getReleaseDate,
+    getRuntime,
+    getTrailer,
+} from './utils'
 import { MovieDetailDTO } from '../../types'
-import { getAverageVote, getPrice, getReleaseDate, getRuntime } from './utils'
 import { device } from '../../utils/device'
 
 export const MovieDetailMobile = (props: MovieDetailDTO) => {
@@ -10,8 +18,8 @@ export const MovieDetailMobile = (props: MovieDetailDTO) => {
     const isTabletOrLarger = useMediaQuery(device.tablet)
     const isMobileOrLarger = useMediaQuery(device.mobileM)
 
-    const genres =
-        props.genres.length !== 0 ? props.genres.map((g) => g.name) : []
+    const genres = getGenres(props.genres)
+    const trailer = getTrailer(props.videos['results'])
 
     return (
         <Stack m={isMobileOrLarger ? 2 : 1} py={1}>
@@ -24,7 +32,7 @@ export const MovieDetailMobile = (props: MovieDetailDTO) => {
             >
                 <Poster
                     path={props['poster_path']}
-                    title={props['title']}
+                    title={props.title}
                     width={
                         isLaptopOrLarger ? 500 : isTabletOrLarger ? 400 : 300
                     }
@@ -46,33 +54,46 @@ export const MovieDetailMobile = (props: MovieDetailDTO) => {
             </Typography>
             <DetailItem
                 label="Release date"
-                value={getReleaseDate(props.release_date)}
+                value={getReleaseDate(props['release_date'])}
             />
-            <DetailItem label="Runtime" value={getRuntime(props['runtime'])} />
-            <DetailItem label="Budget" value={getPrice(props['budget'])} />
-            <DetailItem label="Revenue" value={getPrice(props['revenue'])} />
+            <DetailItem label="Runtime" value={getRuntime(props.runtime)} />
+            <DetailItem label="Budget" value={getPrice(props.budget)} />
+            <DetailItem label="Revenue" value={getPrice(props.revenue)} />
             <DetailItem
                 label="Voting"
                 value={getAverageVote(props['vote_average'])}
             />
-            <DetailItem
-                label="Genres"
-                component={
-                    <Stack direction="row" flexWrap="wrap">
-                        {genres.map((name) => (
-                            <Chip
-                                color="secondary"
-                                key={name}
-                                label={name}
-                                sx={{
-                                    mb: 1,
-                                    mr: 1,
-                                }}
-                            />
-                        ))}
-                    </Stack>
-                }
-            />
+            {genres && (
+                <DetailItem
+                    label="Genres"
+                    component={
+                        <Stack direction="row" flexWrap="wrap">
+                            {genres.map((name) => (
+                                <Chip
+                                    color="secondary"
+                                    key={name}
+                                    label={name}
+                                    sx={{
+                                        mb: 1,
+                                        mr: 1,
+                                    }}
+                                />
+                            ))}
+                        </Stack>
+                    }
+                />
+            )}
+            {trailer && (
+                <DetailItem
+                    label="Trailer"
+                    component={
+                        <EmbeddedVideo
+                            title={props.title}
+                            videoKey={trailer['key']}
+                        />
+                    }
+                />
+            )}
         </Stack>
     )
 }

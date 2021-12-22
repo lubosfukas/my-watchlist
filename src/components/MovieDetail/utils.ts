@@ -1,3 +1,5 @@
+import { Genres, Videos } from '../../types'
+
 export const getReleaseDate = (releaseDate: string) => {
     if (!releaseDate) return
 
@@ -22,3 +24,11 @@ export const getAverageVote = (averageVote: number) => {
     if (averageVote === 0) return
     return `${averageVote * 10} %`
 }
+
+export const getGenres = (genres: Genres) => {
+    if (genres.length === 0) return
+    return genres.map((g) => g.name)
+}
+
+export const getTrailer = (videos: Videos) =>
+    videos.find((v) => v.name === 'Official Trailer')

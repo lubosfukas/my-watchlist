@@ -1,0 +1,1 @@
+export { EmbeddedVideo } from './EmbeddedVideo'

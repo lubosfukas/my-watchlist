@@ -63,6 +63,19 @@ export type SpokenLanguages = Array<{
     name: string
 }>
 
+export type Videos = Array<{
+    id: string
+    iso_639_1: string
+    iso_3166_1: string
+    key: string
+    name: string
+    official: boolean
+    published_at: string
+    site: 'Youtube'
+    size: number
+    type: 'Trailer' | 'Teaser' | 'Featurette'
+}>
+
 export interface MovieDetailDTO extends MovieDTO {
     belongs_to_collection: BelongsToCollection
     budget: number
@@ -76,4 +89,5 @@ export interface MovieDetailDTO extends MovieDTO {
     spoken_languages: SpokenLanguages
     status: string
     tagline: string
+    videos: { results: Videos }
 }

@@ -3,16 +3,24 @@
 import { Box, Chip, Grid, Container, Stack, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
+import { EmbeddedVideo } from '../EmbeddedVideo'
 import { Poster } from '../Poster'
-import { getReleaseDate, getRuntime, getPrice, getAverageVote } from './utils'
+import {
+    getReleaseDate,
+    getRuntime,
+    getPrice,
+    getAverageVote,
+    getTrailer,
+    getGenres,
+} from './utils'
 import { MovieDetailDTO } from '../../types'
 import { API_IMAGE_BASE_URL } from '../../utils/constants'
 
 export const MovieDetailDesktop = (props: MovieDetailDTO) => {
-    const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${props.backdrop_path}`
+    const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${props['backdrop_path']}`
     const releaseYear = props['release_date'].split('-')[0]
-    const genres =
-        props.genres.length !== 0 ? props.genres.map((g) => g.name) : []
+    const genres = getGenres(props.genres)
+    const trailer = getTrailer(props.videos['results'])
 
     return (
         <Grid container>
@@ -54,7 +62,7 @@ export const MovieDetailDesktop = (props: MovieDetailDTO) => {
                         <Grid container columnSpacing={3}>
                             <Grid item>
                                 <Poster
-                                    path={props.poster_path}
+                                    path={props['poster_path']}
                                     title={props.title}
                                 />
                             </Grid>
@@ -83,15 +91,15 @@ export const MovieDetailDesktop = (props: MovieDetailDTO) => {
                                         />
                                         <DetailItem
                                             label="Runtime"
-                                            value={getRuntime(props['runtime'])}
+                                            value={getRuntime(props.runtime)}
                                         />
                                         <DetailItem
                                             label="Budget"
-                                            value={getPrice(props['budget'])}
+                                            value={getPrice(props.budget)}
                                         />
                                         <DetailItem
                                             label="Revenue"
-                                            value={getPrice(props['revenue'])}
+                                            value={getPrice(props.revenue)}
                                         />
                                         <DetailItem
                                             label="Voting"
@@ -99,33 +107,50 @@ export const MovieDetailDesktop = (props: MovieDetailDTO) => {
                                                 props['vote_average']
                                             )}
                                         />
-                                        <DetailItem
-                                            label="Genres"
-                                            component={
-                                                <Stack
-                                                    direction="row"
-                                                    flexWrap="wrap"
-                                                >
-                                                    {genres.map((name) => (
-                                                        <Chip
-                                                            color="secondary"
-                                                            key={name}
-                                                            label={name}
-                                                            sx={{
-                                                                mb: 1,
-                                                                mr: 1,
-                                                            }}
-                                                        />
-                                                    ))}
-                                                </Stack>
-                                            }
-                                        />
+                                        {genres && (
+                                            <DetailItem
+                                                label="Genres"
+                                                component={
+                                                    <Stack
+                                                        direction="row"
+                                                        flexWrap="wrap"
+                                                    >
+                                                        {genres.map((name) => (
+                                                            <Chip
+                                                                color="secondary"
+                                                                key={name}
+                                                                label={name}
+                                                                sx={{
+                                                                    mb: 1,
+                                                                    mr: 1,
+                                                                }}
+                                                            />
+                                                        ))}
+                                                    </Stack>
+                                                }
+                                            />
+                                        )}
                                     </Box>
                                 </Stack>
                             </Grid>
                         </Grid>
                     </Container>
                 </Box>
+            </Grid>
+            <Grid item lg={12}>
+                <Container maxWidth="xl" sx={{ mt: 3 }}>
+                    {trailer && (
+                        <DetailItem
+                            label="Trailer"
+                            component={
+                                <EmbeddedVideo
+                                    title={props.title}
+                                    videoKey={trailer['key']}
+                                />
+                            }
+                        />
+                    )}
+                </Container>
             </Grid>
         </Grid>
     )
