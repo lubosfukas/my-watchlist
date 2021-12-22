@@ -71,9 +71,9 @@ export type Videos = Array<{
     name: string
     official: boolean
     published_at: string
-    site: 'Youtube'
+    site: 'YouTube'
     size: number
-    type: 'Trailer' | 'Teaser' | 'Featurette'
+    type: 'Trailer' | 'Teaser' | 'Featurette' | 'Clip'
 }>
 
 export interface MovieDetailDTO extends MovieDTO {

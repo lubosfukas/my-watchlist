@@ -4,7 +4,7 @@ import { CircularProgress, Container, useMediaQuery } from '@mui/material'
 import styled from '@emotion/styled'
 
 import { MovieCard } from '..'
-import { FetchNextPage, MovieDTO } from '../../types'
+import { MovieDTO } from '../../types'
 import { routerMap } from '../../Router'
 import { device } from '../../utils/device'
 
@@ -17,7 +17,7 @@ const StyledInfiniteScroll = styled(InfiniteScroll)`
 type Props = {
     movies: Array<MovieDTO>
     moreMovies: boolean
-    fetchNextPage: FetchNextPage
+    fetchNextPage: () => void
 }
 
 export const MovieScroll = ({ movies, moreMovies, fetchNextPage }: Props) => {
