@@ -6,7 +6,7 @@ import { MovieScroll } from './MovieScroll'
 describe('MovieScroll', () => {
     test('renders component', () => {
         render(
-            <MemoryRouter initialEntries={['popular']}>
+            <MemoryRouter initialEntries={['/popular']}>
                 <MovieScroll
                     movies={mockData.movies}
                     moreMovies={false}

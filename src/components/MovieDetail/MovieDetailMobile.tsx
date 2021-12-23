@@ -9,7 +9,7 @@ import {
     getReleaseDate,
     getRuntime,
     getTrailer,
-} from './utils'
+} from './helpers'
 import { MovieDetailDTO } from '../../types'
 import { device } from '../../utils/device'
 

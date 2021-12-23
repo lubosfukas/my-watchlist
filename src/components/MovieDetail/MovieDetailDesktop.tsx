@@ -12,7 +12,7 @@ import {
     getAverageVote,
     getTrailer,
     getGenres,
-} from './utils'
+} from './helpers'
 import { MovieDetailDTO } from '../../types'
 import { API_IMAGE_BASE_URL } from '../../utils/constants'
 

@@ -30,5 +30,19 @@ export const getGenres = (genres: Genres) => {
     return genres.map((g) => g.name)
 }
 
-export const getTrailer = (videos: Videos) =>
-    videos.find((v) => v.name === 'Official Trailer')
+export const getTrailer = (videos: Videos) => {
+    if (videos.length === 0) return
+
+    const officialTrailer = videos.find((v) => v.name === 'Official Trailer')
+    if (!officialTrailer) {
+        const trailer = videos.filter(
+            (v) => v.official === true && v.type === 'Trailer'
+        )[0]
+
+        if (!trailer) return
+
+        return trailer
+    }
+
+    return officialTrailer
+}
