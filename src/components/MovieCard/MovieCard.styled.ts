@@ -3,19 +3,22 @@ import { Box, Paper } from '@mui/material'
 import { device } from '../../utils/device'
 
 export const StyledPaper = styled(Paper)`
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 8px;
-    overflow: hidden;
     position: relative;
     width: 300px;
+    margin: 16px;
+
+    display: inline-flex;
+
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
 
     &:hover {
         transform: scale(1.075);
     }
 
-    @media ${device.tablet} {
-        margin: 16px;
+    @media ${device.laptopL} {
+        margin: 24px 16px;
     }
 `
 

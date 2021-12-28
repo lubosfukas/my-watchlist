@@ -6,11 +6,19 @@ import styled from '@emotion/styled'
 import { MovieCard } from '..'
 import { MovieDTO } from '../../types'
 import { routerMap } from '../../Router'
+import { device } from '../../utils/device'
 
 const StyledInfiniteScroll = styled(InfiniteScroll)`
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    @media ${device.laptop} {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-between;
+    }
 `
 
 type Props = {

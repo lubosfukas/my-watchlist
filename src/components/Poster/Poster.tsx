@@ -33,7 +33,7 @@ export const Poster = ({ title, path, width = 300 }: Props) => {
             alt={`Poster of ${title}`}
             aria-label="Poster"
             css={css`
-                border-radius: 10px;
+                border-radius: 8px;
                 height: 100%;
                 width: ${imageWidth};
             `}
