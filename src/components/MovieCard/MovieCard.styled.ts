@@ -13,12 +13,12 @@ export const StyledPaper = styled(Paper)`
     cursor: pointer;
     overflow: hidden;
 
-    &:hover {
-        transform: scale(1.075);
-    }
-
-    @media ${device.laptopL} {
+    @media ${device.laptop} {
         margin: 24px 16px;
+
+        &:hover {
+            transform: scale(1.075);
+        }
     }
 `
 
@@ -45,7 +45,9 @@ export const StyledBox = styled(Box)`
         rgba(10, 10, 10, 0.5)
     );
 
-    &:hover {
-        opacity: 1;
+    @media ${device.laptop} {
+        &:hover {
+            opacity: 1;
+        }
     }
 `
