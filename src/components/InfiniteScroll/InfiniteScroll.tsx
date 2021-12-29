@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import InfiniteScrollComponent from 'react-infinite-scroll-component'
-import { CircularProgress } from '@mui/material'
 import styled from '@emotion/styled'
 
-import { Paper } from '..'
+import { Paper, Skeleton } from '..'
 import { MovieDTO } from '../../types'
 import { routerMap } from '../../Router'
 import { device } from '../../utils/device'
@@ -39,7 +38,7 @@ export const InfiniteScroll = ({
             dataLength={movies.length}
             next={fetchNextPage}
             hasMore={moreMovies}
-            loader={<CircularProgress />}
+            loader={<Skeleton />}
         >
             {movies.map((movie: MovieDTO) => (
                 <Paper
