@@ -4,13 +4,13 @@ import { Poster } from '../Poster'
 import { colors } from '../../theme'
 import { MovieDTO } from '../../types'
 
-import { StyledBox, StyledPaper } from './MovieCard.styled'
+import { StyledBox, StyledPaper } from './Paper.styled'
 
 interface IMovie extends MovieDTO {
     onClick: () => void
 }
 
-export const MovieCard = (props: IMovie) => {
+export const Paper = (props: IMovie) => {
     const releaseYear = props['release_date']
         ? props['release_date'].split('-')[0]
         : ''

@@ -3,7 +3,7 @@ import InfiniteScrollComponent from 'react-infinite-scroll-component'
 import { CircularProgress } from '@mui/material'
 import styled from '@emotion/styled'
 
-import { MovieCard } from '..'
+import { Paper } from '..'
 import { MovieDTO } from '../../types'
 import { routerMap } from '../../Router'
 import { device } from '../../utils/device'
@@ -42,7 +42,7 @@ export const InfiniteScroll = ({
             loader={<CircularProgress />}
         >
             {movies.map((movie: MovieDTO) => (
-                <MovieCard
+                <Paper
                     key={movie.id}
                     {...movie}
                     onClick={() =>
