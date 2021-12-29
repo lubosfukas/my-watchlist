@@ -1,7 +1,7 @@
+export { Detail } from './Detail'
 export { EmbeddedVideo } from './EmbeddedVideo'
 export { InfiniteScroll } from './InfiniteScroll'
 export { InfiniteScrollPage } from './InfiniteScrollPage'
 export { Layout } from './Layout'
-export { MovieDetail } from './MovieDetail'
 export { Paper } from './Paper'
 export { Poster } from './Poster'

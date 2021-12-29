@@ -16,7 +16,7 @@ import {
 import { MovieDetailDTO } from '../../types'
 import { API_IMAGE_BASE_URL } from '../../utils/constants'
 
-export const MovieDetailDesktop = (props: MovieDetailDTO) => {
+export const DetailDesktop = (props: MovieDetailDTO) => {
     const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${props['backdrop_path']}`
     const releaseYear = props['release_date'].split('-')[0]
     const genres = getGenres(props.genres)

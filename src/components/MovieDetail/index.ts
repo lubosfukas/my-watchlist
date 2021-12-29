@@ -1,1 +1,0 @@
-export { MovieDetail } from './MovieDetail'

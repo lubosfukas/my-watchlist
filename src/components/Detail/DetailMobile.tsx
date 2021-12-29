@@ -13,7 +13,7 @@ import {
 import { MovieDetailDTO } from '../../types'
 import { device } from '../../utils/device'
 
-export const MovieDetailMobile = (props: MovieDetailDTO) => {
+export const DetailMobile = (props: MovieDetailDTO) => {
     const isLg = useMediaQuery(device.lg)
     const isMd = useMediaQuery(device.md)
     const isSm = useMediaQuery(device.sm)

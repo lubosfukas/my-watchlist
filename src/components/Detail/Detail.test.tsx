@@ -10,11 +10,11 @@ import {
 } from './helpers'
 import { mockData } from './mockData'
 
-import { MovieDetail } from './MovieDetail'
+import { Detail } from './Detail'
 
-describe('MovieDetail', () => {
+describe('Detail', () => {
     test('renders component', () => {
-        render(<MovieDetail {...mockData} />)
+        render(<Detail {...mockData} />)
 
         expect(screen.getByRole('img', { name: 'Poster' })).toBeInTheDocument()
         expect(

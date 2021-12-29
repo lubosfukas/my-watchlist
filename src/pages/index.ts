@@ -1,5 +1,5 @@
-export { Popular } from './Popular'
+export { Detail } from './Detail'
 export { NowPlaying } from './NowPlaying'
+export { Popular } from './Popular'
 export { TopRated } from './TopRated'
 export { Upcoming } from './Upcoming'
-export { Detail } from './Detail'

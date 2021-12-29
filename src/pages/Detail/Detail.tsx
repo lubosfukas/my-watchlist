@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Alert, AlertTitle, CircularProgress } from '@mui/material'
 
 import { useFetchMovieDetail } from './api'
-import { MovieDetail } from '../../components'
+import { Detail as DetailComponent } from '../../components'
 import { MovieContext } from '../../MovieContext'
 
 export const Detail = () => {
@@ -35,5 +35,5 @@ export const Detail = () => {
             </Alert>
         )
 
-    return <MovieDetail {...data} />
+    return <DetailComponent {...data} />
 }
