@@ -8,19 +8,22 @@ interface InfiniteQueryResponse
     data: Omit<PagedResponseDTO, 'page'>
 }
 
-const fetchLatestMovies = async (page = 1): Promise<PagedResponseDTO> => {
+const fetchMovies = async (
+    resource: string,
+    page = 1
+): Promise<PagedResponseDTO> => {
     const response = await fetch(
-        `${API_BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`
+        `${API_BASE_URL}/movie/${resource}?api_key=${API_KEY}&page=${page}`
     )
 
     const movieResponse: PagedResponseDTO = await response.json()
     return movieResponse
 }
 
-export const useFetchLatestMovies = (): InfiniteQueryResponse => {
+export const useFetchMovies = (resource: string): InfiniteQueryResponse => {
     const { data, ...rest } = useInfiniteQuery<PagedResponseDTO, string>(
-        `fetchPopularMovies`,
-        ({ pageParam }) => fetchLatestMovies(pageParam),
+        ['fetchMovies', resource],
+        ({ pageParam }) => fetchMovies(resource, pageParam),
         {
             getNextPageParam: (last) => last.page + 1,
         }

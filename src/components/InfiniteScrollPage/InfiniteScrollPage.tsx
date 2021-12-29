@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import {
     Alert,
@@ -8,53 +8,60 @@ import {
     useMediaQuery,
 } from '@mui/material'
 
-import { useFetchUpcomingMovies } from './api'
-import { MovieScroll } from '../../components'
-import { useSetPageTitle } from '../../hooks'
+import { useFetchMovies } from './hooks'
+import { MovieScroll } from '..'
 import { MovieContext } from '../../MovieContext'
 import { device } from '../../utils/device'
+import { getRoute } from '../../utils/helpers'
 
-export const Upcoming = () => {
+type Props = {
+    resource: string
+}
+
+export const InfiniteScrollPage: React.FC<Props> = ({ resource }) => {
     const { setTitle } = useContext(MovieContext)
     const { pathname } = useLocation()
-    useSetPageTitle(pathname, setTitle)
+
+    useEffect(() => {
+        const title = getRoute(pathname)?.name
+
+        if (title) {
+            document.title = title
+            setTitle(title)
+        }
+    }, [pathname, setTitle])
 
     const isSm = useMediaQuery(device.sm)
     const isXl = useMediaQuery(device.xl)
 
     const { data, error, fetchNextPage, hasNextPage, isError, isLoading } =
-        useFetchUpcomingMovies()
+        useFetchMovies(resource)
 
-    if (isLoading)
-        return (
-            <Container
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    py: isSm ? 2 : 1,
-                }}
-            >
-                <CircularProgress />
-            </Container>
-        )
+    const renderContent = () => {
+        if (isLoading) return <CircularProgress />
 
-    if (isError)
-        return (
-            <Container sx={{ py: isSm ? 2 : 1 }}>
+        if (isError)
+            return (
                 <Alert severity="error">
                     <AlertTitle>{error}</AlertTitle>
                 </Alert>
-            </Container>
-        )
+            )
 
-    if (!data || data.results.length === 0)
-        return (
-            <Container sx={{ py: isSm ? 2 : 1 }}>
+        if (!data || data.results.length === 0)
+            return (
                 <Alert severity="info">
                     <AlertTitle>No results found!</AlertTitle>
                 </Alert>
-            </Container>
+            )
+
+        return (
+            <MovieScroll
+                movies={data.results}
+                moreMovies={hasNextPage || false}
+                fetchNextPage={fetchNextPage}
+            />
         )
+    }
 
     return (
         <Container
@@ -65,11 +72,7 @@ export const Upcoming = () => {
                 py: isSm ? 2 : 1,
             }}
         >
-            <MovieScroll
-                movies={data.results}
-                moreMovies={hasNextPage || false}
-                fetchNextPage={fetchNextPage}
-            />
+            {renderContent()}
         </Container>
     )
 }
