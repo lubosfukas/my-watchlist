@@ -14,15 +14,15 @@ import { MovieDetailDTO } from '../../types'
 import { device } from '../../utils/device'
 
 export const MovieDetailMobile = (props: MovieDetailDTO) => {
-    const isLaptopOrLarger = useMediaQuery(device.laptop)
-    const isTabletOrLarger = useMediaQuery(device.tablet)
-    const isMobileOrLarger = useMediaQuery(device.mobileM)
+    const isLg = useMediaQuery(device.lg)
+    const isMd = useMediaQuery(device.md)
+    const isSm = useMediaQuery(device.sm)
 
     const genres = getGenres(props.genres)
     const trailer = getTrailer(props.videos['results'])
 
     return (
-        <Stack m={isMobileOrLarger ? 2 : 1} py={1}>
+        <Stack m={isSm ? 2 : 1} py={1}>
             <Box
                 sx={{
                     display: 'flex',
@@ -33,15 +33,10 @@ export const MovieDetailMobile = (props: MovieDetailDTO) => {
                 <Poster
                     path={props['poster_path']}
                     title={props.title}
-                    width={
-                        isLaptopOrLarger ? 500 : isTabletOrLarger ? 400 : 300
-                    }
+                    width={isLg ? 500 : isMd ? 400 : 300}
                 />
             </Box>
-            <Typography
-                sx={{ mt: 2, mb: 1 }}
-                variant={isTabletOrLarger ? 'h4' : 'h5'}
-            >
+            <Typography sx={{ mt: 2, mb: 1 }} variant={isMd ? 'h4' : 'h5'}>
                 {props.title}
             </Typography>
             {props.tagline && (

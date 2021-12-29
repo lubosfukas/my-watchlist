@@ -11,9 +11,7 @@ export const EmbeddedVideo = ({
     title: string
     videoKey: string
 }) => {
-    const isTabletOrLarger = useMediaQuery(device.tablet)
-    const width = isTabletOrLarger ? 640 : 300
-    const height = isTabletOrLarger ? 360 : 160
+    const isMd = useMediaQuery(device.md)
 
     return (
         <iframe
@@ -23,10 +21,10 @@ export const EmbeddedVideo = ({
                 border: 0;
             `}
             data-testid="embedded-video-frame"
-            height={height}
+            height={isMd ? 360 : 160}
             src={`https://www.youtube.com/embed/${videoKey}`}
             title={title}
-            width={width}
+            width={isMd ? 640 : 300}
         />
     )
 }

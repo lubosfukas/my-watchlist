@@ -3,22 +3,32 @@ import { Box, Paper } from '@mui/material'
 import { device } from '../../utils/device'
 
 export const StyledPaper = styled(Paper)`
-    position: relative;
-    width: 300px;
-    margin: 16px;
-
-    display: inline-flex;
-
     border-radius: 8px;
     cursor: pointer;
+    display: inline-flex;
+    margin: 8px;
     overflow: hidden;
+    position: relative;
+    width: 300px;
 
-    @media ${device.laptop} {
+    @media ${device.sm} {
+        margin: 16px 8px;
+    }
+
+    @media ${device.md} {
+        margin: 16px;
+    }
+
+    @media ${device.lg} {
         margin: 24px 16px;
 
         &:hover {
             transform: scale(1.075);
         }
+    }
+
+    @media ${device.xl} {
+        margin: 24px;
     }
 `
 
@@ -45,7 +55,7 @@ export const StyledBox = styled(Box)`
         rgba(10, 10, 10, 0.5)
     );
 
-    @media ${device.laptop} {
+    @media ${device.lg} {
         &:hover {
             opacity: 1;
         }

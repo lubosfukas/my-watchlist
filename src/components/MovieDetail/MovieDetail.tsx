@@ -6,9 +6,8 @@ import { MovieDetailDTO } from '../../types'
 import { device } from '../../utils/device'
 
 export const MovieDetail = (props: MovieDetailDTO) => {
-    const isLaptopOrLarger = useMediaQuery(device.laptopL)
+    const isLg = useMediaQuery(device.lg)
 
-    if (isLaptopOrLarger) return <MovieDetailDesktop {...props} />
-
+    if (isLg) return <MovieDetailDesktop {...props} />
     return <MovieDetailMobile {...props} />
 }

@@ -19,7 +19,8 @@ export const TopRated = () => {
     const { pathname } = useLocation()
     useSetPageTitle(pathname, setTitle)
 
-    const isTabletOrLarger = useMediaQuery(device.tablet)
+    const isSm = useMediaQuery(device.sm)
+    const isXl = useMediaQuery(device.xl)
 
     const { data, error, fetchNextPage, hasNextPage, isError, isLoading } =
         useFetchTopRatedMovies()
@@ -27,11 +28,10 @@ export const TopRated = () => {
     if (isLoading)
         return (
             <Container
-                maxWidth="xl"
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
-                    py: isTabletOrLarger ? 2 : 1,
+                    py: isSm ? 2 : 1,
                 }}
             >
                 <CircularProgress />
@@ -40,7 +40,7 @@ export const TopRated = () => {
 
     if (isError)
         return (
-            <Container maxWidth="xl" sx={{ py: isTabletOrLarger ? 2 : 1 }}>
+            <Container sx={{ py: isSm ? 2 : 1 }}>
                 <Alert severity="error">
                     <AlertTitle>{error}</AlertTitle>
                 </Alert>
@@ -49,7 +49,7 @@ export const TopRated = () => {
 
     if (!data || data.results.length === 0)
         return (
-            <Container maxWidth="xl" sx={{ py: isTabletOrLarger ? 2 : 1 }}>
+            <Container sx={{ py: isSm ? 2 : 1 }}>
                 <Alert severity="info">
                     <AlertTitle>No results found!</AlertTitle>
                 </Alert>
@@ -58,11 +58,11 @@ export const TopRated = () => {
 
     return (
         <Container
-            maxWidth="xl"
+            disableGutters={isXl}
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                py: isTabletOrLarger ? 2 : 1,
+                py: isSm ? 2 : 1,
             }}
         >
             <MovieScroll

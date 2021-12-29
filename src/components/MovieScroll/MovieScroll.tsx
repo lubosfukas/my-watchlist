@@ -13,7 +13,7 @@ const StyledInfiniteScroll = styled(InfiniteScroll)`
     flex-direction: column;
     align-items: center;
 
-    @media ${device.laptop} {
+    @media ${device.md} {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: stretch;
@@ -37,21 +37,20 @@ export const MovieScroll = ({ movies, moreMovies, fetchNextPage }: Props) => {
             hasMore={moreMovies}
             loader={<CircularProgress />}
         >
-            {movies &&
-                movies.map((movie: MovieDTO) => (
-                    <MovieCard
-                        key={movie.id}
-                        {...movie}
-                        onClick={() =>
-                            navigate(
-                                `/${routerMap['detail'].path.replace(
-                                    ':id',
-                                    movie.id.toString()
-                                )}`
-                            )
-                        }
-                    />
-                ))}
+            {movies.map((movie: MovieDTO) => (
+                <MovieCard
+                    key={movie.id}
+                    {...movie}
+                    onClick={() =>
+                        navigate(
+                            `/${routerMap['detail'].path.replace(
+                                ':id',
+                                movie.id.toString()
+                            )}`
+                        )
+                    }
+                />
+            ))}
         </StyledInfiniteScroll>
     )
 }

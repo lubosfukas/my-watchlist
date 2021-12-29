@@ -1,19 +1,15 @@
 export const sizeNum = {
-    mobileS: 320,
-    mobileM: 375,
-    mobileL: 425,
-    tablet: 768,
-    laptop: 1024,
-    laptopL: 1440,
-    desktop: 2560,
+    xs: 0,
+    sm: 600,
+    md: 900,
+    lg: 1200,
+    xl: 1536,
 }
 
 export const size = {
-    mobileS: `${sizeNum.mobileS}px`,
-    mobileM: `${sizeNum.mobileM}px`,
-    mobileL: `${sizeNum.mobileL}px`,
-    tablet: `${sizeNum.tablet}px`,
-    laptop: `${sizeNum.laptop}px`,
-    laptopL: `${sizeNum.laptopL}px`,
-    desktop: `${sizeNum.desktop}px`,
+    xs: `${sizeNum.xs}px`,
+    sm: `${sizeNum.sm}px`,
+    md: `${sizeNum.md}px`,
+    lg: `${sizeNum.lg}px`,
+    xl: `${sizeNum.xl}px`,
 }

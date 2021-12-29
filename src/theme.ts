@@ -7,6 +7,13 @@ export const colors = {
 }
 
 export const theme = createTheme({
+    components: {
+        MuiContainer: {
+            defaultProps: {
+                maxWidth: 'xl',
+            },
+        },
+    },
     palette: {
         primary: {
             main: colors.primary,

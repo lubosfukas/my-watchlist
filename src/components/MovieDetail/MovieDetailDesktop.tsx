@@ -52,7 +52,6 @@ export const MovieDetailDesktop = (props: MovieDetailDTO) => {
                     `}
                 >
                     <Container
-                        maxWidth="xl"
                         sx={{
                             height: '500px',
                             display: 'flex',
@@ -138,7 +137,7 @@ export const MovieDetailDesktop = (props: MovieDetailDTO) => {
                 </Box>
             </Grid>
             <Grid item lg={12}>
-                <Container maxWidth="xl" sx={{ mt: 3 }}>
+                <Container sx={{ mt: 3 }}>
                     {trailer && (
                         <DetailItem
                             label="Trailer"
