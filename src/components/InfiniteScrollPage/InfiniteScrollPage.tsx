@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 
 import { useFetchMovies } from './hooks'
-import { MovieScroll } from '..'
+import { InfiniteScroll } from '..'
 import { MovieContext } from '../../MovieContext'
 import { device } from '../../utils/device'
 import { getRoute } from '../../utils/helpers'
@@ -55,7 +55,7 @@ export const InfiniteScrollPage: React.FC<Props> = ({ resource }) => {
             )
 
         return (
-            <MovieScroll
+            <InfiniteScroll
                 movies={data.results}
                 moreMovies={hasNextPage || false}
                 fetchNextPage={fetchNextPage}

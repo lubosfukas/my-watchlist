@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import InfiniteScrollComponent from 'react-infinite-scroll-component'
 import { CircularProgress } from '@mui/material'
 import styled from '@emotion/styled'
 
@@ -8,7 +8,7 @@ import { MovieDTO } from '../../types'
 import { routerMap } from '../../Router'
 import { device } from '../../utils/device'
 
-const StyledInfiniteScroll = styled(InfiniteScroll)`
+const StyledInfiniteScroll = styled(InfiniteScrollComponent)`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +27,11 @@ type Props = {
     fetchNextPage: () => void
 }
 
-export const MovieScroll = ({ movies, moreMovies, fetchNextPage }: Props) => {
+export const InfiniteScroll = ({
+    movies,
+    moreMovies,
+    fetchNextPage,
+}: Props) => {
     let navigate = useNavigate()
 
     return (

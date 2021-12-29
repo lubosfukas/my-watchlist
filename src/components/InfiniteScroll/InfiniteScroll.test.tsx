@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { mockData } from './mockData'
-import { MovieScroll } from './MovieScroll'
+import { InfiniteScroll } from './InfiniteScroll'
 
-describe('MovieScroll', () => {
+describe('InfiniteScroll', () => {
     test('renders component', () => {
         render(
             <MemoryRouter initialEntries={['/popular']}>
-                <MovieScroll
+                <InfiniteScroll
                     movies={mockData.movies}
                     moreMovies={false}
                     fetchNextPage={jest.fn}
