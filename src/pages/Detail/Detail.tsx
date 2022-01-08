@@ -3,14 +3,24 @@ import { useParams } from 'react-router-dom'
 import {
     Alert,
     AlertTitle,
+    Box,
+    Container,
     CircularProgress,
     useMediaQuery,
 } from '@mui/material'
+import styled from '@emotion/styled'
 
 import { useFetchMovieDetail } from './api'
 import { Detail as DetailComponent, DetailSkeleton } from '../../components'
 import { MovieContext } from '../../MovieContext'
 import { device } from '../../utils/device'
+
+const StyledBox = styled(Box)`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`
 
 export const Detail = () => {
     const { setTitle } = useContext(MovieContext)
@@ -26,24 +36,33 @@ export const Detail = () => {
     })
 
     const isLg = useMediaQuery(device.lg)
+    const isSm = useMediaQuery(device.sm)
 
     if (isLoading) {
         if (isLg) return <DetailSkeleton />
-        return <CircularProgress />
+        return (
+            <StyledBox>
+                <CircularProgress />
+            </StyledBox>
+        )
     }
 
     if (error)
         return (
-            <Alert severity="error">
-                <AlertTitle>{error}</AlertTitle>
-            </Alert>
+            <Container sx={{ py: isSm ? 2 : 1 }}>
+                <Alert severity="error">
+                    <AlertTitle>{error}</AlertTitle>
+                </Alert>
+            </Container>
         )
 
     if (!data)
         return (
-            <Alert severity="info">
-                <AlertTitle>Movie not found!</AlertTitle>
-            </Alert>
+            <Container sx={{ py: isSm ? 2 : 1 }}>
+                <Alert severity="info">
+                    <AlertTitle>Movie not found!</AlertTitle>
+                </Alert>
+            </Container>
         )
 
     return <DetailComponent {...data} />

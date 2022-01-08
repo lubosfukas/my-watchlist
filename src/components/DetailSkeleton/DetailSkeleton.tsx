@@ -47,10 +47,10 @@ export const DetailSkeleton = () => (
                 }}
             >
                 <Grid container columnSpacing={3}>
-                    <Grid item>
+                    <Grid item lg="auto">
                         <PosterSkeleton />
                     </Grid>
-                    <Grid item lg={8}>
+                    <Grid item lg>
                         <Stack spacing={1}>
                             <Typography variant="h4">
                                 <SkeletonMui width="70%" />

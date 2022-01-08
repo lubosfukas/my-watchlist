@@ -59,13 +59,13 @@ export const DetailDesktop = (props: MovieDetailDTO) => {
                         }}
                     >
                         <Grid container columnSpacing={3}>
-                            <Grid item>
+                            <Grid item lg="auto">
                                 <Poster
                                     path={props['poster_path']}
                                     title={props.title}
                                 />
                             </Grid>
-                            <Grid item lg={8}>
+                            <Grid item lg>
                                 <Stack spacing={1}>
                                     <Typography variant="h4">
                                         <strong>{props.title}</strong> {'('}
