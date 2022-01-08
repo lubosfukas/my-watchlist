@@ -27,7 +27,7 @@ const StyledSkeleton = styled(SkeletonMui)`
     }
 `
 
-export const Skeleton = () => (
+export const PaperSkeleton = () => (
     <Box
         sx={{
             width: '100%',

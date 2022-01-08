@@ -1,0 +1,1 @@
+export { PaperSkeleton } from './PaperSkeleton'
