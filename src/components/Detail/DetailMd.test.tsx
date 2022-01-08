@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+
 import { DetailMd } from './DetailMd'
 import { mockData } from './mockData'
 

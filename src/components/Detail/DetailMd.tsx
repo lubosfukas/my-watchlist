@@ -17,7 +17,6 @@ import { API_IMAGE_BASE_URL } from '../../utils/constants'
 
 export const DetailMd = (props: MovieDetailDTO) => {
     const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${props['backdrop_path']}`
-    const releaseYear = props['release_date'].split('-')[0]
     const genres = getGenres(props.genres)
     const trailer = getTrailer(props.videos['results'])
 
@@ -67,9 +66,7 @@ export const DetailMd = (props: MovieDetailDTO) => {
                             <Grid item md>
                                 <Stack spacing={1}>
                                     <Typography variant="h4">
-                                        <strong>{props.title}</strong> {'('}
-                                        {releaseYear}
-                                        {')'}
+                                        <strong>{props.title}</strong>
                                     </Typography>
                                     <Typography sx={{ fontStyle: 'italic' }}>
                                         {props.tagline}
