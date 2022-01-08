@@ -1,5 +1,4 @@
-export { Detail } from './Detail'
-export { DetailSkeleton } from './DetailSkeleton'
+export * from './Detail'
 export { EmbeddedVideo } from './EmbeddedVideo'
 export { InfiniteScroll } from './InfiniteScroll'
 export { InfiniteScrollPage } from './InfiniteScrollPage'

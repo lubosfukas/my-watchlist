@@ -11,7 +11,11 @@ import {
 import styled from '@emotion/styled'
 
 import { useFetchMovieDetail } from './api'
-import { Detail as DetailComponent, DetailSkeleton } from '../../components'
+import {
+    Detail as DetailXs,
+    DetailMd,
+    DetailMdSkeleton,
+} from '../../components'
 import { MovieContext } from '../../MovieContext'
 import { device } from '../../utils/device'
 
@@ -36,10 +40,11 @@ export const Detail = () => {
     })
 
     const isLg = useMediaQuery(device.lg)
+    const isMd = useMediaQuery(device.md)
     const isSm = useMediaQuery(device.sm)
 
     if (isLoading) {
-        if (isLg) return <DetailSkeleton />
+        if (isLg) return <DetailMdSkeleton />
         return (
             <StyledBox>
                 <CircularProgress />
@@ -65,5 +70,6 @@ export const Detail = () => {
             </Container>
         )
 
-    return <DetailComponent {...data} />
+    if (isMd) return <DetailMd {...data} />
+    return <DetailXs {...data} />
 }

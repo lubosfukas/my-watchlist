@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-
 import { Box, Chip, Grid, Container, Stack, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
@@ -16,7 +15,7 @@ import {
 import { MovieDetailDTO } from '../../types'
 import { API_IMAGE_BASE_URL } from '../../utils/constants'
 
-export const DetailDesktop = (props: MovieDetailDTO) => {
+export const DetailMd = (props: MovieDetailDTO) => {
     const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${props['backdrop_path']}`
     const releaseYear = props['release_date'].split('-')[0]
     const genres = getGenres(props.genres)
@@ -33,7 +32,7 @@ export const DetailDesktop = (props: MovieDetailDTO) => {
                     position: relative;
                 `}
                 item
-                lg={12}
+                md={12}
             >
                 <Box
                     css={css`
@@ -59,13 +58,13 @@ export const DetailDesktop = (props: MovieDetailDTO) => {
                         }}
                     >
                         <Grid container columnSpacing={3}>
-                            <Grid item lg="auto">
+                            <Grid item md="auto">
                                 <Poster
                                     path={props['poster_path']}
                                     title={props.title}
                                 />
                             </Grid>
-                            <Grid item lg>
+                            <Grid item md>
                                 <Stack spacing={1}>
                                     <Typography variant="h4">
                                         <strong>{props.title}</strong> {'('}
@@ -136,7 +135,7 @@ export const DetailDesktop = (props: MovieDetailDTO) => {
                     </Container>
                 </Box>
             </Grid>
-            <Grid item lg={12}>
+            <Grid item md={12}>
                 <Container sx={{ mt: 3 }}>
                     {trailer && (
                         <DetailItem

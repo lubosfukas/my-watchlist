@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import { Detail } from './Detail'
+import { DetailMd } from './DetailMd'
 import { mockData } from './mockData'
 
-describe('Detail', () => {
+describe('DetailMd', () => {
     test('renders component', () => {
-        render(<Detail {...mockData} />)
+        render(<DetailMd {...mockData} />)
 
         expect(screen.getByRole('img', { name: 'Poster' })).toBeInTheDocument()
         expect(

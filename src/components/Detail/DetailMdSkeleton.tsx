@@ -36,9 +36,9 @@ const TrailerSkeleton = () => (
     </Container>
 )
 
-export const DetailSkeleton = () => (
+export const DetailMdSkeleton = () => (
     <Grid container>
-        <Grid item lg={12}>
+        <Grid item md={12}>
             <Container
                 sx={{
                     height: '500px',
@@ -47,10 +47,10 @@ export const DetailSkeleton = () => (
                 }}
             >
                 <Grid container columnSpacing={3}>
-                    <Grid item lg="auto">
+                    <Grid item md="auto">
                         <PosterSkeleton />
                     </Grid>
-                    <Grid item lg>
+                    <Grid item md>
                         <Stack spacing={1}>
                             <Typography variant="h4">
                                 <SkeletonMui width="70%" />
@@ -78,7 +78,7 @@ export const DetailSkeleton = () => (
                 </Grid>
             </Container>
         </Grid>
-        <Grid item lg={12}>
+        <Grid item md={12}>
             <TrailerSkeleton />
         </Grid>
     </Grid>
