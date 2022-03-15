@@ -6,18 +6,10 @@ export const StyledPaper = styled(Paper)`
     border-radius: 8px;
     cursor: pointer;
     display: inline-flex;
-    margin: 8px;
+    margin: 16px 8px;
     overflow: hidden;
     position: relative;
     width: 300px;
-
-    @media ${device.sm} {
-        margin: 16px 8px;
-    }
-
-    @media ${device.md} {
-        margin: 16px;
-    }
 
     @media ${device.lg} {
         margin: 24px 16px;
@@ -25,10 +17,6 @@ export const StyledPaper = styled(Paper)`
         &:hover {
             transform: scale(1.075);
         }
-    }
-
-    @media ${device.xl} {
-        margin: 24px;
     }
 `
 
