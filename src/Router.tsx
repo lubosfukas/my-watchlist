@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import { Detail, NowPlaying, Popular, TopRated, Upcoming } from './pages'
 
@@ -11,16 +11,10 @@ export const routerMap: Record<
         excludeFromNav: boolean
     }
 > = {
-    homepage: {
+    home: {
         path: '',
-        component: <Navigate to="popular" />,
-        name: 'Homepage',
-        excludeFromNav: true,
-    },
-    popular: {
-        path: 'popular',
         component: <Popular />,
-        name: 'Popular',
+        name: 'Home',
         excludeFromNav: false,
     },
     'now-playing': {

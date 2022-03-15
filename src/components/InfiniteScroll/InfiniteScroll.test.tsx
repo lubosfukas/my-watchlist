@@ -6,7 +6,7 @@ import { InfiniteScroll } from './InfiniteScroll'
 describe('InfiniteScroll', () => {
     test('renders component', () => {
         render(
-            <MemoryRouter initialEntries={['/popular']}>
+            <MemoryRouter initialEntries={['/']}>
                 <InfiniteScroll
                     movies={mockData.movies}
                     moreMovies={false}
