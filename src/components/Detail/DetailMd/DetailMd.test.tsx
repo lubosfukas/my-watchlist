@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
 import { DetailMd } from './DetailMd'
-import { mockData } from './mockData'
+import { mockData } from '../mockData'
 
 describe('DetailMd', () => {
     test('renders component', () => {

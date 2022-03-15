@@ -2,23 +2,33 @@
 import { Box, Chip, Grid, Container, Stack, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
-import { EmbeddedVideo } from '../EmbeddedVideo'
-import { Poster } from '../Poster'
+import { EmbeddedVideo } from '../../EmbeddedVideo'
+import { Poster } from '../../Poster'
 import {
     getReleaseDate,
     getRuntime,
     getPrice,
     getAverageVote,
     getTrailer,
-    getGenres,
-} from './helpers'
-import { MovieDetailDTO } from '../../types'
-import { API_IMAGE_BASE_URL } from '../../utils/constants'
+    getGenreNames,
+} from '../helpers'
+import { API_IMAGE_BASE_URL } from '../../../utils/constants'
+import { MovieDetailDTO } from '../../../types'
 
-export const DetailMd = (props: MovieDetailDTO) => {
-    const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${props['backdrop_path']}`
-    const genres = getGenres(props.genres)
-    const trailer = getTrailer(props.videos['results'])
+export const DetailMd = ({
+    budget,
+    genres,
+    overview,
+    revenue,
+    runtime,
+    tagline,
+    title,
+    videos,
+    ...otherProps
+}: MovieDetailDTO) => {
+    const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${otherProps['backdrop_path']}`
+    const genreNames = getGenreNames(genres)
+    const trailer = getTrailer(videos['results'])
 
     return (
         <Grid container>
@@ -59,19 +69,19 @@ export const DetailMd = (props: MovieDetailDTO) => {
                         <Grid container columnSpacing={3}>
                             <Grid item md="auto">
                                 <Poster
-                                    path={props['poster_path']}
-                                    title={props.title}
+                                    path={otherProps['poster_path']}
+                                    title={title}
                                 />
                             </Grid>
                             <Grid item md>
                                 <Stack spacing={1}>
                                     <Typography variant="h4">
-                                        <strong>{props.title}</strong>
+                                        <strong>{title}</strong>
                                     </Typography>
                                     <Typography sx={{ fontStyle: 'italic' }}>
-                                        {props.tagline}
+                                        {tagline}
                                     </Typography>
-                                    <Typography>{props.overview}</Typography>
+                                    <Typography>{overview}</Typography>
                                     <Box
                                         sx={{
                                             display: 'flex',
@@ -81,28 +91,28 @@ export const DetailMd = (props: MovieDetailDTO) => {
                                         <DetailItem
                                             label="Release date"
                                             value={getReleaseDate(
-                                                props['release_date']
+                                                otherProps['release_date']
                                             )}
                                         />
                                         <DetailItem
                                             label="Runtime"
-                                            value={getRuntime(props.runtime)}
+                                            value={getRuntime(runtime)}
                                         />
                                         <DetailItem
                                             label="Budget"
-                                            value={getPrice(props.budget)}
+                                            value={getPrice(budget)}
                                         />
                                         <DetailItem
                                             label="Revenue"
-                                            value={getPrice(props.revenue)}
+                                            value={getPrice(revenue)}
                                         />
                                         <DetailItem
                                             label="Voting"
                                             value={getAverageVote(
-                                                props['vote_average']
+                                                otherProps['vote_average']
                                             )}
                                         />
-                                        {genres && (
+                                        {genreNames && genreNames.length > 0 && (
                                             <DetailItem
                                                 label="Genres"
                                                 component={
@@ -110,17 +120,19 @@ export const DetailMd = (props: MovieDetailDTO) => {
                                                         direction="row"
                                                         flexWrap="wrap"
                                                     >
-                                                        {genres.map((name) => (
-                                                            <Chip
-                                                                color="secondary"
-                                                                key={name}
-                                                                label={name}
-                                                                sx={{
-                                                                    mb: 1,
-                                                                    mr: 1,
-                                                                }}
-                                                            />
-                                                        ))}
+                                                        {genreNames.map(
+                                                            (name) => (
+                                                                <Chip
+                                                                    color="secondary"
+                                                                    key={name}
+                                                                    label={name}
+                                                                    sx={{
+                                                                        mb: 1,
+                                                                        mr: 1,
+                                                                    }}
+                                                                />
+                                                            )
+                                                        )}
                                                     </Stack>
                                                 }
                                             />
@@ -139,7 +151,7 @@ export const DetailMd = (props: MovieDetailDTO) => {
                             label="Trailer"
                             component={
                                 <EmbeddedVideo
-                                    title={props.title}
+                                    title={title}
                                     videoKey={trailer['key']}
                                 />
                             }

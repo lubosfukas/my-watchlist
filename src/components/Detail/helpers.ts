@@ -25,7 +25,7 @@ export const getAverageVote = (averageVote: number) => {
     return `${averageVote * 10} %`
 }
 
-export const getGenres = (genres: Genres) => {
+export const getGenreNames = (genres: Genres) => {
     if (genres.length === 0) return
     return genres.map((g) => g.name)
 }

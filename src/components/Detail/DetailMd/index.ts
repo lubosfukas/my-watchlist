@@ -1,0 +1,1 @@
+export { DetailMd } from './DetailMd'

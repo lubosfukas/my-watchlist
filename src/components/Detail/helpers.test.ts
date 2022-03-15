@@ -1,6 +1,6 @@
 import {
     getAverageVote,
-    getGenres,
+    getGenreNames,
     getPrice,
     getReleaseDate,
     getRuntime,
@@ -50,9 +50,9 @@ describe('helpers', () => {
         })
     })
 
-    describe('getGenres', () => {
+    describe('getGenreNames', () => {
         test('returns array of names', () => {
-            expect(getGenres(mockData.genres)).toStrictEqual([
+            expect(getGenreNames(mockData.genres)).toStrictEqual([
                 'Action',
                 'Adventure',
                 'Science Fiction',
@@ -60,7 +60,7 @@ describe('helpers', () => {
         })
 
         test('returns undefined', () => {
-            expect(getGenres([])).toBeUndefined()
+            expect(getGenreNames([])).toBeUndefined()
         })
     })
 

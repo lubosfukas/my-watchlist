@@ -1,3 +1,2 @@
 export { Detail } from './Detail'
-export { DetailMd } from './DetailMd'
-export { DetailMdSkeleton } from './DetailMdSkeleton'
+export { DetailMdSkeleton } from './DetailMd/DetailMdSkeleton'

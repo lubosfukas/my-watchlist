@@ -1,8 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { useMediaQuery } from '@mui/material'
-
-import { device } from '../../utils/device'
+import { YOUTUBE_EMBED_URL } from '../../utils/constants'
 
 export const EmbeddedVideo = ({
     title,
@@ -10,21 +8,17 @@ export const EmbeddedVideo = ({
 }: {
     title: string
     videoKey: string
-}) => {
-    const isMd = useMediaQuery(device.md)
-
-    return (
-        <iframe
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            css={css`
-                border: 0;
-            `}
-            data-testid="embedded-video-frame"
-            height={isMd ? 360 : 160}
-            src={`https://www.youtube.com/embed/${videoKey}`}
-            title={title}
-            width={isMd ? 640 : 300}
-        />
-    )
-}
+}) => (
+    <iframe
+        allow="autoplay; encrypted-media"
+        allowFullScreen
+        css={css`
+            border: 0;
+        `}
+        data-testid="embedded-video-frame"
+        height={360}
+        src={`${YOUTUBE_EMBED_URL}/${videoKey}`}
+        title={title}
+        width={640}
+    />
+)
