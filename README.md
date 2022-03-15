@@ -2,6 +2,8 @@
 
 Simple movie database application using React and The Movie Database API.
 
+Live demo: https://my-watchlist.netlify.app/
+
 -   [File structure](#file-structure)
 -   [Installation](#installation)
 -   [Development](#development)
