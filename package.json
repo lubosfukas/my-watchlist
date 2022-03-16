@@ -28,7 +28,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --watchAll=false --passWithNoTests",
-        "test:watch": "react-scripts test",
+        "test:coverage": "react-scripts test --coverage --watchAll=false --passWithNoTests",
+        "test:watch": "react-scripts test --watchAll",
         "eject": "react-scripts eject",
         "lint": "eslint --ext .ts,.tsx,.js,.json src/",
         "lint:fix": "eslint --fix --ext .ts,.tsx,.js,.json src/",
@@ -79,5 +80,15 @@
         "husky": "7.0.4",
         "lint-staged": "12.1.2",
         "prettier": "2.5.0"
+    },
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "index.ts",
+            "hooks.ts",
+            "<rootDir>/src/shared",
+            "<rootDir>/src/reportWebVitals.ts",
+            "<rootDir>/src/types.ts",
+            "<rootDir>/src/index.tsx"
+        ]
     }
 }

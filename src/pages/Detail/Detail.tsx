@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import styled from '@emotion/styled'
 
-import { useFetchMovieDetail } from './api'
+import { useFetchMovieDetail } from './hooks'
 import { Detail as DetailComponent, DetailMdSkeleton } from '../../components'
 import { MovieContext } from '../../MovieContext'
 import { device } from '../../utils/device'
