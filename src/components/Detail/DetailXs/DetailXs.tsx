@@ -1,14 +1,6 @@
-import {
-    Box,
-    Button,
-    Chip,
-    Stack,
-    Typography,
-    useMediaQuery,
-} from '@mui/material'
+import { Box, Button, Chip, Stack, Typography } from '@mui/material'
 
-import { EmbeddedVideo } from '../../EmbeddedVideo'
-import { Poster } from '../../Poster'
+import { BackdropImage } from '../../BackdropImage'
 import {
     getAverageVote,
     getGenreNames,
@@ -18,8 +10,7 @@ import {
     getTrailer,
 } from '../helpers'
 import { MovieDetailDTO } from '../../../types'
-import { device } from '../../../utils/device'
-import { YOUTUBE_WATCH_URL } from '../../../utils/constants'
+import { API_IMAGE_BASE_URL, YOUTUBE_WATCH_URL } from '../../../utils/constants'
 
 export const DetailXs = ({
     budget,
@@ -32,26 +23,22 @@ export const DetailXs = ({
     videos,
     ...otherProps
 }: MovieDetailDTO) => {
-    const isSm = useMediaQuery(device.sm)
-
+    const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${otherProps['backdrop_path']}`
     const genreNames = getGenreNames(genres)
     const trailer = getTrailer(videos['results'])
 
     return (
-        <Stack m={isSm ? 2 : 1} py={1}>
-            <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                <Poster path={otherProps['poster_path']} title={title} />
-            </Box>
-            <Typography sx={{ mt: 2, mb: 1 }} variant="h5">
+        <Stack m={2} py={1}>
+            <Typography sx={{ mb: 1 }} variant="h5">
                 {title}
             </Typography>
-            {!isSm && trailer && (
+            {tagline && (
+                <Typography sx={{ fontStyle: 'italic', mb: 1 }} variant="body1">
+                    {tagline}
+                </Typography>
+            )}
+            <BackdropImage path={backdropImageUrl} title={title} />
+            {trailer && (
                 <Button
                     color="secondary"
                     onClick={() =>
@@ -59,16 +46,11 @@ export const DetailXs = ({
                             `${YOUTUBE_WATCH_URL}?v=${trailer.key}`
                         )
                     }
-                    sx={{ mb: 1 }}
+                    sx={{ my: 1 }}
                     variant="contained"
                 >
                     Watch trailer
                 </Button>
-            )}
-            {tagline && (
-                <Typography sx={{ fontStyle: 'italic', mb: 1 }} variant="body1">
-                    {tagline}
-                </Typography>
             )}
             <Typography sx={{ mb: 1 }} variant="body1">
                 {overview}
@@ -94,24 +76,10 @@ export const DetailXs = ({
                                     color="secondary"
                                     key={name}
                                     label={name}
-                                    sx={{
-                                        mb: 1,
-                                        mr: 1,
-                                    }}
+                                    sx={{ mr: 1 }}
                                 />
                             ))}
                         </Stack>
-                    }
-                />
-            )}
-            {isSm && trailer && (
-                <DetailItem
-                    label="Trailer"
-                    component={
-                        <EmbeddedVideo
-                            title={title}
-                            videoKey={trailer['key']}
-                        />
                     }
                 />
             )}
