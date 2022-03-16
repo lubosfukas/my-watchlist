@@ -1,4 +1,4 @@
-import { Genres, Videos } from '../../types'
+import { Genres, Videos } from '../types'
 
 export const getReleaseDate = (releaseDate: string) => {
     if (!releaseDate) return

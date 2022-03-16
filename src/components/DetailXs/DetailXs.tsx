@@ -1,6 +1,8 @@
 import { Box, Button, Chip, Stack, Typography } from '@mui/material'
 
-import { BackdropImage } from '../../BackdropImage'
+import { BackdropImage } from '../BackdropImage'
+import { MovieDetailDTO } from '../../types'
+import { API_IMAGE_BASE_URL, YOUTUBE_WATCH_URL } from '../../utils/constants'
 import {
     getAverageVote,
     getGenreNames,
@@ -8,9 +10,7 @@ import {
     getReleaseDate,
     getRuntime,
     getTrailer,
-} from '../helpers'
-import { MovieDetailDTO } from '../../../types'
-import { API_IMAGE_BASE_URL, YOUTUBE_WATCH_URL } from '../../../utils/constants'
+} from '../../utils/helpers'
 
 export const DetailXs = ({
     budget,
@@ -28,7 +28,7 @@ export const DetailXs = ({
     const trailer = getTrailer(videos['results'])
 
     return (
-        <Stack m={2} py={1}>
+        <Stack m={2}>
             <Typography sx={{ mb: 1 }} variant="h5">
                 {title}
             </Typography>

@@ -1,32 +1,22 @@
 import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import {
-    Alert,
-    AlertTitle,
-    Box,
-    Container,
-    CircularProgress,
-    useMediaQuery,
-} from '@mui/material'
-import styled from '@emotion/styled'
+import { Alert, AlertTitle, Container, useMediaQuery } from '@mui/material'
 
 import { useFetchMovieDetail } from './hooks'
-import { Detail as DetailComponent, DetailMdSkeleton } from '../../components'
+import {
+    CoveringSpinner,
+    DetailMd,
+    DetailMdSkeleton,
+    DetailXs,
+} from '../../components'
 import { MovieContext } from '../../MovieContext'
 import { device } from '../../utils/device'
-
-const StyledBox = styled(Box)`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-`
 
 export const Detail = () => {
     const { setTitle } = useContext(MovieContext)
     const { id } = useParams()
 
-    const { data, error, isLoading } = useFetchMovieDetail(id || '')
+    const { data, error, isLoading } = useFetchMovieDetail(id)
 
     useEffect(() => {
         if (data) {
@@ -35,22 +25,17 @@ export const Detail = () => {
         }
     })
 
-    const isLg = useMediaQuery(device.lg)
-    const isSm = useMediaQuery(device.sm)
+    const isMd = useMediaQuery(device.md)
 
     if (isLoading) {
-        if (isLg) return <DetailMdSkeleton />
-        return (
-            <StyledBox>
-                <CircularProgress />
-            </StyledBox>
-        )
+        if (isMd) return <DetailMdSkeleton />
+        return <CoveringSpinner />
     }
 
     if (error)
         return (
-            <Container sx={{ py: isSm ? 2 : 1 }}>
-                <Alert severity="error">
+            <Container>
+                <Alert severity="error" sx={{ my: 2 }}>
                     <AlertTitle>{error}</AlertTitle>
                 </Alert>
             </Container>
@@ -58,12 +43,13 @@ export const Detail = () => {
 
     if (!data)
         return (
-            <Container sx={{ py: isSm ? 2 : 1 }}>
-                <Alert severity="info">
+            <Container>
+                <Alert severity="info" sx={{ my: 2 }}>
                     <AlertTitle>Movie not found!</AlertTitle>
                 </Alert>
             </Container>
         )
 
-    return <DetailComponent {...data} />
+    if (isMd) return <DetailMd {...data} />
+    return <DetailXs {...data} />
 }

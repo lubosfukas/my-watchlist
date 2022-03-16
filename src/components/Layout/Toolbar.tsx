@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@mui/material'
 
 import { ToolbarMd } from './ToolbarMd'
-import { ToolbarMobile } from './ToolbarMobile'
+import { ToolbarXs } from './ToolbarXs'
 import { device } from '../../utils/device'
 
 type Props = {
@@ -12,5 +12,5 @@ export const Toolbar: React.FC<Props> = ({ toggleDrawer }) => {
     const isMd = useMediaQuery(device.md)
 
     if (isMd) return <ToolbarMd />
-    return <ToolbarMobile toggleDrawer={toggleDrawer} />
+    return <ToolbarXs toggleDrawer={toggleDrawer} />
 }

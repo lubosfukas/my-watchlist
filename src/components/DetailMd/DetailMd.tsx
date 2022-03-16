@@ -2,8 +2,10 @@
 import { Box, Chip, Grid, Container, Stack, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
-import { EmbeddedVideo } from '../../EmbeddedVideo'
-import { Poster } from '../../Poster'
+import { EmbeddedVideo } from '../EmbeddedVideo'
+import { Poster } from '../Poster'
+import { MovieDetailDTO } from '../../types'
+import { API_IMAGE_BASE_URL } from '../../utils/constants'
 import {
     getReleaseDate,
     getRuntime,
@@ -11,9 +13,7 @@ import {
     getAverageVote,
     getTrailer,
     getGenreNames,
-} from '../helpers'
-import { API_IMAGE_BASE_URL } from '../../../utils/constants'
-import { MovieDetailDTO } from '../../../types'
+} from '../../utils/helpers'
 
 export const DetailMd = ({
     budget,

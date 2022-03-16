@@ -8,7 +8,7 @@ type Props = {
     toggleDrawer: () => void
 }
 
-export const ToolbarMobile: React.FC<Props> = ({ toggleDrawer }) => {
+export const ToolbarXs: React.FC<Props> = ({ toggleDrawer }) => {
     const { title } = useContext(MovieContext)
 
     return (

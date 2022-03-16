@@ -6,8 +6,8 @@ import {
     getRuntime,
     getTrailer,
 } from './helpers'
-import { movieDetail } from '../../shared/mockedData'
-import { Videos } from '../../types'
+import { movieDetail } from '../shared/mockedData'
+import { Videos } from '../types'
 
 describe('helpers', () => {
     describe('getReleaseDate', () => {
