@@ -1,5 +1,7 @@
 import { createTheme } from '@mui/material/styles'
 
+import { device } from './utils/device'
+
 export const colors = {
     primary: '#0d253f',
     secondary: '#01b4e4',
@@ -11,6 +13,16 @@ export const theme = createTheme({
         MuiContainer: {
             defaultProps: {
                 maxWidth: 'xl',
+            },
+            styleOverrides: {
+                root: {
+                    paddingTop: '16px',
+                    paddingBottom: '16px',
+                    [`@media ${device.sm}`]: {
+                        paddingTop: '24px',
+                        paddingBottom: '24px',
+                    },
+                },
             },
         },
     },

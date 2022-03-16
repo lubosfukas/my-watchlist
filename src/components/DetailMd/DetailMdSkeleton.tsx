@@ -76,7 +76,7 @@ const PosterSkeleton = () => (
 )
 
 const TrailerSkeleton = () => (
-    <Container sx={{ mt: 3 }}>
+    <Container>
         <Typography variant="h6">
             <SkeletonMui width="10%" />
         </Typography>

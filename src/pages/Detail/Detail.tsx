@@ -25,7 +25,6 @@ export const Detail = () => {
         }
     })
 
-    const isSm = useMediaQuery(device.sm)
     const isMd = useMediaQuery(device.md)
 
     if (isLoading) {
@@ -35,7 +34,7 @@ export const Detail = () => {
 
     if (error)
         return (
-            <Container sx={{ py: isSm ? 3 : 2 }}>
+            <Container>
                 <Alert severity="error">
                     <AlertTitle>{error}</AlertTitle>
                 </Alert>
@@ -44,7 +43,7 @@ export const Detail = () => {
 
     if (!data)
         return (
-            <Container sx={{ py: isSm ? 3 : 2 }}>
+            <Container>
                 <Alert severity="info">
                     <AlertTitle>Movie not found!</AlertTitle>
                 </Alert>

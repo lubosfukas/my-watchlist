@@ -145,7 +145,7 @@ export const DetailMd = ({
                 </Box>
             </Grid>
             <Grid item md={12}>
-                <Container sx={{ my: 3 }}>
+                <Container>
                     {trailer && (
                         <DetailItem
                             label="Trailer"

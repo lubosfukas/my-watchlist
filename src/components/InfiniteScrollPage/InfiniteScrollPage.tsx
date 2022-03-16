@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { Alert, AlertTitle, Container, useMediaQuery } from '@mui/material'
+import { Alert, AlertTitle, Container } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 
 import { useFetchMovies } from './hooks'
@@ -7,7 +7,6 @@ import { InfiniteScroll } from '../InfiniteScroll'
 import { MovieContext } from '../../MovieContext'
 import { routerMap } from '../../Router'
 import { PaperSkeleton } from '../Paper'
-import { device } from '../../utils/device'
 
 export const getRoute = (pathname: string) =>
     Object.values(routerMap).find(
@@ -32,10 +31,8 @@ export const InfiniteScrollPage: React.FC<{ resource: string }> = ({
     const { data, error, fetchNextPage, hasNextPage, isError, isLoading } =
         useFetchMovies(resource)
 
-    const isSm = useMediaQuery(device.sm)
-
     return (
-        <Container sx={{ py: isSm ? 3 : 2 }}>
+        <Container>
             {isLoading && <PaperSkeleton />}
             {!isLoading && isError && (
                 <Alert severity="error">
