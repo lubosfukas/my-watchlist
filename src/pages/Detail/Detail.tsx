@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { Alert, AlertTitle, Container, useMediaQuery } from '@mui/material'
+import { useParams } from 'react-router-dom'
 
 import { useFetchMovieDetail } from './hooks'
 import {
@@ -25,6 +25,7 @@ export const Detail = () => {
         }
     })
 
+    const isSm = useMediaQuery(device.sm)
     const isMd = useMediaQuery(device.md)
 
     if (isLoading) {
@@ -34,8 +35,8 @@ export const Detail = () => {
 
     if (error)
         return (
-            <Container>
-                <Alert severity="error" sx={{ my: 2 }}>
+            <Container sx={{ py: isSm ? 3 : 2 }}>
+                <Alert severity="error">
                     <AlertTitle>{error}</AlertTitle>
                 </Alert>
             </Container>
@@ -43,8 +44,8 @@ export const Detail = () => {
 
     if (!data)
         return (
-            <Container>
-                <Alert severity="info" sx={{ my: 2 }}>
+            <Container sx={{ py: isSm ? 3 : 2 }}>
+                <Alert severity="info">
                     <AlertTitle>Movie not found!</AlertTitle>
                 </Alert>
             </Container>

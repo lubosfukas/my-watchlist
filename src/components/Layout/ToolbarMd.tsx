@@ -1,5 +1,5 @@
-import { useLocation, useNavigate } from 'react-router-dom'
 import { AppBar, Container, Stack, Toolbar, Typography } from '@mui/material'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { routerMap } from '../../Router'
 
@@ -26,7 +26,7 @@ export const ToolbarMd = () => {
 
     return (
         <AppBar position="static">
-            <Toolbar>
+            <Toolbar disableGutters>
                 <Container>
                     <Stack direction="row" spacing={3}>
                         {routeLinks}

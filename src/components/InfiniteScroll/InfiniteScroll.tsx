@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom'
-import InfiniteScrollComponent from 'react-infinite-scroll-component'
 import styled from '@emotion/styled'
+import InfiniteScrollComponent from 'react-infinite-scroll-component'
+import { useNavigate } from 'react-router-dom'
 
-import { Paper, PaperSkeleton } from '..'
+import { Paper, PaperSkeleton } from '../Paper'
 import { MovieDTO } from '../../types'
 import { routerMap } from '../../Router'
 import { device } from '../../utils/device'

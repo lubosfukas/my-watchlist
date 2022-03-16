@@ -4,15 +4,15 @@ import { Box, Paper } from '@mui/material'
 import { device } from '../../utils/device'
 
 export const StyledPaper = styled(Paper)`
-    border-radius: 8px;
+    border-radius: 16px;
     cursor: pointer;
     display: inline-flex;
     margin: 16px 8px;
     overflow: hidden;
     position: relative;
-    width: 300px;
+    max-width: 300px;
 
-    @media ${device.lg} {
+    @media ${device.md} {
         margin: 24px 16px;
 
         &:hover {
@@ -44,7 +44,7 @@ export const StyledBox = styled(Box)`
         rgba(10, 10, 10, 0.5)
     );
 
-    @media ${device.lg} {
+    @media ${device.md} {
         &:hover {
             opacity: 1;
         }

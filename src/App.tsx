@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from 'react-query'
 import { Global, css } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { BrowserRouter } from 'react-router-dom'
 
 import { MovieContext } from './MovieContext'
 import { Layout } from './components'

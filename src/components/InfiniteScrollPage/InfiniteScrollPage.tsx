@@ -1,17 +1,12 @@
 import { useContext, useEffect } from 'react'
+import { Alert, AlertTitle, Container, useMediaQuery } from '@mui/material'
 import { useLocation } from 'react-router-dom'
-import {
-    Alert,
-    AlertTitle,
-    CircularProgress,
-    Container,
-    useMediaQuery,
-} from '@mui/material'
 
 import { useFetchMovies } from './hooks'
 import { InfiniteScroll } from '../InfiniteScroll'
 import { MovieContext } from '../../MovieContext'
 import { routerMap } from '../../Router'
+import { PaperSkeleton } from '../Paper'
 import { device } from '../../utils/device'
 
 export const getRoute = (pathname: string) =>
@@ -34,48 +29,31 @@ export const InfiniteScrollPage: React.FC<{ resource: string }> = ({
         }
     }, [pathname, setTitle])
 
-    const isSm = useMediaQuery(device.sm)
-    const isXl = useMediaQuery(device.xl)
-
     const { data, error, fetchNextPage, hasNextPage, isError, isLoading } =
         useFetchMovies(resource)
 
-    const renderContent = () => {
-        if (isLoading) return <CircularProgress />
+    const isSm = useMediaQuery(device.sm)
 
-        if (isError)
-            return (
+    return (
+        <Container sx={{ py: isSm ? 3 : 2 }}>
+            {isLoading && <PaperSkeleton />}
+            {!isLoading && isError && (
                 <Alert severity="error">
                     <AlertTitle>{error}</AlertTitle>
                 </Alert>
-            )
-
-        if (!data || data.results.length === 0)
-            return (
+            )}
+            {!isLoading && !isError && (!data || data.results.length === 0) && (
                 <Alert severity="info">
                     <AlertTitle>No results found!</AlertTitle>
                 </Alert>
-            )
-
-        return (
-            <InfiniteScroll
-                movies={data.results}
-                moreMovies={hasNextPage || false}
-                fetchNextPage={fetchNextPage}
-            />
-        )
-    }
-
-    return (
-        <Container
-            disableGutters={isXl}
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                py: isSm ? 2 : 1,
-            }}
-        >
-            {renderContent()}
+            )}
+            {!isLoading && !isError && data && data.results.length > 0 && (
+                <InfiniteScroll
+                    movies={data.results}
+                    moreMovies={hasNextPage || false}
+                    fetchNextPage={fetchNextPage}
+                />
+            )}
         </Container>
     )
 }

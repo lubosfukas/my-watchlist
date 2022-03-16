@@ -1,4 +1,11 @@
-import { Box, Button, Chip, Stack, Typography } from '@mui/material'
+import {
+    Box,
+    Button,
+    Chip,
+    Stack,
+    Typography,
+    useMediaQuery,
+} from '@mui/material'
 
 import { BackdropImage } from '../BackdropImage'
 import { MovieDetailDTO } from '../../types'
@@ -11,6 +18,7 @@ import {
     getRuntime,
     getTrailer,
 } from '../../utils/helpers'
+import { device } from '../../utils/device'
 
 export const DetailXs = ({
     budget,
@@ -27,8 +35,10 @@ export const DetailXs = ({
     const genreNames = getGenreNames(genres)
     const trailer = getTrailer(videos['results'])
 
+    const isSm = useMediaQuery(device.sm)
+
     return (
-        <Stack m={2}>
+        <Stack m={isSm ? 3 : 2}>
             <Typography sx={{ mb: 1 }} variant="h5">
                 {title}
             </Typography>
