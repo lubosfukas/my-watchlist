@@ -3,7 +3,7 @@ import { AppBar, Container, Stack, Toolbar, Typography } from '@mui/material'
 
 import { routerMap } from '../../Router'
 
-export const ToolbarDesktop = () => {
+export const ToolbarMd = () => {
     const { pathname } = useLocation()
     let navigate = useNavigate()
 

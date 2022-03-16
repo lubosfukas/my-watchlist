@@ -6,28 +6,25 @@ import { MovieDTO } from '../../types'
 
 import { StyledBox, StyledPaper } from './Paper.styled'
 
-interface IMovie extends MovieDTO {
+interface IProps extends MovieDTO {
     onClick: () => void
 }
 
-export const Paper = (props: IMovie) => {
-    const releaseYear = props['release_date']
-        ? props['release_date'].split('-')[0]
+export const Paper = ({ onClick, title, ...otherProps }: IProps) => {
+    const releaseYear = otherProps['release_date']
+        ? otherProps['release_date'].split('-')[0]
         : ''
-    const title = releaseYear
-        ? `${props['title']} (${releaseYear})`
-        : props['title']
 
     return (
-        <StyledPaper elevation={8} onClick={props.onClick}>
-            <Poster path={props['poster_path']} title={props['title']} />
+        <StyledPaper elevation={8} onClick={onClick}>
+            <Poster path={otherProps['poster_path']} title={title} />
             <StyledBox>
-                {props['vote_average'] > 0 && (
+                {otherProps['vote_average'] > 0 && (
                     <Typography
                         sx={{ color: colors.white, textAlign: 'center' }}
                         variant="h4"
                     >
-                        {props['vote_average']}
+                        {otherProps['vote_average']}
                         {'/10'}
                     </Typography>
                 )}
@@ -39,7 +36,7 @@ export const Paper = (props: IMovie) => {
                     }}
                     variant="h6"
                 >
-                    {title}
+                    {releaseYear ? `${title} (${releaseYear})` : title}
                 </Typography>
             </StyledBox>
         </StyledPaper>

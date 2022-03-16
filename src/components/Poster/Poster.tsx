@@ -3,14 +3,9 @@ import { css } from '@emotion/react'
 
 import { API_IMAGE_BASE_URL } from '../../utils/constants'
 
-type Props = {
-    path: string
-    title: string
-}
-
 const DEFAULT_WIDTH = 300
 
-export const Poster = ({ title, path }: Props) => {
+export const Poster = ({ title, path }: { path: string; title: string }) => {
     const posterPath = `${API_IMAGE_BASE_URL}/w${DEFAULT_WIDTH}/${path}`
     const imageWidth = `${DEFAULT_WIDTH}px`
 

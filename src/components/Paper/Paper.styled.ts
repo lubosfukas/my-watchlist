@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Box, Paper } from '@mui/material'
+
 import { device } from '../../utils/device'
 
 export const StyledPaper = styled(Paper)`

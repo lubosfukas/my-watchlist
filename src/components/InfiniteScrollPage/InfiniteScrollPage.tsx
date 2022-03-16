@@ -9,16 +9,19 @@ import {
 } from '@mui/material'
 
 import { useFetchMovies } from './hooks'
-import { InfiniteScroll } from '..'
+import { InfiniteScroll } from '../InfiniteScroll'
 import { MovieContext } from '../../MovieContext'
+import { routerMap } from '../../Router'
 import { device } from '../../utils/device'
-import { getRoute } from '../../utils/helpers'
 
-type Props = {
-    resource: string
-}
+export const getRoute = (pathname: string) =>
+    Object.values(routerMap).find(
+        (x) => pathname.split('/')[1] === x.path.split('/')[0]
+    )
 
-export const InfiniteScrollPage: React.FC<Props> = ({ resource }) => {
+export const InfiniteScrollPage: React.FC<{ resource: string }> = ({
+    resource,
+}) => {
     const { setTitle } = useContext(MovieContext)
     const { pathname } = useLocation()
 

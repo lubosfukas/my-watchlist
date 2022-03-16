@@ -28,11 +28,7 @@ const StyledSkeleton = styled(SkeletonMui)`
 `
 
 export const PaperSkeleton = () => (
-    <Box
-        sx={{
-            width: '100%',
-        }}
-    >
+    <Box sx={{ width: '100%' }}>
         <StyledSkeleton variant="rectangular" />
     </Box>
 )

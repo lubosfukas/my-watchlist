@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+
 import { YOUTUBE_EMBED_URL } from '../../utils/constants'
 
 export const EmbeddedVideo = ({
