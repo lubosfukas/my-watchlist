@@ -7,6 +7,7 @@ import {
 export type MovieDTO = {
     adult: boolean
     backdrop_path: string
+    genre_ids: Array<number>
     id: number
     original_language: string
     original_title: string
@@ -76,7 +77,7 @@ export type Videos = Array<{
     type: 'Trailer' | 'Teaser' | 'Featurette' | 'Clip'
 }>
 
-export interface MovieDetailDTO extends MovieDTO {
+export interface MovieDetailDTO extends Omit<MovieDTO, 'genre_ids'> {
     belongs_to_collection: BelongsToCollection
     budget: number
     genres: Genres

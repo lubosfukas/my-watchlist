@@ -6,7 +6,7 @@ import {
     getRuntime,
     getTrailer,
 } from './helpers'
-import { mockData } from './mockData'
+import { movieDetail } from '../../shared/mockedData'
 import { Videos } from '../../types'
 
 describe('helpers', () => {
@@ -52,7 +52,7 @@ describe('helpers', () => {
 
     describe('getGenreNames', () => {
         test('returns array of names', () => {
-            expect(getGenreNames(mockData.genres)).toStrictEqual([
+            expect(getGenreNames(movieDetail.genres)).toStrictEqual([
                 'Action',
                 'Adventure',
                 'Science Fiction',
@@ -66,7 +66,7 @@ describe('helpers', () => {
 
     describe('getTrailer', () => {
         test('returns official trailer', () => {
-            expect(getTrailer(mockData.videos.results)).toStrictEqual({
+            expect(getTrailer(movieDetail.videos.results)).toStrictEqual({
                 iso_639_1: 'en',
                 iso_3166_1: 'US',
                 name: 'Official Trailer',

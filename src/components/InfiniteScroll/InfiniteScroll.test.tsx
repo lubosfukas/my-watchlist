@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { mockData } from './mockData'
+import { movies } from '../../shared/mockedData'
 import { InfiniteScroll } from './InfiniteScroll'
 
 describe('InfiniteScroll', () => {
@@ -8,7 +8,7 @@ describe('InfiniteScroll', () => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <InfiniteScroll
-                    movies={mockData.movies}
+                    movies={movies}
                     moreMovies={false}
                     fetchNextPage={jest.fn}
                 />

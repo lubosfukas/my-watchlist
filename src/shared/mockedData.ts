@@ -1,6 +1,6 @@
-import { MovieDetailDTO } from '../../types'
+import { MovieDetailDTO, MovieDTO } from '../types'
 
-export const mockData: MovieDetailDTO = {
+export const movieDetail: MovieDetailDTO = {
     adult: false,
     backdrop_path: '/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg',
     belongs_to_collection: {
@@ -253,3 +253,91 @@ export const mockData: MovieDetailDTO = {
         ],
     },
 }
+
+export const movies: Array<MovieDTO> = [
+    {
+        adult: false,
+        backdrop_path: '/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg',
+        genre_ids: [28, 12, 878],
+        id: 634649,
+        original_language: 'en',
+        original_title: 'Spider-Man: No Way Home',
+        overview:
+            'Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.',
+        popularity: 20686.826,
+        poster_path: '/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+        release_date: '2021-12-15',
+        title: 'Spider-Man: No Way Home',
+        video: false,
+        vote_average: 8.6,
+        vote_count: 1839,
+    },
+    {
+        adult: false,
+        backdrop_path: '/eENEf62tMXbhyVvdcXlnQz2wcuT.jpg',
+        genre_ids: [878, 28, 12],
+        id: 580489,
+        original_language: 'en',
+        original_title: 'Venom: Let There Be Carnage',
+        overview:
+            'After finding a host body in investigative reporter Eddie Brock, the alien symbiote must face a new enemy, Carnage, the alter ego of serial killer Cletus Kasady.',
+        popularity: 7992.617,
+        poster_path: '/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg',
+        release_date: '2021-09-30',
+        title: 'Venom: Let There Be Carnage',
+        video: false,
+        vote_average: 7.2,
+        vote_count: 4869,
+    },
+    {
+        adult: false,
+        backdrop_path: '/7ajHGIAYNMiIzejy1LJWdPrcAx8.jpg',
+        genre_ids: [28, 35, 80, 53],
+        id: 512195,
+        original_language: 'en',
+        original_title: 'Red Notice',
+        overview:
+            "An Interpol-issued Red Notice is a global alert to hunt and capture the world's most wanted. But when a daring heist brings together the FBI's top profiler and two rival criminals, there's no telling what will happen.",
+        popularity: 3496.837,
+        poster_path: '/lAXONuqg41NwUMuzMiFvicDET9Y.jpg',
+        release_date: '2021-11-04',
+        title: 'Red Notice',
+        video: false,
+        vote_average: 6.8,
+        vote_count: 2156,
+    },
+    {
+        adult: false,
+        backdrop_path: '/cinER0ESG0eJ49kXlExM0MEWGxW.jpg',
+        genre_ids: [28, 12, 14],
+        id: 566525,
+        original_language: 'en',
+        original_title: 'Shang-Chi and the Legend of the Ten Rings',
+        overview:
+            'Shang-Chi must confront the past he thought he left behind when he is drawn into the web of the mysterious Ten Rings organization.',
+        popularity: 3100.52,
+        poster_path: '/1BIoJGKbXjdFDAqUEiA2VHqkK1Z.jpg',
+        release_date: '2021-09-01',
+        title: 'Shang-Chi and the Legend of the Ten Rings',
+        video: false,
+        vote_average: 7.8,
+        vote_count: 4426,
+    },
+    {
+        adult: false,
+        backdrop_path: '/tTlAA0REGPXSZPBfWyTW9ipIv1I.jpg',
+        genre_ids: [28, 12, 878, 18],
+        id: 315635,
+        original_language: 'en',
+        original_title: 'Spider-Man: Homecoming',
+        overview:
+            'Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges.',
+        popularity: 2968.44,
+        poster_path: '/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg',
+        release_date: '2017-07-05',
+        title: 'Spider-Man: Homecoming',
+        video: false,
+        vote_average: 7.4,
+        vote_count: 17467,
+    },
+]

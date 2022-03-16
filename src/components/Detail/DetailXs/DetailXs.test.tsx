@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react'
 
 import { Detail } from '../Detail'
-import { mockData } from '../mockData'
+import { movieDetail } from '../../../shared/mockedData'
 
 describe('DetailXs', () => {
     test('renders component', () => {
-        render(<Detail {...mockData} />)
+        render(<Detail {...movieDetail} />)
 
-        expect(screen.getByRole('img', { name: 'Poster' })).toBeInTheDocument()
         expect(
             screen.getByRole('heading', {
                 name: 'Spider-Man: No Way Home',
@@ -15,6 +14,12 @@ describe('DetailXs', () => {
         ).toBeInTheDocument()
         expect(
             screen.getByText('The Multiverse unleashed.')
+        ).toBeInTheDocument()
+        expect(
+            screen.getByRole('img', { name: 'Backdrop' })
+        ).toBeInTheDocument()
+        expect(
+            screen.getByRole('button', { name: 'Watch trailer' })
         ).toBeInTheDocument()
         expect(
             screen.getByText(
@@ -47,9 +52,5 @@ describe('DetailXs', () => {
         expect(screen.getByText('Action')).toBeInTheDocument()
         expect(screen.getByText('Adventure')).toBeInTheDocument()
         expect(screen.getByText('Science Fiction')).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: 'Trailer' })
-        ).toBeInTheDocument()
-        expect(screen.getByTestId('embedded-video-frame'))
     })
 })

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
 
 import { Paper } from './Paper'
-import { mockData } from './mockData'
+import { movies } from '../../shared/mockedData'
 
 describe('Paper', () => {
     test('renders component', () => {
-        render(<Paper {...mockData} onClick={jest.fn} />)
+        render(<Paper {...movies[0]} onClick={jest.fn} />)
 
         expect(screen.getByRole('img', { name: 'Poster' })).toBeInTheDocument()
         expect(
