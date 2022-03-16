@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
 import { DetailMd } from './DetailMd'
-import { movieDetail } from '../../../shared/mockedData'
+import { movieDetail } from '../../shared/mockedData'
 
 describe('DetailMd', () => {
     test('renders component', () => {

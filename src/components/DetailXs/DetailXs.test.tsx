@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
 
-import { Detail } from '../Detail'
-import { movieDetail } from '../../../shared/mockedData'
+import { DetailXs } from '../DetailXs'
+import { movieDetail } from '../../shared/mockedData'
 
 describe('DetailXs', () => {
     test('renders component', () => {
-        render(<Detail {...movieDetail} />)
+        render(<DetailXs {...movieDetail} />)
 
         expect(
             screen.getByRole('heading', {
