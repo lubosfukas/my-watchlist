@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 
 import { MovieContext } from './MovieContext'
-import { Layout } from './components'
 import { Router } from './Router'
 import { theme } from './theme'
 
@@ -33,9 +32,7 @@ function App() {
                 <QueryClientProvider client={queryClient}>
                     <Global styles={GlobalStyles} />
                     <ThemeProvider theme={theme}>
-                        <Layout>
-                            <Router />
-                        </Layout>
+                        <Router />
                     </ThemeProvider>
                 </QueryClientProvider>
             </BrowserRouter>

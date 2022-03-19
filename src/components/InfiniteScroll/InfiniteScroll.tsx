@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { Paper, PaperSkeleton } from '../Paper'
 import { MovieDTO } from '../../types'
-import { routerMap } from '../../Router'
+import { routes } from '../../Router'
 import { device } from '../../utils/device'
 
 const StyledInfiniteScroll = styled(InfiniteScrollComponent)`
@@ -46,7 +46,7 @@ export const InfiniteScroll = ({
                     {...movie}
                     onClick={() =>
                         navigate(
-                            `/${routerMap.detail.path.replace(
+                            `/${routes.detail.path.replace(
                                 ':id',
                                 movie.id.toString()
                             )}`

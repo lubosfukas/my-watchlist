@@ -5,12 +5,12 @@ import { useLocation } from 'react-router-dom'
 import { useFetchMovies } from './hooks'
 import { InfiniteScroll } from '../InfiniteScroll'
 import { MovieContext } from '../../MovieContext'
-import { routerMap } from '../../Router'
+import { routes } from '../../Router'
 import { PaperSkeleton } from '../Paper'
 
 export const getRoute = (pathname: string) =>
-    Object.values(routerMap).find(
-        (x) => pathname.split('/')[1] === x.path.split('/')[0]
+    Object.values(routes).find(
+        ({ path }) => pathname.split('/')[1] === path.split('/')[0]
     )
 
 export const InfiniteScrollPage: React.FC<{ resource: string }> = ({

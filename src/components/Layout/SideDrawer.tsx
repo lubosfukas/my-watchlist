@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { routerMap } from '../../Router'
+import { routes } from '../../Router'
 import { colors } from '../../theme'
 
 type Props = {
@@ -22,15 +22,15 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
     const { pathname } = useLocation()
     let navigate = useNavigate()
 
-    const routeLinks = Object.values(routerMap)
-        .filter((x) => !x.excludeFromNav)
-        .map((y) => {
-            const isCurrent = pathname === `/${y.path}`
+    const routeLinks = Object.values(routes)
+        .filter(({ excludeFromNav }) => !excludeFromNav)
+        .map(({ name, path }) => {
+            const isCurrent = pathname === `/${path}`
 
             return (
                 <ListItem
                     disablePadding
-                    key={y.path}
+                    key={path}
                     css={css`
                         .Mui-selected {
                             background-color: ${colors.primary} !important;
@@ -43,10 +43,10 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
                     `}
                 >
                     <ListItemButton
-                        onClick={() => navigate(`/${y.path}`)}
+                        onClick={() => navigate(`/${path}`)}
                         selected={isCurrent}
                     >
-                        <ListItemText>{y.name}</ListItemText>
+                        <ListItemText>{name}</ListItemText>
                     </ListItemButton>
                 </ListItem>
             )

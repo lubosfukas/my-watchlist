@@ -1,3 +1,4 @@
+import { useContext, useEffect } from 'react'
 import {
     Alert,
     AlertTitle,
@@ -9,10 +10,20 @@ import {
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import { useNavigate } from 'react-router-dom'
 
-import { routerMap } from '../Router'
+import { MovieContext } from '../MovieContext'
+import { routes } from '../Router'
 import { device } from '../utils/device'
 
 export const NotFound = () => {
+    const { setTitle } = useContext(MovieContext)
+
+    useEffect(() => {
+        const title = routes.notFound.name
+
+        document.title = title
+        setTitle(title)
+    }, [setTitle])
+
     let navigate = useNavigate()
 
     const isSmOrLarger = useMediaQuery(device.sm)
@@ -28,7 +39,7 @@ export const NotFound = () => {
                     </Alert>
                     <Button
                         color="secondary"
-                        onClick={() => navigate(routerMap.home.path)}
+                        onClick={() => navigate(routes.home.path)}
                         startIcon={<ArrowBackIosNewIcon />}
                         sx={{ mt: 2 }}
                         variant="contained"

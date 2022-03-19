@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
+import { Layout } from './components'
+
 import {
     Detail,
     NowPlaying,
@@ -9,56 +11,55 @@ import {
     Upcoming,
 } from './pages'
 
-export const routerMap: Record<
+export const routes: Record<
     string,
     {
         path: string
-        component: JSX.Element
         name: string
         excludeFromNav: boolean
     }
 > = {
     home: {
         path: '',
-        component: <Popular />,
         name: 'Home',
         excludeFromNav: false,
     },
     nowPlaying: {
         path: 'now-playing',
-        component: <NowPlaying />,
         name: 'Now playing',
         excludeFromNav: false,
     },
     topRated: {
         path: 'top-rated',
-        component: <TopRated />,
         name: 'Top rated',
         excludeFromNav: false,
     },
     upcoming: {
         path: 'upcoming',
-        component: <Upcoming />,
         name: 'Upcoming',
         excludeFromNav: false,
     },
     detail: {
         path: 'detail/:id',
-        component: <Detail />,
         name: 'Detail',
         excludeFromNav: true,
     },
     notFound: {
         path: '*',
-        component: <NotFound />,
-        name: 'NotFound',
+        name: 'Not found',
         excludeFromNav: true,
     },
 }
 
-const routes = Object.keys(routerMap).map((key) => {
-    const { component, path } = routerMap[key as keyof typeof routerMap]
-    return <Route key={key} element={component} path={path} />
-})
-
-export const Router = () => <Routes>{routes}</Routes>
+export const Router = () => (
+    <Routes>
+        <Route path={routes.home.path} element={<Layout />}>
+            <Route index element={<Popular />} />
+            <Route path={routes.nowPlaying.path} element={<NowPlaying />} />
+            <Route path={routes.topRated.path} element={<TopRated />} />
+            <Route path={routes.upcoming.path} element={<Upcoming />} />
+            <Route path={routes.detail.path} element={<Detail />} />
+            <Route path={routes.notFound.path} element={<NotFound />} />
+        </Route>
+    </Routes>
+)

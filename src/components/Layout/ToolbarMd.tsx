@@ -1,25 +1,25 @@
 import { AppBar, Container, Stack, Toolbar, Typography } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { routerMap } from '../../Router'
+import { routes } from '../../Router'
 
 export const ToolbarMd = () => {
     const { pathname } = useLocation()
     let navigate = useNavigate()
 
-    const routeLinks = Object.values(routerMap)
-        .filter((x) => !x.excludeFromNav)
-        .map((y) => {
-            const isCurrent = pathname.split('/')[1] === y.path
+    const routeLinks = Object.values(routes)
+        .filter(({ excludeFromNav }) => !excludeFromNav)
+        .map(({ name, path }) => {
+            const isCurrent = pathname.split('/')[1] === path
 
             return (
                 <Typography
-                    key={y.path}
+                    key={path}
                     sx={{ cursor: 'pointer' }}
-                    onClick={() => navigate(`/${y.path}`)}
+                    onClick={() => navigate(`/${path}`)}
                     variant="subtitle1"
                 >
-                    {isCurrent ? <strong>{y.name}</strong> : y.name}
+                    {isCurrent ? <strong>{name}</strong> : name}
                 </Typography>
             )
         })
