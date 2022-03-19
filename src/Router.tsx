@@ -1,6 +1,13 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { Detail, NowPlaying, Popular, TopRated, Upcoming } from './pages'
+import {
+    Detail,
+    NowPlaying,
+    NotFound,
+    Popular,
+    TopRated,
+    Upcoming,
+} from './pages'
 
 export const routerMap: Record<
     string,
@@ -17,13 +24,13 @@ export const routerMap: Record<
         name: 'Home',
         excludeFromNav: false,
     },
-    'now-playing': {
+    nowPlaying: {
         path: 'now-playing',
         component: <NowPlaying />,
         name: 'Now playing',
         excludeFromNav: false,
     },
-    'top-rated': {
+    topRated: {
         path: 'top-rated',
         component: <TopRated />,
         name: 'Top rated',
@@ -39,6 +46,12 @@ export const routerMap: Record<
         path: 'detail/:id',
         component: <Detail />,
         name: 'Detail',
+        excludeFromNav: true,
+    },
+    notFound: {
+        path: '*',
+        component: <NotFound />,
+        name: 'NotFound',
         excludeFromNav: true,
     },
 }

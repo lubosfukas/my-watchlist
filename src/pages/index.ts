@@ -1,5 +1,6 @@
 export { Detail } from './Detail'
 export { NowPlaying } from './NowPlaying'
+export { NotFound } from './NotFound'
 export { Popular } from './Popular'
 export { TopRated } from './TopRated'
 export { Upcoming } from './Upcoming'

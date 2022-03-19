@@ -46,7 +46,7 @@ export const InfiniteScroll = ({
                     {...movie}
                     onClick={() =>
                         navigate(
-                            `/${routerMap['detail'].path.replace(
+                            `/${routerMap.detail.path.replace(
                                 ':id',
                                 movie.id.toString()
                             )}`
