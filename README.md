@@ -56,6 +56,7 @@ yarn start
 yarn lint
 yarn lint:fix
 yarn test
+yarn test:coverage
 yarn test:watch
 ```
 
