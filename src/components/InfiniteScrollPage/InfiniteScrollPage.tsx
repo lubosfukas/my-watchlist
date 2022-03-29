@@ -2,20 +2,20 @@ import { useContext, useEffect } from 'react'
 import { Alert, AlertTitle, Container } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 
-import { useFetchMovies } from './hooks'
+import { useFetchMedia } from './hooks'
 import { InfiniteScroll } from '../InfiniteScroll'
 import { MovieContext } from '../../MovieContext'
 import { routes } from '../../Router'
 import { PaperSkeleton } from '../Paper'
 
 export const getRoute = (pathname: string) =>
-    Object.values(routes).find(
+    Object.values(routes.movie).find(
         ({ path }) => pathname.split('/')[1] === path.split('/')[0]
     )
 
-export const InfiniteScrollPage: React.FC<{ resource: string }> = ({
-    resource,
-}) => {
+export const InfiniteScrollPage: React.FC<{
+    url: string
+}> = ({ url }) => {
     const { setTitle } = useContext(MovieContext)
     const { pathname } = useLocation()
 
@@ -29,7 +29,7 @@ export const InfiniteScrollPage: React.FC<{ resource: string }> = ({
     }, [pathname, setTitle])
 
     const { data, error, fetchNextPage, hasNextPage, isError, isLoading } =
-        useFetchMovies(resource)
+        useFetchMedia(url)
 
     return (
         <Container>

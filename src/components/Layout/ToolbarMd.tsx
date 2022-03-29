@@ -1,38 +1,23 @@
-import { AppBar, Container, Stack, Toolbar, Typography } from '@mui/material'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { AppBar, Container, Stack, Toolbar } from '@mui/material'
 
+import { Menu } from './Menu'
 import { routes } from '../../Router'
 
-export const ToolbarMd = () => {
-    const { pathname } = useLocation()
-    let navigate = useNavigate()
-
-    const routeLinks = Object.values(routes)
-        .filter(({ excludeFromNav }) => !excludeFromNav)
-        .map(({ name, path }) => {
-            const isCurrent = pathname.split('/')[1] === path
-
-            return (
-                <Typography
-                    key={path}
-                    sx={{ cursor: 'pointer' }}
-                    onClick={() => navigate(`/${path}`)}
-                    variant="subtitle1"
-                >
-                    {isCurrent ? <strong>{name}</strong> : name}
-                </Typography>
-            )
-        })
-
-    return (
-        <AppBar position="static">
-            <Toolbar disableGutters>
-                <Container>
-                    <Stack direction="row" spacing={3}>
-                        {routeLinks}
-                    </Stack>
-                </Container>
-            </Toolbar>
-        </AppBar>
-    )
-}
+export const ToolbarMd = () => (
+    <AppBar position="static">
+        <Toolbar disableGutters>
+            <Container>
+                <Stack direction="row" spacing={3}>
+                    {Object.keys(routes).map((media) => (
+                        <Menu
+                            key={media}
+                            name={media}
+                            routes={Object.values(routes[media])}
+                        />
+                    ))}
+                </Stack>
+            </Container>
+        </Toolbar>
+    </AppBar>
+)

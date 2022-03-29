@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { Paper, PaperSkeleton } from '../Paper'
 import { MovieDTO } from '../../types'
-import { routes } from '../../Router'
 import { device } from '../../utils/device'
 
 const StyledInfiniteScroll = styled(InfiniteScrollComponent)`
@@ -44,14 +43,7 @@ export const InfiniteScroll = ({
                 <Paper
                     key={movie.id}
                     {...movie}
-                    onClick={() =>
-                        navigate(
-                            `/${routes.detail.path.replace(
-                                ':id',
-                                movie.id.toString()
-                            )}`
-                        )
-                    }
+                    onClick={() => navigate(`/movie/detail/${movie.id}`)}
                 />
             ))}
         </StyledInfiniteScroll>

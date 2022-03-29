@@ -92,3 +92,10 @@ export interface MovieDetailDTO extends Omit<MovieDTO, 'genre_ids'> {
     tagline: string
     videos: { results: Videos }
 }
+
+export type Route = {
+    path: string
+    name: string
+}
+
+export type RouteRecord = Record<string, Route>

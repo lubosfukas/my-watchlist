@@ -11,15 +11,14 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import { useNavigate } from 'react-router-dom'
 
 import { MovieContext } from '../MovieContext'
-import { routes } from '../Router'
 import { device } from '../utils/device'
+
+const title = 'Not found'
 
 export const NotFound = () => {
     const { setTitle } = useContext(MovieContext)
 
     useEffect(() => {
-        const title = routes.notFound.name
-
         document.title = title
         setTitle(title)
     }, [setTitle])
@@ -39,7 +38,7 @@ export const NotFound = () => {
                     </Alert>
                     <Button
                         color="secondary"
-                        onClick={() => navigate(routes.home.path)}
+                        onClick={() => navigate('')}
                         startIcon={<ArrowBackIosNewIcon />}
                         sx={{ mt: 2 }}
                         variant="contained"

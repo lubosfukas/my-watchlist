@@ -22,35 +22,33 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
     const { pathname } = useLocation()
     let navigate = useNavigate()
 
-    const routeLinks = Object.values(routes)
-        .filter(({ excludeFromNav }) => !excludeFromNav)
-        .map(({ name, path }) => {
-            const isCurrent = pathname === `/${path}`
+    const routeLinks = Object.values(routes.movie).map(({ name, path }) => {
+        const isCurrent = pathname === `/${path}`
 
-            return (
-                <ListItem
-                    disablePadding
-                    key={path}
-                    css={css`
-                        .Mui-selected {
-                            background-color: ${colors.primary} !important;
-                            color: ${colors.white} !important;
-                        }
-                        :hover {
-                            background-color: ${colors.primary};
-                            color: ${colors.white};
-                        }
-                    `}
+        return (
+            <ListItem
+                key={path}
+                disablePadding
+                css={css`
+                    .Mui-selected {
+                        background-color: ${colors.primary} !important;
+                        color: ${colors.white} !important;
+                    }
+                    :hover {
+                        background-color: ${colors.primary};
+                        color: ${colors.white};
+                    }
+                `}
+            >
+                <ListItemButton
+                    onClick={() => navigate(`/${path}`)}
+                    selected={isCurrent}
                 >
-                    <ListItemButton
-                        onClick={() => navigate(`/${path}`)}
-                        selected={isCurrent}
-                    >
-                        <ListItemText>{name}</ListItemText>
-                    </ListItemButton>
-                </ListItem>
-            )
-        })
+                    <ListItemText>{name}</ListItemText>
+                </ListItemButton>
+            </ListItem>
+        )
+    })
 
     return (
         <Drawer open={open} onClose={onClose}>

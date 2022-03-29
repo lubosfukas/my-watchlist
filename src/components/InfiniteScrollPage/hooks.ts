@@ -8,36 +8,33 @@ interface InfiniteQueryResponse
     data: Omit<PagedResponseDTO, 'page'>
 }
 
-const fetchMovies = async (
-    resource: string,
-    page = 1
-): Promise<PagedResponseDTO> => {
+const fetchMedia = async (url: string, page = 1): Promise<PagedResponseDTO> => {
     const response = await fetch(
-        `${API_BASE_URL}/movie/${resource}?api_key=${API_KEY}&page=${page}`
+        `${API_BASE_URL}/${url}?api_key=${API_KEY}&page=${page}`
     )
 
     const movieResponse: PagedResponseDTO = await response.json()
     return movieResponse
 }
 
-export const useFetchMovies = (resource: string): InfiniteQueryResponse => {
+export const useFetchMedia = (url: string): InfiniteQueryResponse => {
     const { data, ...rest } = useInfiniteQuery<PagedResponseDTO, string>(
-        ['fetchMovies', resource],
-        ({ pageParam }) => fetchMovies(resource, pageParam),
+        ['fetchMedia', url],
+        ({ pageParam }) => fetchMedia(url, pageParam),
         {
             getNextPageParam: (last) => last.page + 1,
         }
     )
 
-    const movieArrays = data ? data.pages.map((m) => m.results) : []
-    const mergedMovies = movieArrays.reduce((prev, cur) => prev.concat(cur), [])
+    const dataArrays = data ? data.pages.map((m) => m.results) : []
+    const mergedData = dataArrays.reduce((prev, cur) => prev.concat(cur), [])
 
     const totalResults = data ? data.pages[0]['total_results'] : 0
     const totalPages = data ? data.pages[0]['total_pages'] : 0
 
     return {
         data: {
-            results: mergedMovies,
+            results: mergedData,
             total_pages: totalPages,
             total_results: totalResults,
         },
