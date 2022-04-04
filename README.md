@@ -29,6 +29,8 @@ Install latest version of yarn.
 npm install -g yarn
 ```
 
+Go to settings. Open `TypeScript: Select TypeScript version`. Pick `Use workspace version` option.
+
 Install Visual Studio Code recommended extensions. Open Extensions tab and type `@recommended`. Install all of them.
 
 Run postinstall script.
@@ -36,6 +38,8 @@ Run postinstall script.
 ```bash
 yarn postinstall
 ```
+
+Request an API key from [The Movie Database API](https://developers.themoviedb.org/3/getting-started/authentication).
 
 Start the project.
 
