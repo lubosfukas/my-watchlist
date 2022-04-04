@@ -33,7 +33,13 @@ Go to settings. Open `TypeScript: Select TypeScript version`. Pick `Use workspac
 
 Install Visual Studio Code recommended extensions. Open Extensions tab and type `@recommended`. Install all of them.
 
-Run postinstall script.
+Link dependencies. No need to run it later due to the PnP mode.
+
+```bash
+yarn install
+```
+
+Install husky - Git hooks.
 
 ```bash
 yarn postinstall
