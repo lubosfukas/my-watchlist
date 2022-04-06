@@ -1,4 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
+import {
+    BarChart,
+    LiveTv,
+    LocalFireDepartment,
+    Today,
+    Upcoming,
+} from '@mui/icons-material'
 
 import { Layout } from './components'
 import {
@@ -22,36 +29,44 @@ export const routes: Record<string, RouteRecord> = {
         popular: {
             path: 'popular',
             name: 'Popular',
+            icon: <LocalFireDepartment />,
         },
         nowPlaying: {
             path: 'now-playing',
             name: 'Now playing',
+            icon: <LiveTv />,
         },
         topRated: {
             path: 'top-rated',
             name: 'Top rated',
+            icon: <BarChart />,
         },
         upcoming: {
             path: 'upcoming',
             name: 'Upcoming',
+            icon: <Upcoming />,
         },
     },
     tv: {
         popular: {
             path: 'popular',
             name: 'Popular',
+            icon: <LocalFireDepartment />,
         },
         today: {
             path: 'today',
-            name: 'Airing Today',
+            name: 'Airing today',
+            icon: <Today />,
         },
         onTheAir: {
             path: 'on_the_air',
             name: 'On the air',
+            icon: <LiveTv />,
         },
         topRated: {
             path: 'top_rated',
             name: 'Top rated',
+            icon: <BarChart />,
         },
     },
 }

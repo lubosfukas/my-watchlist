@@ -1,4 +1,6 @@
-import { Genres, Videos } from '../types'
+import { NOT_FOUND, TRENDING } from './constants'
+import { routes } from '../Router'
+import { Genres, Media, Videos } from '../types'
 
 export const getReleaseDate = (releaseDate: string) => {
     if (!releaseDate) return
@@ -51,4 +53,21 @@ export const getTrailer = (videos: Videos) => {
     }
 
     return officialTrailer
+}
+
+export const getMediaLabel = (media: Media) =>
+    media === 'movie' ? 'movies' : 'series'
+
+export const getRoute = (pathname: string) => {
+    const allRoutes = Object.keys(routes)
+        .map((media) => Object.values(routes[media]))
+        .flat()
+
+    if (pathname === '/') return TRENDING
+
+    const [, currentMedia, currentPath] = pathname.split('/')
+    const route = allRoutes.find(({ path }) => currentPath === path)
+
+    if (!route) return NOT_FOUND
+    return `${route.name} ${getMediaLabel(currentMedia as Media)}`
 }

@@ -178,6 +178,9 @@ export type TvDetailDTO = {
 export type Route = {
     path: string
     name: string
+    icon: React.ReactElement
 }
 
 export type RouteRecord = Record<string, Route>
+
+export type Media = 'movie' | 'tv'

@@ -1,17 +1,19 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react'
 import {
     Box,
     Drawer,
     List,
     ListItem,
     ListItemButton,
+    ListItemIcon,
     ListItemText,
 } from '@mui/material'
+import { Home } from '@mui/icons-material'
 import { useLocation, useNavigate } from 'react-router-dom'
 
+import { MediaItems } from './MediaItems'
 import { routes } from '../../Router'
-import { colors } from '../../theme'
+import { Media } from '../../types'
+import { getMediaLabel } from '../../utils/helpers'
 
 type Props = {
     open: boolean
@@ -22,38 +24,30 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
     const { pathname } = useLocation()
     let navigate = useNavigate()
 
-    const routeLinks = Object.values(routes.movie).map(({ name, path }) => {
-        const isCurrent = pathname === `/${path}`
-
-        return (
-            <ListItem
-                key={path}
-                disablePadding
-                css={css`
-                    .Mui-selected {
-                        background-color: ${colors.primary} !important;
-                        color: ${colors.white} !important;
-                    }
-                    :hover {
-                        background-color: ${colors.primary};
-                        color: ${colors.white};
-                    }
-                `}
-            >
-                <ListItemButton
-                    onClick={() => navigate(`/${path}`)}
-                    selected={isCurrent}
-                >
-                    <ListItemText>{name}</ListItemText>
-                </ListItemButton>
-            </ListItem>
-        )
-    })
-
     return (
         <Drawer open={open} onClose={onClose}>
             <Box onClick={onClose} role="presentation" sx={{ width: 250 }}>
-                <List>{routeLinks}</List>
+                <List>
+                    <ListItem disablePadding>
+                        <ListItemButton
+                            onClick={() => navigate('/')}
+                            selected={pathname === '/'}
+                        >
+                            <ListItemIcon>
+                                <Home />
+                            </ListItemIcon>
+                            <ListItemText>Home</ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                    {Object.keys(routes).map((media) => (
+                        <MediaItems
+                            key={media}
+                            items={Object.values(routes[media])}
+                            label={getMediaLabel(media as Media)}
+                            name={media}
+                        />
+                    ))}
+                </List>
             </Box>
         </Drawer>
     )

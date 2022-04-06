@@ -11,7 +11,8 @@ const StyledButton = styled(Button)(() => ({
     textTransform: 'none',
 }))
 
-const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || ''
+export const capitalize = (s: string) =>
+    s.length > 2 ? s[0].toUpperCase() + s.slice(1) : s.toUpperCase()
 
 export const Menu: React.FC<{
     name: string
@@ -42,9 +43,7 @@ export const Menu: React.FC<{
                 color="secondary"
                 variant="text"
             >
-                <strong>
-                    {name.length > 2 ? capitalize(name) : name.toUpperCase()}
-                </strong>
+                <strong>{capitalize(name)}</strong>
             </StyledButton>
             <MenuMui
                 anchorEl={anchorEl}
