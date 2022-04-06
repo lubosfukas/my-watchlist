@@ -5,13 +5,8 @@ import { useLocation } from 'react-router-dom'
 import { useFetchMedia } from './hooks'
 import { InfiniteScroll } from '../InfiniteScroll'
 import { MovieContext } from '../../MovieContext'
-import { routes } from '../../Router'
 import { PaperSkeleton } from '../Paper'
-
-export const getRoute = (pathname: string) =>
-    Object.values(routes.movie).find(
-        ({ path }) => pathname.split('/')[1] === path.split('/')[0]
-    )
+import { getRoute } from '../../utils/helpers'
 
 export const InfiniteScrollPage: React.FC<{
     url: string
@@ -20,7 +15,7 @@ export const InfiniteScrollPage: React.FC<{
     const { pathname } = useLocation()
 
     useEffect(() => {
-        const title = getRoute(pathname)?.name
+        const title = getRoute(pathname)
 
         if (title) {
             document.title = title
