@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
-import { Button, Menu as MenuMui, MenuItem } from '@mui/material'
+import { Button, ListItemIcon, Menu as MenuMui, MenuItem } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { colors } from '../../theme'
@@ -54,7 +54,7 @@ export const Menu: React.FC<{
                     'aria-labelledby': buttonId,
                 }}
             >
-                {routes.map(({ path, name: routeName }) => {
+                {routes.map(({ icon, path, name: routeName }) => {
                     const fullPath = `/${name}/${path}`
                     const isCurrent = pathname === fullPath
                     return (
@@ -66,6 +66,7 @@ export const Menu: React.FC<{
                             }}
                             selected={isCurrent}
                         >
+                            <ListItemIcon>{icon}</ListItemIcon>
                             {routeName}
                         </MenuItem>
                     )
