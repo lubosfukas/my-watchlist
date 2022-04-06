@@ -1,5 +1,4 @@
 export * from './Movie'
 export * from './Tv'
-export { Detail } from './Detail'
 export { NotFound } from './NotFound'
 export { Trending } from './Trending'

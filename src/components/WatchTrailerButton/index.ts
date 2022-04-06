@@ -1,0 +1,1 @@
+export { WatchTrailerButton } from './WatchTrailerButton'

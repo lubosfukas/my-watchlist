@@ -8,9 +8,9 @@ import {
     DetailMd,
     DetailMdSkeleton,
     DetailXs,
-} from '../../components'
-import { MovieContext } from '../../MovieContext'
-import { device } from '../../utils/device'
+} from '../../../components'
+import { MovieContext } from '../../../MovieContext'
+import { device } from '../../../utils/device'
 
 export const Detail = () => {
     const { setTitle } = useContext(MovieContext)

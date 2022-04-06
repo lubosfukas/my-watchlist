@@ -25,6 +25,14 @@ describe('helpers', () => {
             expect(getRuntime(148)).toEqual('2 h 28 m')
         })
 
+        test('returns formatted runtime when runtime is lower than hour', () => {
+            expect(getRuntime(52)).toEqual('52 m')
+        })
+
+        test('returns formatted runtime when runtime is an hour', () => {
+            expect(getRuntime(60)).toEqual('1 h')
+        })
+
         test('returns undefined', () => {
             expect(getRuntime(0)).toBeUndefined()
         })

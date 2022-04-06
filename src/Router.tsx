@@ -2,13 +2,14 @@ import { Route, Routes } from 'react-router-dom'
 
 import { Layout } from './components'
 import {
-    Detail,
+    MovieDetail,
     MovieNowPlaying,
-    NotFound,
     MoviePopular,
     MovieTopRated,
     MovieUpcoming,
+    NotFound,
     Trending,
+    TvDetail,
     TvOnTheAir,
     TvPopular,
     TvToday,
@@ -76,7 +77,7 @@ export const Router = () => (
                     path={routes.movie.upcoming.path}
                     element={<MovieUpcoming />}
                 />
-                <Route path="detail/:id" element={<Detail />} />
+                <Route path="detail/:id" element={<MovieDetail />} />
             </Route>
             <Route path="tv">
                 <Route path={routes.tv.popular.path} element={<TvPopular />} />
@@ -89,6 +90,7 @@ export const Router = () => (
                     path={routes.tv.topRated.path}
                     element={<TvTopRated />}
                 />
+                <Route path="detail/:id" element={<TvDetail />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Route>

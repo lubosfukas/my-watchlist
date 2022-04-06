@@ -2,29 +2,36 @@ import { Typography } from '@mui/material'
 
 import { Poster } from '../Poster'
 import { colors } from '../../theme'
-import { MovieDTO } from '../../types'
 
 import { StyledBox, StyledPaper } from './Paper.styled'
 
-interface IProps extends MovieDTO {
+interface IProps {
+    averageVote: number
+    posterPath: string
+    releaseDate: string
+    title: string
     onClick: () => void
 }
 
-export const Paper = ({ onClick, title, ...otherProps }: IProps) => {
-    const releaseYear = otherProps['release_date']
-        ? otherProps['release_date'].split('-')[0]
-        : ''
+export const Paper = ({
+    averageVote,
+    posterPath,
+    releaseDate,
+    title,
+    onClick,
+}: IProps) => {
+    const releaseYear = releaseDate.split('-')[0]
 
     return (
         <StyledPaper elevation={8} onClick={onClick}>
-            <Poster path={otherProps['poster_path']} title={title} />
+            <Poster path={posterPath} title={title} />
             <StyledBox>
-                {otherProps['vote_average'] > 0 && (
+                {averageVote > 0 && (
                     <Typography
                         sx={{ color: colors.white, textAlign: 'center' }}
                         variant="h4"
                     >
-                        {otherProps['vote_average']}
+                        {averageVote}
                         {'/10'}
                     </Typography>
                 )}

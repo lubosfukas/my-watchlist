@@ -1,4 +1,5 @@
-export { Popular as MoviePopular } from './Popular'
+export { Detail as MovieDetail } from './Detail'
 export { NowPlaying as MovieNowPlaying } from './NowPlaying'
+export { Popular as MoviePopular } from './Popular'
 export { TopRated as MovieTopRated } from './TopRated'
 export { Upcoming as MovieUpcoming } from './Upcoming'

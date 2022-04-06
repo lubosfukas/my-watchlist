@@ -46,8 +46,8 @@ export const InfiniteScrollPage: React.FC<{
             )}
             {!isLoading && !isError && data && data.results.length > 0 && (
                 <InfiniteScroll
-                    movies={data.results}
-                    moreMovies={hasNextPage || false}
+                    media={data.results}
+                    moreMedia={hasNextPage || false}
                     fetchNextPage={fetchNextPage}
                 />
             )}

@@ -3,7 +3,7 @@ import InfiniteScrollComponent from 'react-infinite-scroll-component'
 import { useNavigate } from 'react-router-dom'
 
 import { Paper, PaperSkeleton } from '../Paper'
-import { MovieDTO } from '../../types'
+import { MediaDTO, MovieDTO, TvDTO } from '../../types'
 import { device } from '../../utils/device'
 
 const StyledInfiniteScroll = styled(InfiniteScrollComponent)`
@@ -20,32 +20,49 @@ const StyledInfiniteScroll = styled(InfiniteScrollComponent)`
 `
 
 type Props = {
-    movies: Array<MovieDTO>
-    moreMovies: boolean
+    media: Array<MediaDTO>
+    moreMedia: boolean
     fetchNextPage: () => void
 }
 
-export const InfiniteScroll = ({
-    movies,
-    moreMovies,
-    fetchNextPage,
-}: Props) => {
+const isMovie = (movie: MovieDTO | TvDTO): movie is MovieDTO => {
+    return (movie as MovieDTO).title !== undefined
+}
+
+export const InfiniteScroll = ({ media, moreMedia, fetchNextPage }: Props) => {
     let navigate = useNavigate()
 
     return (
         <StyledInfiniteScroll
-            dataLength={movies.length}
+            dataLength={media.length}
             next={fetchNextPage}
-            hasMore={moreMovies}
+            hasMore={moreMedia}
             loader={<PaperSkeleton />}
         >
-            {movies.map((movie: MovieDTO) => (
-                <Paper
-                    key={movie.id}
-                    {...movie}
-                    onClick={() => navigate(`/movie/detail/${movie.id}`)}
-                />
-            ))}
+            {media.map((x: MediaDTO) => {
+                if (isMovie(x))
+                    return (
+                        <Paper
+                            key={x.id}
+                            averageVote={x['vote_average']}
+                            posterPath={x['poster_path']}
+                            releaseDate={x['release_date']}
+                            title={x.title}
+                            onClick={() => navigate(`/movie/detail/${x.id}`)}
+                        />
+                    )
+                else
+                    return (
+                        <Paper
+                            key={x.id}
+                            averageVote={x['vote_average']}
+                            posterPath={x['poster_path']}
+                            releaseDate={x['first_air_date']}
+                            title={x.name}
+                            onClick={() => navigate(`/tv/detail/${x.id}`)}
+                        />
+                    )
+            })}
         </StyledInfiniteScroll>
     )
 }

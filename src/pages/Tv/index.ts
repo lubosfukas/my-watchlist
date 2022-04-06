@@ -1,4 +1,5 @@
-export { Popular as TvPopular } from './Popular'
+export { Detail as TvDetail } from './Detail'
 export { OnTheAir as TvOnTheAir } from './OnTheAir'
+export { Popular as TvPopular } from './Popular'
 export { Today as TvToday } from './Today'
 export { TopRated as TvTopRated } from './TopRated'

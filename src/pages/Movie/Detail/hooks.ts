@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 
-import { API_BASE_URL, API_KEY } from '../../utils/constants'
-import { MovieDetailDTO } from '../../types'
+import { API_BASE_URL, API_KEY } from '../../../utils/constants'
+import { MovieDetailDTO } from '../../../types'
 
 const fetchMovieDetail = async (id?: string): Promise<MovieDetailDTO> => {
     const response = await fetch(

@@ -12,7 +12,13 @@ export const getReleaseDate = (releaseDate: string) => {
 
 export const getRuntime = (runtime: number) => {
     if (runtime === 0) return
-    return `${(runtime / 60) ^ 0} h ${runtime % 60} m`
+
+    const hours = (runtime / 60) ^ 0
+    const minutes = runtime % 60
+
+    if (hours === 0) return `${minutes} m`
+    if (minutes === 0) return `${hours} h`
+    return `${hours} h ${minutes} m`
 }
 
 export const getPrice = (price: number) => {

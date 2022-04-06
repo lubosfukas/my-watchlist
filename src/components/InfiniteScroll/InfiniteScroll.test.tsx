@@ -9,8 +9,8 @@ describe('InfiniteScroll', () => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <InfiniteScroll
-                    movies={movies}
-                    moreMovies={false}
+                    media={movies}
+                    moreMedia={false}
                     fetchNextPage={jest.fn}
                 />
             </MemoryRouter>
