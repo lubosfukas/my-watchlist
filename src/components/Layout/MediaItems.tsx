@@ -24,7 +24,7 @@ export const MediaItems: React.FC<{
             {items.map(({ icon, path, name: itemName }) => {
                 const isCurrent = pathname === `/${name}/${path}`
                 return (
-                    <ListItem key={path} disablePadding>
+                    <ListItem key={path}>
                         <ListItemButton
                             onClick={() => navigate(`/${name}/${path}`)}
                             selected={isCurrent}

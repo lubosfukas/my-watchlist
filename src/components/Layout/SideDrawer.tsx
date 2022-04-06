@@ -28,7 +28,7 @@ export const SideDrawer: React.FC<Props> = ({ open, onClose }) => {
         <Drawer open={open} onClose={onClose}>
             <Box onClick={onClose} role="presentation" sx={{ width: 250 }}>
                 <List>
-                    <ListItem disablePadding>
+                    <ListItem>
                         <ListItemButton
                             onClick={() => navigate('/')}
                             selected={pathname === '/'}
