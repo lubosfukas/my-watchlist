@@ -1,6 +1,4 @@
-/** @jsxImportSource @emotion/react */
 import React, { useState } from 'react'
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Button, Menu as MenuMui, MenuItem } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -10,8 +8,10 @@ import { Route } from '../../types'
 
 const StyledButton = styled(Button)(() => ({
     color: colors.white,
-    textTransform: 'capitalize',
+    textTransform: 'none',
 }))
+
+const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || ''
 
 export const Menu: React.FC<{
     name: string
@@ -42,7 +42,9 @@ export const Menu: React.FC<{
                 color="secondary"
                 variant="text"
             >
-                {name}
+                <strong>
+                    {name.length > 2 ? capitalize(name) : name.toUpperCase()}
+                </strong>
             </StyledButton>
             <MenuMui
                 anchorEl={anchorEl}
@@ -59,16 +61,6 @@ export const Menu: React.FC<{
                     return (
                         <MenuItem
                             key={routeName}
-                            css={css`
-                                .Mui-selected {
-                                    background-color: ${colors.primary} !important;
-                                    color: ${colors.white} !important;
-                                }
-                                :hover {
-                                    background-color: ${colors.primary};
-                                    color: ${colors.white};
-                                }
-                            `}
                             onClick={() => {
                                 navigate(fullPath)
                                 handleClose()
