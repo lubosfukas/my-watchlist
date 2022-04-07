@@ -4,11 +4,9 @@ import MenuIcon from '@mui/icons-material/Menu'
 
 import { MovieContext } from '../../MovieContext'
 
-type Props = {
-    toggleDrawer: () => void
-}
-
-export const ToolbarXs: React.FC<Props> = ({ toggleDrawer }) => {
+export const ToolbarXs: React.FC<{ toggleDrawer: () => void }> = ({
+    toggleDrawer,
+}) => {
     const { title } = useContext(MovieContext)
 
     return (

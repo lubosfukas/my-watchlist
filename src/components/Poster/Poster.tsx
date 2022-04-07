@@ -2,7 +2,10 @@ import { API_IMAGE_BASE_URL } from '../../utils/constants'
 
 const DEFAULT_WIDTH = 300
 
-export const Poster = ({ title, path }: { path: string; title: string }) => (
+export const Poster: React.FC<{ path: string; title: string }> = ({
+    path,
+    title,
+}) => (
     <img
         alt={`Poster of ${title}`}
         aria-label="Poster"

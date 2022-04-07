@@ -18,17 +18,21 @@ const StyledInfiniteScroll = styled(InfiniteScrollComponent)`
     }
 `
 
+const isMovie = (movie: MovieDTO | TvDTO): movie is MovieDTO => {
+    return (movie as MovieDTO).title !== undefined
+}
+
 type Props = {
     media: Array<MediaDTO>
     moreMedia: boolean
     fetchNextPage: () => void
 }
 
-const isMovie = (movie: MovieDTO | TvDTO): movie is MovieDTO => {
-    return (movie as MovieDTO).title !== undefined
-}
-
-export const InfiniteScroll = ({ media, moreMedia, fetchNextPage }: Props) => (
+export const InfiniteScroll: React.FC<Props> = ({
+    media,
+    moreMedia,
+    fetchNextPage,
+}) => (
     <StyledInfiniteScroll
         dataLength={media.length}
         next={fetchNextPage}

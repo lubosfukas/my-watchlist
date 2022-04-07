@@ -6,7 +6,7 @@ import { colors } from '../../theme'
 
 import { StyledBox, StyledPaper } from './Paper.styled'
 
-interface IProps {
+type Props = {
     averageVote: number
     posterPath: string
     releaseDate: string
@@ -14,7 +14,7 @@ interface IProps {
     to: string
 }
 
-export const Paper: React.FC<IProps> = ({
+export const Paper: React.FC<Props> = ({
     averageVote,
     posterPath,
     releaseDate,

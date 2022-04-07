@@ -1,14 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { Box, Grid, Container } from '@mui/material'
 import { css } from '@emotion/react'
+import { Box, Grid, Container } from '@mui/material'
 
-export const BackgroundImage = ({
-    children,
-    imageUrl,
-}: {
+export const BackgroundImage: React.FC<{
     children: React.ReactNode
     imageUrl: string
-}) => (
+}> = ({ children, imageUrl }) => (
     <Grid
         css={css`
             background-image: url(${imageUrl});

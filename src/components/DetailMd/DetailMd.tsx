@@ -15,7 +15,7 @@ import {
     getGenreNames,
 } from '../../utils/helpers'
 
-export const DetailMd = ({
+export const DetailMd: React.FC<MovieDetailDTO> = ({
     budget,
     genres,
     overview,
@@ -25,7 +25,7 @@ export const DetailMd = ({
     title,
     videos,
     ...otherProps
-}: MovieDetailDTO) => {
+}) => {
     const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${otherProps['backdrop_path']}`
     const genreNames = getGenreNames(genres)
     const trailer = getTrailer(videos['results'])

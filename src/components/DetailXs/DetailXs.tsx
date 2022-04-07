@@ -20,7 +20,7 @@ import {
 } from '../../utils/helpers'
 import { device } from '../../utils/device'
 
-export const DetailXs = ({
+export const DetailXs: React.FC<MovieDetailDTO> = ({
     budget,
     genres,
     overview,
@@ -30,7 +30,7 @@ export const DetailXs = ({
     title,
     videos,
     ...otherProps
-}: MovieDetailDTO) => {
+}) => {
     const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${otherProps['backdrop_path']}`
     const genreNames = getGenreNames(genres)
     const trailer = getTrailer(videos['results'])

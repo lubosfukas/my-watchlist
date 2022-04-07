@@ -2,7 +2,9 @@ import { Button } from '@mui/material'
 
 import { YOUTUBE_WATCH_URL } from '../../utils/constants'
 
-export const WatchTrailerButton = ({ trailerKey }: { trailerKey: string }) => (
+export const WatchTrailerButton: React.FC<{ trailerKey: string }> = ({
+    trailerKey,
+}) => (
     <Button
         color="secondary"
         onClick={() =>

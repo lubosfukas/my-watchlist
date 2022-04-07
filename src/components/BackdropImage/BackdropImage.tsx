@@ -2,13 +2,10 @@ import { API_IMAGE_BASE_URL } from '../../utils/constants'
 
 const DEFAULT_WIDTH = 300
 
-export const BackdropImage = ({
-    path,
-    title,
-}: {
+export const BackdropImage: React.FC<{
     path: string
     title: string
-}) => (
+}> = ({ path, title }) => (
     <img
         alt={`Backdrop of ${title}`}
         aria-label="Backdrop"

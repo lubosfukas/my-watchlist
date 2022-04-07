@@ -7,12 +7,19 @@ import {
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-export const ListItemIconButtonLink: React.FC<{
+type Props = {
     icon: React.ReactElement
     label: string
     selected: boolean
     to: string
-}> = ({ icon, label, selected, to }) => {
+}
+
+export const ListItemIconButtonLink: React.FC<Props> = ({
+    icon,
+    label,
+    selected,
+    to,
+}) => {
     return (
         <Link to={to} style={{ color: 'inherit', textDecoration: 'none' }}>
             <ListItem>
