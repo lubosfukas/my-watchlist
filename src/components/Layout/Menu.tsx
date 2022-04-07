@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { Button, ListItemIcon, Menu as MenuMui, MenuItem } from '@mui/material'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { colors } from '../../theme'
 import { Route } from '../../types'
@@ -19,8 +19,6 @@ export const Menu: React.FC<{
     routes: Array<Route>
 }> = ({ name, routes }) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
-    let navigate = useNavigate()
     const { pathname } = useLocation()
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) =>
@@ -56,19 +54,24 @@ export const Menu: React.FC<{
             >
                 {routes.map(({ icon, path, name: routeName }) => {
                     const fullPath = `/${name}/${path}`
-                    const isCurrent = pathname === fullPath
+
                     return (
-                        <MenuItem
+                        <Link
+                            to={fullPath}
                             key={routeName}
-                            onClick={() => {
-                                navigate(fullPath)
-                                handleClose()
+                            style={{
+                                color: 'inherit',
+                                textDecoration: 'inherit',
                             }}
-                            selected={isCurrent}
                         >
-                            <ListItemIcon>{icon}</ListItemIcon>
-                            {routeName}
-                        </MenuItem>
+                            <MenuItem
+                                onClick={handleClose}
+                                selected={pathname === fullPath}
+                            >
+                                <ListItemIcon>{icon}</ListItemIcon>
+                                {routeName}
+                            </MenuItem>
+                        </Link>
                     )
                 })}
             </MenuMui>

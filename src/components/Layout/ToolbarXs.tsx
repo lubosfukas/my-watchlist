@@ -18,7 +18,7 @@ export const ToolbarXs: React.FC<Props> = ({ toggleDrawer }) => {
                     <MenuIcon sx={{ color: 'white' }} />
                 </IconButton>
                 <Typography sx={{ ml: 2 }} variant="subtitle1">
-                    {title}
+                    <strong>{title}</strong>
                 </Typography>
             </Toolbar>
         </AppBar>

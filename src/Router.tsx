@@ -24,6 +24,8 @@ import {
 } from './pages'
 import { RouteRecord } from './types'
 
+export const home = '/'
+
 export const routes: Record<string, RouteRecord> = {
     movie: {
         popular: {
