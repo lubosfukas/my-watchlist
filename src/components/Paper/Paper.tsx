@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import { Poster } from '../Poster'
 import { colors } from '../../theme'
@@ -10,42 +11,44 @@ interface IProps {
     posterPath: string
     releaseDate: string
     title: string
-    onClick: () => void
+    to: string
 }
 
-export const Paper = ({
+export const Paper: React.FC<IProps> = ({
     averageVote,
     posterPath,
     releaseDate,
     title,
-    onClick,
-}: IProps) => {
+    to,
+}) => {
     const releaseYear = releaseDate.split('-')[0]
 
     return (
-        <StyledPaper elevation={8} onClick={onClick}>
-            <Poster path={posterPath} title={title} />
-            <StyledBox>
-                {averageVote > 0 && (
+        <Link to={to}>
+            <StyledPaper elevation={8}>
+                <Poster path={posterPath} title={title} />
+                <StyledBox>
+                    {averageVote > 0 && (
+                        <Typography
+                            sx={{ color: colors.white, textAlign: 'center' }}
+                            variant="h4"
+                        >
+                            {averageVote}
+                            {'/10'}
+                        </Typography>
+                    )}
                     <Typography
-                        sx={{ color: colors.white, textAlign: 'center' }}
-                        variant="h4"
+                        sx={{
+                            color: colors.white,
+                            m: '20px 15px 30px 15px',
+                            textAlign: 'center',
+                        }}
+                        variant="h6"
                     >
-                        {averageVote}
-                        {'/10'}
+                        {releaseYear ? `${title} (${releaseYear})` : title}
                     </Typography>
-                )}
-                <Typography
-                    sx={{
-                        color: colors.white,
-                        m: '20px 15px 30px 15px',
-                        textAlign: 'center',
-                    }}
-                    variant="h6"
-                >
-                    {releaseYear ? `${title} (${releaseYear})` : title}
-                </Typography>
-            </StyledBox>
-        </StyledPaper>
+                </StyledBox>
+            </StyledPaper>
+        </Link>
     )
 }
