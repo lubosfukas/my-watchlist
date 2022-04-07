@@ -3,9 +3,19 @@ import { render, screen } from '@testing-library/react'
 import { Paper } from './Paper'
 import { movies } from '../../shared/mockedData'
 
+const movie = movies[0]
+
 describe('Paper', () => {
     test('renders component', () => {
-        render(<Paper {...movies[0]} onClick={jest.fn} />)
+        render(
+            <Paper
+                averageVote={movie['vote_average']}
+                posterPath={movie['poster_path']}
+                releaseDate={movie['release_date']}
+                title={movie.title}
+                onClick={jest.fn}
+            />
+        )
 
         expect(screen.getByRole('img', { name: 'Poster' })).toBeInTheDocument()
         expect(
