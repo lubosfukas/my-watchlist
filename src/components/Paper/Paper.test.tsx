@@ -1,3 +1,4 @@
+import { MemoryRouter } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 
 import { Paper } from './Paper'
@@ -8,13 +9,15 @@ const movie = movies[0]
 describe('Paper', () => {
     test('renders component', () => {
         render(
-            <Paper
-                averageVote={movie['vote_average']}
-                posterPath={movie['poster_path']}
-                releaseDate={movie['release_date']}
-                title={movie.title}
-                onClick={jest.fn}
-            />
+            <MemoryRouter initialEntries={['/']}>
+                <Paper
+                    averageVote={movie['vote_average']}
+                    posterPath={movie['poster_path']}
+                    releaseDate={movie['release_date']}
+                    title={movie.title}
+                    to={`/movie/detail/${movie.id}`}
+                />
+            </MemoryRouter>
         )
 
         expect(screen.getByRole('img', { name: 'Poster' })).toBeInTheDocument()
