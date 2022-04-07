@@ -21,6 +21,8 @@ export const Paper: React.FC<Props> = ({
     title,
     to,
 }) => {
+    if (!posterPath) return <div />
+
     const releaseYear = releaseDate.split('-')[0] ?? ''
 
     return (
