@@ -21,7 +21,7 @@ export const Paper: React.FC<Props> = ({
     title,
     to,
 }) => {
-    const releaseYear = releaseDate.split('-')[0]
+    const releaseYear = releaseDate.split('-')[0] ?? ''
 
     return (
         <Link to={to}>
