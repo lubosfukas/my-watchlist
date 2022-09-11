@@ -30,7 +30,7 @@ export const getPrice = (price: number) => {
 
 export const getAverageVote = (averageVote: number) => {
     if (averageVote === 0) return
-    return `${averageVote * 10} %`
+    return `${Math.round(averageVote * 10)}%`
 }
 
 export const getGenreNames = (genres: Genres) => {

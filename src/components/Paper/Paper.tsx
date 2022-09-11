@@ -1,8 +1,9 @@
 import { Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-import { Poster } from '../Poster'
 import { colors } from '../../theme'
+import { getAverageVote } from '../../utils/helpers'
+import { Poster } from '../Poster'
 
 import { StyledBox, StyledPaper } from './Paper.styled'
 
@@ -35,8 +36,7 @@ export const Paper: React.FC<Props> = ({
                             sx={{ color: colors.white, textAlign: 'center' }}
                             variant="h4"
                         >
-                            {averageVote}
-                            {'/10'}
+                            {getAverageVote(averageVote)}
                         </Typography>
                     )}
                     <Typography
