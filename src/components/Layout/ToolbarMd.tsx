@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { AppBar, Container, Stack, Toolbar } from '@mui/material'
+import { AppBar, Button, Container, Stack, Toolbar } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 import { ElevationScroll } from './ElevationScroll'
@@ -19,7 +19,7 @@ export const ToolbarMd = () => (
                 <Toolbar disableGutters>
                     <StyledContainer>
                         <Stack alignItems="center" direction="row" spacing={3}>
-                            <Link to={home}>
+                            <Button component={Link} to={home}>
                                 <img
                                     alt="The Movie Database (TMDB)"
                                     src={`${process.env.PUBLIC_URL}/logo.svg`}
@@ -29,7 +29,7 @@ export const ToolbarMd = () => (
                                         width: 'auto',
                                     }}
                                 />
-                            </Link>
+                            </Button>
                             {Object.keys(routes).map((media) => (
                                 <Menu
                                     key={media}
