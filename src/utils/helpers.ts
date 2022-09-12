@@ -47,7 +47,7 @@ export const getTrailer = (videos: Videos) => {
             (v) => v.official === true && v.type === 'Trailer'
         )[0]
 
-        if (!trailer) return
+        if (!trailer) return videos[0]
 
         return trailer
     }
