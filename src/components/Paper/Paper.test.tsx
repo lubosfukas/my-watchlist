@@ -21,9 +21,7 @@ describe('Paper', () => {
         )
 
         expect(screen.getByRole('img', { name: 'Poster' })).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: '8.6/10' })
-        ).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: '86%' })).toBeInTheDocument()
         expect(
             screen.getByRole('heading', {
                 name: 'Spider-Man: No Way Home (2021)',

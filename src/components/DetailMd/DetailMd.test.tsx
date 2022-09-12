@@ -32,15 +32,15 @@ describe('DetailMd', () => {
         expect(
             screen.getByRole('heading', { name: 'Budget' })
         ).toBeInTheDocument()
-        expect(screen.getByText('200,000,000 $')).toBeInTheDocument()
+        expect(screen.getByText('200 000 000 $')).toBeInTheDocument()
         expect(
             screen.getByRole('heading', { name: 'Revenue' })
         ).toBeInTheDocument()
-        expect(screen.getByText('638,000,000 $')).toBeInTheDocument()
+        expect(screen.getByText('638 000 000 $')).toBeInTheDocument()
         expect(
             screen.getByRole('heading', { name: 'Voting' })
         ).toBeInTheDocument()
-        expect(screen.getByText('86 %')).toBeInTheDocument()
+        expect(screen.getByText('86%')).toBeInTheDocument()
         expect(
             screen.getByRole('heading', { name: 'Genres' })
         ).toBeInTheDocument()
