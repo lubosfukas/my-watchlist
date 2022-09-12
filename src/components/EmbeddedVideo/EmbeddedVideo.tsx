@@ -7,16 +7,26 @@ export const EmbeddedVideo: React.FC<{
     title: string
     videoKey: string
 }> = ({ title, videoKey }) => (
-    <iframe
-        allow="autoplay; encrypted-media"
-        allowFullScreen
+    <div
         css={css`
-            border: 0;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
         `}
-        data-testid="embedded-video-frame"
-        height={360}
-        src={`${YOUTUBE_EMBED_URL}/${videoKey}`}
-        title={title}
-        width={640}
-    />
+    >
+        <iframe
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            css={css`
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            `}
+            data-testid="embedded-video-frame"
+            src={`${YOUTUBE_EMBED_URL}/${videoKey}`}
+            title={title}
+        />
+    </div>
 )

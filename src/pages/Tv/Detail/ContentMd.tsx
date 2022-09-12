@@ -1,4 +1,5 @@
 import { Box, Container, Grid, Stack, Typography } from '@mui/material'
+import styled from '@emotion/styled'
 
 import {
     BackgroundImage,
@@ -15,6 +16,11 @@ import {
     getTrailer,
 } from '../../../utils/helpers'
 import { TvDetailDTO } from '../../../types'
+
+const EmbeddedVideoWrapper = styled.div`
+    height: 360px;
+    width: 640px;
+`
 
 export const ContentMd = ({
     genres,
@@ -96,10 +102,12 @@ export const ContentMd = ({
                         <DetailItem
                             label="Trailer"
                             component={
-                                <EmbeddedVideo
-                                    title={name}
-                                    videoKey={trailer['key']}
-                                />
+                                <EmbeddedVideoWrapper>
+                                    <EmbeddedVideo
+                                        title={name}
+                                        videoKey={trailer['key']}
+                                    />
+                                </EmbeddedVideoWrapper>
                             }
                         />
                     )}

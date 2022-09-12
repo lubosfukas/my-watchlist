@@ -1,15 +1,9 @@
-import {
-    Box,
-    Button,
-    Chip,
-    Stack,
-    Typography,
-    useMediaQuery,
-} from '@mui/material'
+import { Box, Chip, Stack, Typography, useMediaQuery } from '@mui/material'
 
 import { BackdropImage } from '../BackdropImage'
+import { EmbeddedVideo } from '../EmbeddedVideo'
 import { MovieDetailDTO } from '../../types'
-import { API_IMAGE_BASE_URL, YOUTUBE_WATCH_URL } from '../../utils/constants'
+import { API_IMAGE_BASE_URL } from '../../utils/constants'
 import {
     getAverageVote,
     getGenreNames,
@@ -47,22 +41,12 @@ export const DetailXs: React.FC<MovieDetailDTO> = ({
                     {tagline}
                 </Typography>
             )}
-            <BackdropImage path={backdropImageUrl} title={title} />
-            {trailer && (
-                <Button
-                    color="secondary"
-                    onClick={() =>
-                        window.location.assign(
-                            `${YOUTUBE_WATCH_URL}?v=${trailer.key}`
-                        )
-                    }
-                    sx={{ my: 1 }}
-                    variant="contained"
-                >
-                    Watch trailer
-                </Button>
+            {trailer ? (
+                <EmbeddedVideo title={title} videoKey={trailer['key']} />
+            ) : (
+                <BackdropImage path={backdropImageUrl} title={title} />
             )}
-            <Typography sx={{ mb: 1 }} variant="body1">
+            <Typography sx={{ my: 1 }} variant="body1">
                 {overview}
             </Typography>
             <DetailItem

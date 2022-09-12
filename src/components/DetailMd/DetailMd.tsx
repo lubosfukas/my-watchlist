@@ -150,10 +150,17 @@ export const DetailMd: React.FC<MovieDetailDTO> = ({
                         <DetailItem
                             label="Trailer"
                             component={
-                                <EmbeddedVideo
-                                    title={title}
-                                    videoKey={trailer['key']}
-                                />
+                                <div
+                                    css={css`
+                                        height: 360px;
+                                        width: 640px;
+                                    `}
+                                >
+                                    <EmbeddedVideo
+                                        title={title}
+                                        videoKey={trailer['key']}
+                                    />
+                                </div>
                             }
                         />
                     )}

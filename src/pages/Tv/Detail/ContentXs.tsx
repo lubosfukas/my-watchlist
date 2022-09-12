@@ -4,7 +4,7 @@ import {
     BackdropImage,
     DetailItem,
     GenreChips,
-    WatchTrailerButton,
+    EmbeddedVideo,
 } from '../../../components'
 import { API_IMAGE_BASE_URL } from '../../../utils/constants'
 import { device } from '../../../utils/device'
@@ -39,8 +39,11 @@ export const ContentXs = ({
                     {tagline}
                 </Typography>
             )}
-            <BackdropImage path={backdropImageUrl} title={name} />
-            {trailer && <WatchTrailerButton trailerKey={trailer.key} />}
+            {trailer ? (
+                <EmbeddedVideo title={name} videoKey={trailer['key']} />
+            ) : (
+                <BackdropImage path={backdropImageUrl} title={name} />
+            )}
             <Typography sx={{ mb: 1 }} variant="body1">
                 {overview}
             </Typography>
