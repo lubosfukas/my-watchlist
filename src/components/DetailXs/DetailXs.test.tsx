@@ -15,12 +15,7 @@ describe('DetailXs', () => {
         expect(
             screen.getByText('The Multiverse unleashed.')
         ).toBeInTheDocument()
-        expect(
-            screen.getByRole('img', { name: 'Backdrop' })
-        ).toBeInTheDocument()
-        expect(
-            screen.getByRole('button', { name: 'Watch trailer' })
-        ).toBeInTheDocument()
+        expect(screen.getByTestId('embedded-video-frame')).toBeInTheDocument()
         expect(
             screen.getByText(
                 'Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.'

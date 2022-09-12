@@ -50,6 +50,6 @@ describe('DetailMd', () => {
         expect(
             screen.getByRole('heading', { name: 'Trailer' })
         ).toBeInTheDocument()
-        expect(screen.getByTestId('embedded-video-frame'))
+        expect(screen.getByTestId('embedded-video-frame')).toBeInTheDocument()
     })
 })

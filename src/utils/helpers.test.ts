@@ -133,7 +133,7 @@ describe('helpers', () => {
             expect(getTrailer(value)).toStrictEqual(expectedValue)
         })
 
-        test('returns undefined', () => {
+        test('returns first video', () => {
             const value: Videos = [
                 {
                     iso_639_1: 'en',
@@ -149,7 +149,7 @@ describe('helpers', () => {
                 },
             ]
 
-            expect(getTrailer(value)).toBeUndefined()
+            expect(getTrailer(value)).toEqual(value[0])
         })
 
         test('returns undefined', () => {
