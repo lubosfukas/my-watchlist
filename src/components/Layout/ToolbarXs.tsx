@@ -14,7 +14,7 @@ export const ToolbarXs: React.FC<{ toggleDrawer: () => void }> = ({
         <React.Fragment>
             <ElevationScroll>
                 <AppBar>
-                    <Toolbar>
+                    <Toolbar sx={{ paddingLeft: '8px' }}>
                         <IconButton onClick={toggleDrawer}>
                             <MenuIcon sx={{ color: 'white' }} />
                         </IconButton>
