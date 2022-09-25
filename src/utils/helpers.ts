@@ -7,8 +7,6 @@ export const getReleaseDate = (releaseDate: string) => {
 
     return new Date(releaseDate).toLocaleDateString('en-US', {
         year: 'numeric',
-        month: 'long',
-        day: 'numeric',
     })
 }
 
@@ -18,9 +16,9 @@ export const getRuntime = (runtime: number) => {
     const hours = (runtime / 60) ^ 0
     const minutes = runtime % 60
 
-    if (hours === 0) return `${minutes} m`
-    if (minutes === 0) return `${hours} h`
-    return `${hours} h ${minutes} m`
+    if (hours === 0) return `${minutes}m`
+    if (minutes === 0) return `${hours}h`
+    return `${hours}h ${minutes}m`
 }
 
 export const getPrice = (price: number) => {
