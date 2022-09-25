@@ -18,7 +18,7 @@ export const Detail = () => {
     useEffect(() => {
         if (data) {
             document.title = data.name
-            setTitle(data.name)
+            setTitle('')
         }
     })
 
