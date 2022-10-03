@@ -32,7 +32,7 @@ export const getAverageVote = (averageVote: number) => {
 }
 
 export const getGenreNames = (genres: Genres) => {
-    if (genres.length === 0) return
+    if (genres.length === 0) return []
     return genres.map((g) => g.name)
 }
 

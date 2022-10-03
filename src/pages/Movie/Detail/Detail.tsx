@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import { Alert, AlertTitle, Container, useMediaQuery } from '@mui/material'
 import { useParams } from 'react-router-dom'
 
-import { useFetchMovieDetail } from './hooks'
+import { API_IMAGE_BASE_URL } from '../../../utils/constants'
 import {
     CoveringSpinner,
     DetailMd,
@@ -11,6 +11,14 @@ import {
 } from '../../../components'
 import { MovieContext } from '../../../MovieContext'
 import { device } from '../../../utils/device'
+import {
+    getAverageVote,
+    getGenreNames,
+    getReleaseDate,
+    getRuntime,
+    getTrailer,
+} from '../../../utils/helpers'
+import { useFetchMovieDetail } from './hooks'
 
 export const Detail = () => {
     const { setTitle } = useContext(MovieContext)
@@ -50,6 +58,24 @@ export const Detail = () => {
             </Container>
         )
 
+    const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${data.backdrop_path}`
+    const genreNames = getGenreNames(data.genres)
+    const listItems = [
+        getReleaseDate(data.release_date),
+        getRuntime(data.runtime),
+        getAverageVote(data.vote_average),
+    ]
+    const trailer = getTrailer(data.videos.results)
+
     if (isMd) return <DetailMd {...data} />
-    return <DetailXs {...data} />
+    return (
+        <DetailXs
+            backdropImageUrl={backdropImageUrl}
+            description={data.overview}
+            genres={genreNames}
+            listItems={listItems}
+            title={data.title}
+            trailer={trailer}
+        />
+    )
 }

@@ -3,16 +3,8 @@ import styled from '@emotion/styled'
 
 import { BackdropImage } from '../BackdropImage'
 import { EmbeddedVideo } from '../EmbeddedVideo'
-import { MovieDetailDTO } from '../../types'
-import { API_IMAGE_BASE_URL } from '../../utils/constants'
-import {
-    getAverageVote,
-    getGenreNames,
-    getReleaseDate,
-    getRuntime,
-    getTrailer,
-} from '../../utils/helpers'
 import { device } from '../../utils/device'
+import { Video } from '../../types'
 
 const StyledList = styled.ul`
     display: inline-flex;
@@ -42,21 +34,25 @@ const ListItem = styled.li`
     }
 `
 
-export const DetailXs: React.FC<MovieDetailDTO> = ({
-    budget,
+type Props = {
+    backdropImageUrl: string
+    description: string
+    genres: Array<string>
+    listItems: Array<string | undefined>
+    title: string
+    tagline?: string
+    trailer?: Video
+}
+
+export const DetailXs = ({
+    backdropImageUrl,
+    description,
     genres,
-    overview,
-    revenue,
-    runtime,
+    listItems,
     tagline,
     title,
-    videos,
-    ...otherProps
-}) => {
-    const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${otherProps.backdrop_path}`
-    const genreNames = getGenreNames(genres)
-    const trailer = getTrailer(videos.results)
-
+    trailer,
+}: Props) => {
     const isSm = useMediaQuery(device.sm)
 
     return (
@@ -64,21 +60,15 @@ export const DetailXs: React.FC<MovieDetailDTO> = ({
             <Typography sx={{ mb: 1 }} variant="h5">
                 {title}
             </Typography>
-            <List
-                items={[
-                    getReleaseDate(otherProps.release_date),
-                    getRuntime(runtime),
-                    getAverageVote(otherProps.vote_average),
-                ]}
-            />
+            <List listItems={listItems} />
             {trailer ? (
                 <EmbeddedVideo title={title} videoKey={trailer.key} />
             ) : (
                 <BackdropImage path={backdropImageUrl} title={title} />
             )}
-            {genreNames && (
+            {genres.length > 0 && (
                 <Stack mb={1} mt={2} direction="row" flexWrap="wrap">
-                    {genreNames.map((name) => (
+                    {genres.map((name) => (
                         <Chip
                             color="secondary"
                             key={name}
@@ -94,15 +84,15 @@ export const DetailXs: React.FC<MovieDetailDTO> = ({
                 </Typography>
             )}
             <Typography sx={{ mb: 1 }} variant="body1">
-                {overview}
+                {description}
             </Typography>
         </Stack>
     )
 }
 
-const List = ({ items }: { items: Array<string | undefined> }) => (
+const List = ({ listItems }: Pick<Props, 'listItems'>) => (
     <StyledList>
-        {items
+        {listItems
             .filter((item) => item !== undefined)
             .map((item) => (
                 <ListItem key={item}>

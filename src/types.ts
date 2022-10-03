@@ -82,7 +82,7 @@ export type SpokenLanguages = Array<{
     name: string
 }>
 
-export type Videos = Array<{
+export type Video = {
     id: string
     iso_639_1: string
     iso_3166_1: string
@@ -93,7 +93,9 @@ export type Videos = Array<{
     site: 'YouTube'
     size: number
     type: 'Trailer' | 'Teaser' | 'Featurette' | 'Clip'
-}>
+}
+
+export type Videos = Array<Video>
 
 export interface MovieDetailDTO extends Omit<MovieDTO, 'genre_ids'> {
     belongs_to_collection: BelongsToCollection

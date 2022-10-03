@@ -2,12 +2,23 @@ import { useContext, useEffect } from 'react'
 import { Alert, AlertTitle, Container, useMediaQuery } from '@mui/material'
 import { useParams } from 'react-router-dom'
 
-import { useFetchTvDetail } from './hooks'
-import { ContentMd } from './ContentMd'
-import { ContentXs } from './ContentXs'
-import { CoveringSpinner, DetailMdSkeleton } from '../../../components'
-import { MovieContext } from '../../../MovieContext'
+import { API_IMAGE_BASE_URL } from '../../../utils/constants'
 import { device } from '../../../utils/device'
+import {
+    getAverageVote,
+    getGenreNames,
+    getReleaseDate,
+    getRuntime,
+    getTrailer,
+} from '../../../utils/helpers'
+import { ContentMd } from './ContentMd'
+import {
+    CoveringSpinner,
+    DetailMdSkeleton,
+    DetailXs,
+} from '../../../components'
+import { MovieContext } from '../../../MovieContext'
+import { useFetchTvDetail } from './hooks'
 
 export const Detail = () => {
     const { setTitle } = useContext(MovieContext)
@@ -47,6 +58,25 @@ export const Detail = () => {
             </Container>
         )
 
+    const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${data.backdrop_path}`
+    const genreNames = getGenreNames(data.genres)
+    const listItems = [
+        getReleaseDate(data.first_air_date),
+        getRuntime(data.episode_run_time[0]),
+        getAverageVote(data.vote_average),
+    ]
+    const trailer = getTrailer(data.videos['results'])
+
     if (isMd) return <ContentMd {...data} />
-    return <ContentXs {...data} />
+    return (
+        <DetailXs
+            backdropImageUrl={backdropImageUrl}
+            description={data.overview}
+            genres={genreNames}
+            listItems={listItems}
+            tagline={data.tagline}
+            title={data.name}
+            trailer={trailer}
+        />
+    )
 }
