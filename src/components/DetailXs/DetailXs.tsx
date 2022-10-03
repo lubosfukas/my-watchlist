@@ -19,7 +19,7 @@ const ListItem = styled.li`
     color: inherit;
     vertical-align: middle;
 
-    :not(:first-child) {
+    :not(:first-of-type) {
         ::before {
             display: inline-block;
             margin: 0 0.5rem 0.2rem 0.5rem;
