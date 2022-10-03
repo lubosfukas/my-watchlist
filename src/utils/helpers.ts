@@ -7,6 +7,16 @@ export const getReleaseDate = (releaseDate: string) => {
 
     return new Date(releaseDate).toLocaleDateString('en-US', {
         year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    })
+}
+
+export const getReleaseYear = (releaseDate: string) => {
+    if (!releaseDate) return
+
+    return new Date(releaseDate).toLocaleDateString('en-US', {
+        year: 'numeric',
     })
 }
 

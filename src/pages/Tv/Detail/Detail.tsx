@@ -7,7 +7,7 @@ import { device } from '../../../utils/device'
 import {
     getAverageVote,
     getGenreNames,
-    getReleaseDate,
+    getReleaseYear,
     getRuntime,
     getTrailer,
 } from '../../../utils/helpers'
@@ -61,7 +61,7 @@ export const Detail = () => {
     const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${data.backdrop_path}`
     const genreNames = getGenreNames(data.genres)
     const listItems = [
-        getReleaseDate(data.first_air_date),
+        getReleaseYear(data.first_air_date),
         getRuntime(data.episode_run_time[0]),
         getAverageVote(data.vote_average),
     ]
