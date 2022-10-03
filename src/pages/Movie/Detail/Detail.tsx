@@ -74,6 +74,7 @@ export const Detail = () => {
             description={data.overview}
             genres={genreNames}
             listItems={listItems}
+            tagline={data.tagline}
             title={data.title}
             trailer={trailer}
         />
