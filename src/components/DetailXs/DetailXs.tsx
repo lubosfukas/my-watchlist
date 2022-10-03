@@ -67,13 +67,13 @@ export const DetailXs = ({
                 <BackdropImage path={backdropImageUrl} title={title} />
             )}
             {genres.length > 0 && (
-                <Stack mb={1} mt={2} direction="row" flexWrap="wrap">
+                <Stack mb={0.5} mt={2} direction="row" flexWrap="wrap">
                     {genres.map((name) => (
                         <Chip
                             color="secondary"
                             key={name}
                             label={name}
-                            sx={{ mr: 1 }}
+                            sx={{ mb: 0.5, mr: 1 }}
                         />
                     ))}
                 </Stack>
