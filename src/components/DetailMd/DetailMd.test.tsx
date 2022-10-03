@@ -28,7 +28,7 @@ describe('DetailMd', () => {
         expect(
             screen.getByRole('heading', { name: 'Runtime' })
         ).toBeInTheDocument()
-        expect(screen.getByText('2 h 28 m')).toBeInTheDocument()
+        expect(screen.getByText('2h 28m')).toBeInTheDocument()
         expect(
             screen.getByRole('heading', { name: 'Budget' })
         ).toBeInTheDocument()

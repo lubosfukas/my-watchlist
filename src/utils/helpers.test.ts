@@ -3,6 +3,7 @@ import {
     getGenreNames,
     getPrice,
     getReleaseDate,
+    getReleaseYear,
     getRuntime,
     getTrailer,
 } from './helpers'
@@ -20,17 +21,27 @@ describe('helpers', () => {
         })
     })
 
+    describe('getReleaseYear', () => {
+        test('returns formatted date', () => {
+            expect(getReleaseYear('2021-12-15')).toEqual('2021')
+        })
+
+        test('returns undefined', () => {
+            expect(getReleaseYear('')).toBeUndefined()
+        })
+    })
+
     describe('getRuntime', () => {
         test('returns formatted runtime', () => {
-            expect(getRuntime(148)).toEqual('2 h 28 m')
+            expect(getRuntime(148)).toEqual('2h 28m')
         })
 
         test('returns formatted runtime when runtime is lower than hour', () => {
-            expect(getRuntime(52)).toEqual('52 m')
+            expect(getRuntime(52)).toEqual('52m')
         })
 
         test('returns formatted runtime when runtime is an hour', () => {
-            expect(getRuntime(60)).toEqual('1 h')
+            expect(getRuntime(60)).toEqual('1h')
         })
 
         test('returns undefined', () => {
@@ -69,7 +80,7 @@ describe('helpers', () => {
         })
 
         test('returns undefined', () => {
-            expect(getGenreNames([])).toBeUndefined()
+            expect(getGenreNames([])).toEqual([])
         })
     })
 

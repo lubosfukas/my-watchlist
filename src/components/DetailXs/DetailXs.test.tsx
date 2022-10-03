@@ -1,51 +1,51 @@
 import { render, screen } from '@testing-library/react'
 
 import { DetailXs } from '../DetailXs'
-import { movieDetail } from '../../shared/mockedData'
 
 describe('DetailXs', () => {
     test('renders component', () => {
-        render(<DetailXs {...movieDetail} />)
+        render(
+            <DetailXs
+                backdropImageUrl="http://image.tmdb.org/t/p/original/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
+                description="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
+                genres={['Action', 'Adventure', 'Science Fiction']}
+                listItems={['2022', '2h 28m', '86%']}
+                tagline="The Multiverse unleashed."
+                title="Spider-Man: No Way Home"
+                trailer={{
+                    iso_639_1: 'en',
+                    iso_3166_1: 'US',
+                    name: 'Official Trailer',
+                    key: 'JfVOs4VSpmA',
+                    site: 'YouTube',
+                    size: 1080,
+                    type: 'Trailer',
+                    official: true,
+                    published_at: '2021-11-17 01:30:05 UTC',
+                    id: '61945b8a4da3d4002992d5a6',
+                }}
+            />
+        )
 
         expect(
             screen.getByRole('heading', {
                 name: 'Spider-Man: No Way Home',
             })
         ).toBeInTheDocument()
+        expect(screen.getByText('2022')).toBeInTheDocument()
+        expect(screen.getByText('2h 28m')).toBeInTheDocument()
+        expect(screen.getByText('86%')).toBeInTheDocument()
+        expect(screen.getByTestId('embedded-video-frame')).toBeInTheDocument()
+        expect(screen.getByText('Action')).toBeInTheDocument()
+        expect(screen.getByText('Adventure')).toBeInTheDocument()
+        expect(screen.getByText('Science Fiction')).toBeInTheDocument()
         expect(
             screen.getByText('The Multiverse unleashed.')
         ).toBeInTheDocument()
-        expect(screen.getByTestId('embedded-video-frame')).toBeInTheDocument()
         expect(
             screen.getByText(
                 'Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.'
             )
         ).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: 'Release date' })
-        ).toBeInTheDocument()
-        expect(screen.getByText('December 15, 2021')).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: 'Runtime' })
-        ).toBeInTheDocument()
-        expect(screen.getByText('2 h 28 m')).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: 'Budget' })
-        ).toBeInTheDocument()
-        expect(screen.getByText('200 000 000 $')).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: 'Revenue' })
-        ).toBeInTheDocument()
-        expect(screen.getByText('638 000 000 $')).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: 'Voting' })
-        ).toBeInTheDocument()
-        expect(screen.getByText('86%')).toBeInTheDocument()
-        expect(
-            screen.getByRole('heading', { name: 'Genres' })
-        ).toBeInTheDocument()
-        expect(screen.getByText('Action')).toBeInTheDocument()
-        expect(screen.getByText('Adventure')).toBeInTheDocument()
-        expect(screen.getByText('Science Fiction')).toBeInTheDocument()
     })
 })
