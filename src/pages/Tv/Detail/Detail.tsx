@@ -11,9 +11,9 @@ import {
     getRuntime,
     getTrailer,
 } from '../../../utils/helpers'
-import { ContentMd } from './ContentMd'
 import {
     CoveringSpinner,
+    DetailMd,
     DetailMdSkeleton,
     DetailXs,
 } from '../../../components'
@@ -67,7 +67,19 @@ export const Detail = () => {
     ]
     const trailer = getTrailer(data.videos['results'])
 
-    if (isMd) return <ContentMd {...data} />
+    if (isMd)
+        return (
+            <DetailMd
+                backdropImageUrl={backdropImageUrl}
+                description={data.overview}
+                genres={genreNames}
+                listItems={listItems}
+                posterPath={data.poster_path}
+                tagline={data.tagline}
+                title={data.name}
+                trailer={trailer}
+            />
+        )
     return (
         <DetailXs
             backdropImageUrl={backdropImageUrl}

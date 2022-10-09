@@ -164,7 +164,7 @@ export type TvDetailDTO = {
     original_name: string
     overview: string
     popularity: number
-    poster_path: string | null
+    poster_path: string
     production_companies: ProductionCompanies
     production_countries: ProductionCountries
     seasons: Array<Season>

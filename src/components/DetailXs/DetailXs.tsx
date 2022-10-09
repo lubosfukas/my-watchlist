@@ -1,48 +1,19 @@
 import { Chip, Stack, Typography, useMediaQuery } from '@mui/material'
-import styled from '@emotion/styled'
 
 import { BackdropImage } from '../BackdropImage'
 import { EmbeddedVideo } from '../EmbeddedVideo'
+import { List, Props as ListProps } from '../List'
 import { device } from '../../utils/device'
 import { Video } from '../../types'
-
-const StyledList = styled.ul`
-    display: inline-flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin: 0 0 8px 0;
-    padding: 0;
-`
-
-const ListItem = styled.li`
-    display: inline-block;
-    color: inherit;
-    vertical-align: middle;
-
-    :not(:first-of-type) {
-        ::before {
-            display: inline-block;
-            margin: 0 0.5rem 0.2rem 0.5rem;
-            content: '';
-            font-size: 1rem;
-            line-height: 0.5rem;
-            padding: 1px;
-            border-radius: 50%;
-            vertical-align: middle;
-            background-color: black;
-        }
-    }
-`
 
 type Props = {
     backdropImageUrl: string
     description: string
     genres: Array<string>
-    listItems: Array<string | undefined>
     title: string
     tagline?: string
     trailer?: Video
-}
+} & Pick<ListProps, 'listItems'>
 
 export const DetailXs = ({
     backdropImageUrl,
@@ -89,17 +60,3 @@ export const DetailXs = ({
         </Stack>
     )
 }
-
-const List = ({ listItems }: Pick<Props, 'listItems'>) => (
-    <StyledList>
-        {listItems
-            .filter((item) => item !== undefined)
-            .map((item) => (
-                <ListItem key={item}>
-                    <Typography sx={{ display: 'inline' }} variant="body2">
-                        {item}
-                    </Typography>
-                </ListItem>
-            ))}
-    </StyledList>
-)

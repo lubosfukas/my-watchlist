@@ -3,38 +3,35 @@ import { Box, Chip, Grid, Container, Stack, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
 import { EmbeddedVideo } from '../EmbeddedVideo'
+import { List, Props as ListProps } from '../List'
 import { Poster } from '../Poster'
-import { MovieDetailDTO } from '../../types'
-import { API_IMAGE_BASE_URL } from '../../utils/constants'
-import {
-    getReleaseDate,
-    getRuntime,
-    getPrice,
-    getAverageVote,
-    getTrailer,
-    getGenreNames,
-} from '../../utils/helpers'
+import { Video } from '../../types'
 
-export const DetailMd: React.FC<MovieDetailDTO> = ({
-    budget,
+type Props = {
+    backdropImageUrl: string
+    description: string
+    genres: Array<string>
+    posterPath: string
+    tagline: string
+    title: string
+    trailer?: Video
+} & Pick<ListProps, 'listItems'>
+
+export const DetailMd: React.FC<Props> = ({
+    backdropImageUrl,
+    description,
     genres,
-    overview,
-    revenue,
-    runtime,
+    listItems,
+    posterPath,
     tagline,
     title,
-    videos,
-    ...otherProps
+    trailer,
 }) => {
-    const backgroundImageUrl = `${API_IMAGE_BASE_URL}/original${otherProps['backdrop_path']}`
-    const genreNames = getGenreNames(genres)
-    const trailer = getTrailer(videos['results'])
-
     return (
         <Grid container>
             <Grid
                 css={css`
-                    background-image: url(${backgroundImageUrl});
+                    background-image: url(${backdropImageUrl});
                     background-repeat: no-repeat;
                     background-size: cover;
                     height: 500px;
@@ -68,76 +65,37 @@ export const DetailMd: React.FC<MovieDetailDTO> = ({
                     >
                         <Grid container columnSpacing={3}>
                             <Grid item md="auto">
-                                <Poster
-                                    path={otherProps['poster_path']}
-                                    title={title}
-                                />
+                                <Poster path={posterPath} title={title} />
                             </Grid>
                             <Grid item md>
                                 <Stack spacing={1}>
                                     <Typography variant="h4">
                                         <strong>{title}</strong>
                                     </Typography>
-                                    <Typography sx={{ fontStyle: 'italic' }}>
-                                        {tagline}
-                                    </Typography>
-                                    <Typography>{overview}</Typography>
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            flexWrap: 'wrap',
-                                        }}
-                                    >
-                                        <DetailItem
-                                            label="Release date"
-                                            value={getReleaseDate(
-                                                otherProps['release_date']
-                                            )}
-                                        />
-                                        <DetailItem
-                                            label="Runtime"
-                                            value={getRuntime(runtime)}
-                                        />
-                                        <DetailItem
-                                            label="Budget"
-                                            value={getPrice(budget)}
-                                        />
-                                        <DetailItem
-                                            label="Revenue"
-                                            value={getPrice(revenue)}
-                                        />
-                                        <DetailItem
-                                            label="Voting"
-                                            value={getAverageVote(
-                                                otherProps['vote_average']
-                                            )}
-                                        />
-                                        {genreNames && genreNames.length > 0 && (
-                                            <DetailItem
-                                                label="Genres"
-                                                component={
-                                                    <Stack
-                                                        direction="row"
-                                                        flexWrap="wrap"
-                                                    >
-                                                        {genreNames.map(
-                                                            (name) => (
-                                                                <Chip
-                                                                    color="secondary"
-                                                                    key={name}
-                                                                    label={name}
-                                                                    sx={{
-                                                                        mb: 1,
-                                                                        mr: 1,
-                                                                    }}
-                                                                />
-                                                            )
-                                                        )}
-                                                    </Stack>
-                                                }
-                                            />
-                                        )}
-                                    </Box>
+                                    <List listItems={listItems} />
+                                    {tagline && (
+                                        <Typography
+                                            sx={{ fontStyle: 'italic' }}
+                                        >
+                                            {tagline}
+                                        </Typography>
+                                    )}
+                                    <Typography>{description}</Typography>
+                                    {genres && genres.length > 0 && (
+                                        <Stack direction="row" flexWrap="wrap">
+                                            {genres.map((name) => (
+                                                <Chip
+                                                    color="secondary"
+                                                    key={name}
+                                                    label={name}
+                                                    sx={{
+                                                        mb: 1,
+                                                        mr: 1,
+                                                    }}
+                                                />
+                                            ))}
+                                        </Stack>
+                                    )}
                                 </Stack>
                             </Grid>
                         </Grid>
@@ -158,7 +116,7 @@ export const DetailMd: React.FC<MovieDetailDTO> = ({
                                 >
                                     <EmbeddedVideo
                                         title={title}
-                                        videoKey={trailer['key']}
+                                        videoKey={trailer.key}
                                     />
                                 </div>
                             }

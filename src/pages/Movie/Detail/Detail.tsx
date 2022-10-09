@@ -58,16 +58,29 @@ export const Detail = () => {
             </Container>
         )
 
+    const averageVote = getAverageVote(data.vote_average)
     const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${data.backdrop_path}`
     const genreNames = getGenreNames(data.genres)
     const listItems = [
         getReleaseYear(data.release_date),
         getRuntime(data.runtime),
-        getAverageVote(data.vote_average),
+        averageVote,
     ]
     const trailer = getTrailer(data.videos.results)
 
-    if (isMd) return <DetailMd {...data} />
+    if (isMd)
+        return (
+            <DetailMd
+                backdropImageUrl={backdropImageUrl}
+                description={data.overview}
+                genres={genreNames}
+                listItems={listItems}
+                posterPath={data.poster_path}
+                tagline={data.tagline}
+                title={data.title}
+                trailer={trailer}
+            />
+        )
     return (
         <DetailXs
             backdropImageUrl={backdropImageUrl}
