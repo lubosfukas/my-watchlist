@@ -62,7 +62,9 @@ export const Detail = () => {
     const genreNames = getGenreNames(data.genres)
     const listItems = [
         getReleaseYear(data.first_air_date),
-        getRuntime(data.episode_run_time[0]),
+        data.episode_run_time.length > 0
+            ? getRuntime(data.episode_run_time[0])
+            : `${data.number_of_episodes} ep`,
         getAverageVote(data.vote_average),
     ]
     const trailer = getTrailer(data.videos['results'])
