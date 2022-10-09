@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { Box, Chip, Grid, Container, Stack, Typography } from '@mui/material'
+import { Box, Grid, Container, Stack, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
 import { EmbeddedVideo } from '../EmbeddedVideo'
+import { DetailItem } from '../DetailItem'
+import { GenreChips } from '../GenreChips'
 import { List, Props as ListProps } from '../List'
 import { Poster } from '../Poster'
 import { Video } from '../../types'
@@ -81,20 +83,8 @@ export const DetailMd: React.FC<Props> = ({
                                         </Typography>
                                     )}
                                     <Typography>{description}</Typography>
-                                    {genres && genres.length > 0 && (
-                                        <Stack direction="row" flexWrap="wrap">
-                                            {genres.map((name) => (
-                                                <Chip
-                                                    color="secondary"
-                                                    key={name}
-                                                    label={name}
-                                                    sx={{
-                                                        mb: 1,
-                                                        mr: 1,
-                                                    }}
-                                                />
-                                            ))}
-                                        </Stack>
+                                    {genres.length > 0 && (
+                                        <GenreChips genres={genres} />
                                     )}
                                 </Stack>
                             </Grid>
@@ -127,25 +117,3 @@ export const DetailMd: React.FC<Props> = ({
         </Grid>
     )
 }
-
-const DetailItem = <T,>({
-    label,
-    value,
-    component,
-}: {
-    label: string
-    value?: T
-    component?: JSX.Element
-}) => (
-    <Box sx={{ flex: '1 50%' }}>
-        <Typography gutterBottom variant="h6">
-            {label}
-        </Typography>
-        {component}
-        {!component && (
-            <Typography aria-label={label} gutterBottom variant="body1">
-                {value || '—'}
-            </Typography>
-        )}
-    </Box>
-)

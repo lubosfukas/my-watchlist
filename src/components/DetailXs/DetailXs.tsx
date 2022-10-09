@@ -1,9 +1,10 @@
-import { Chip, Stack, Typography, useMediaQuery } from '@mui/material'
+import { Stack, Typography, useMediaQuery } from '@mui/material'
 
 import { BackdropImage } from '../BackdropImage'
-import { EmbeddedVideo } from '../EmbeddedVideo'
-import { List, Props as ListProps } from '../List'
 import { device } from '../../utils/device'
+import { EmbeddedVideo } from '../EmbeddedVideo'
+import { GenreChips } from '../GenreChips'
+import { List, Props as ListProps } from '../List'
 import { Video } from '../../types'
 
 type Props = {
@@ -37,18 +38,7 @@ export const DetailXs = ({
             ) : (
                 <BackdropImage path={backdropImageUrl} title={title} />
             )}
-            {genres.length > 0 && (
-                <Stack mb={0.5} mt={2} direction="row" flexWrap="wrap">
-                    {genres.map((name) => (
-                        <Chip
-                            color="secondary"
-                            key={name}
-                            label={name}
-                            sx={{ mb: 0.5, mr: 1 }}
-                        />
-                    ))}
-                </Stack>
-            )}
+            {genres.length > 0 && <GenreChips genres={genres} />}
             {tagline && (
                 <Typography sx={{ fontStyle: 'italic', mb: 1 }} variant="body1">
                     {tagline}

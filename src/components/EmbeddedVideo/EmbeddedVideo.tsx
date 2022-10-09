@@ -11,6 +11,7 @@ export const EmbeddedVideo: React.FC<{
         css={css`
             position: relative;
             padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
+            margin-bottom: 16px;
         `}
     >
         <iframe
