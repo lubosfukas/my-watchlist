@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom'
 
 import { API_IMAGE_BASE_URL } from '../../../utils/constants'
 import {
-    CoveringSpinner,
     DetailMd,
     DetailMdSkeleton,
     DetailXs,
+    DetailXsSkeleton,
 } from '../../../components'
 import { MovieContext } from '../../../MovieContext'
 import { device } from '../../../utils/device'
@@ -37,7 +37,7 @@ export const Detail = () => {
 
     if (isLoading) {
         if (isMd) return <DetailMdSkeleton />
-        return <CoveringSpinner />
+        return <DetailXsSkeleton />
     }
 
     if (error)

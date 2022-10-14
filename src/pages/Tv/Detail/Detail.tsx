@@ -12,10 +12,10 @@ import {
     getTrailer,
 } from '../../../utils/helpers'
 import {
-    CoveringSpinner,
     DetailMd,
     DetailMdSkeleton,
     DetailXs,
+    DetailXsSkeleton,
 } from '../../../components'
 import { MovieContext } from '../../../MovieContext'
 import { useFetchTvDetail } from './hooks'
@@ -37,7 +37,7 @@ export const Detail = () => {
 
     if (isLoading) {
         if (isMd) return <DetailMdSkeleton />
-        return <CoveringSpinner />
+        return <DetailXsSkeleton />
     }
 
     if (error)
