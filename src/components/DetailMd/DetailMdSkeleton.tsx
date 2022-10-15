@@ -53,13 +53,5 @@ export const DetailMdSkeleton = () => (
                 </Grid>
             </Container>
         </Grid>
-        <Grid item md={12}>
-            <Container>
-                <Typography variant="h6">
-                    <Skeleton width="10%" />
-                </Typography>
-                <Skeleton height={360} variant="rectangular" width={640} />
-            </Container>
-        </Grid>
     </Grid>
 )

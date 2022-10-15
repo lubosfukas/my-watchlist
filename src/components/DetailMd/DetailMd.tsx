@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { Box, Grid, Container, Stack, Typography } from '@mui/material'
 import { css } from '@emotion/react'
+import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material'
+import { PlayArrow } from '@mui/icons-material'
 
-import { EmbeddedVideo } from '../EmbeddedVideo'
-import { DetailItem } from '../DetailItem'
 import { GenreChips } from '../GenreChips'
 import { List, Props as ListProps } from '../List'
 import { Poster } from '../Poster'
 import { Video } from '../../types'
+import { YOUTUBE_WATCH_URL } from '../../utils/constants'
 
 type Props = {
     backdropImageUrl: string
@@ -29,6 +29,8 @@ export const DetailMd: React.FC<Props> = ({
     title,
     trailer,
 }) => {
+    const height = trailer ? 530 : 500
+
     return (
         <Grid container>
             <Grid
@@ -36,7 +38,7 @@ export const DetailMd: React.FC<Props> = ({
                     background-image: url(${backdropImageUrl});
                     background-repeat: no-repeat;
                     background-size: cover;
-                    height: 500px;
+                    height: ${height}px;
                     position: relative;
                 `}
                 item
@@ -60,14 +62,35 @@ export const DetailMd: React.FC<Props> = ({
                 >
                     <Container
                         sx={{
-                            height: '500px',
+                            height: `${height}px`,
                             display: 'flex',
                             alignItems: 'center',
                         }}
                     >
                         <Grid container columnSpacing={3}>
                             <Grid item md="auto">
-                                <Poster path={posterPath} title={title} />
+                                <Stack>
+                                    <Poster
+                                        path={posterPath}
+                                        title={title}
+                                        hasButton={!!trailer}
+                                    />
+                                    {trailer && (
+                                        <Button
+                                            href={`${YOUTUBE_WATCH_URL}?v=${trailer.key}`}
+                                            target="_blank"
+                                            color="secondary"
+                                            startIcon={<PlayArrow />}
+                                            variant="contained"
+                                            type="button"
+                                            sx={{
+                                                borderRadius: '0 0 16px 16px',
+                                            }}
+                                        >
+                                            Watch trailer
+                                        </Button>
+                                    )}
+                                </Stack>
                             </Grid>
                             <Grid item md>
                                 <Stack spacing={1}>
@@ -91,28 +114,6 @@ export const DetailMd: React.FC<Props> = ({
                         </Grid>
                     </Container>
                 </Box>
-            </Grid>
-            <Grid item md={12}>
-                <Container>
-                    {trailer && (
-                        <DetailItem
-                            label="Trailer"
-                            component={
-                                <div
-                                    css={css`
-                                        height: 360px;
-                                        width: 640px;
-                                    `}
-                                >
-                                    <EmbeddedVideo
-                                        title={title}
-                                        videoKey={trailer.key}
-                                    />
-                                </div>
-                            }
-                        />
-                    )}
-                </Container>
             </Grid>
         </Grid>
     )
