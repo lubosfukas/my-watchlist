@@ -3,6 +3,7 @@ import { css } from '@emotion/react'
 import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material'
 import { PlayArrow } from '@mui/icons-material'
 
+import { DetailItem } from '../DetailItem'
 import { GenreChips } from '../GenreChips'
 import { List, Props as ListProps } from '../List'
 import { Poster } from '../Poster'
@@ -16,18 +17,22 @@ type Props = {
     posterPath: string
     tagline: string
     title: string
+    directing?: string
+    writing?: string
     trailer?: Video
 } & Pick<ListProps, 'listItems'>
 
 export const DetailMd: React.FC<Props> = ({
     backdropImageUrl,
     description,
+    directing,
     genres,
     listItems,
     posterPath,
     tagline,
     title,
     trailer,
+    writing,
 }) => {
     const height = trailer ? 530 : 500
 
@@ -109,6 +114,21 @@ export const DetailMd: React.FC<Props> = ({
                                     {genres.length > 0 && (
                                         <GenreChips genres={genres} />
                                     )}
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            flexWrap: 'wrap',
+                                        }}
+                                    >
+                                        <DetailItem
+                                            label="Directing"
+                                            value={directing}
+                                        />
+                                        <DetailItem
+                                            label="Writing"
+                                            value={writing}
+                                        />
+                                    </Box>
                                 </Stack>
                             </Grid>
                         </Grid>

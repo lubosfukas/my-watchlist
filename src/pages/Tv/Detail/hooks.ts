@@ -5,7 +5,7 @@ import { TvDetailDTO } from '../../../types'
 
 const fetchTvDetail = async (id?: string): Promise<TvDetailDTO> => {
     const response = await fetch(
-        `${API_BASE_URL}/tv/${id}?api_key=${API_KEY}&append_to_response=videos`
+        `${API_BASE_URL}/tv/${id}?api_key=${API_KEY}&append_to_response=credits,videos`
     )
 
     const movieResponse: TvDetailDTO = await response.json()

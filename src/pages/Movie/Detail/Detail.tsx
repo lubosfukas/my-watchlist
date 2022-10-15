@@ -17,6 +17,7 @@ import {
     getReleaseYear,
     getRuntime,
     getTrailer,
+    getWriting,
 } from '../../../utils/helpers'
 import { useFetchMovieDetail } from './hooks'
 
@@ -60,6 +61,10 @@ export const Detail = () => {
 
     const averageVote = getAverageVote(data.vote_average)
     const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${data.backdrop_path}`
+    const directing = data.credits?.crew
+        .filter(({ job }) => job === 'Director')
+        .map(({ name }) => name)
+        .join(', ')
     const genreNames = getGenreNames(data.genres)
     const listItems = [
         getReleaseYear(data.release_date),
@@ -67,29 +72,34 @@ export const Detail = () => {
         averageVote,
     ]
     const trailer = getTrailer(data.videos.results)
+    const writing = getWriting(data.credits.crew)
 
     if (isMd)
         return (
             <DetailMd
                 backdropImageUrl={backdropImageUrl}
                 description={data.overview}
+                directing={directing}
                 genres={genreNames}
                 listItems={listItems}
                 posterPath={data.poster_path}
                 tagline={data.tagline}
                 title={data.title}
                 trailer={trailer}
+                writing={writing}
             />
         )
     return (
         <DetailXs
             backdropImageUrl={backdropImageUrl}
             description={data.overview}
+            directing={directing}
             genres={genreNames}
             listItems={listItems}
             tagline={data.tagline}
             title={data.title}
             trailer={trailer}
+            writing={writing}
         />
     )
 }

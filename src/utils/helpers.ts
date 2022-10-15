@@ -1,6 +1,6 @@
 import { NOT_FOUND, TRENDING } from './constants'
 import { routes } from '../Router'
-import { Genres, Media, Videos } from '../types'
+import { Crew, Genres, Media, Videos } from '../types'
 
 export const getReleaseDate = (releaseDate: string) => {
     if (!releaseDate) return
@@ -78,4 +78,19 @@ export const getRoute = (pathname: string) => {
 
     if (!route) return NOT_FOUND
     return `${route.name} ${getMediaLabel(currentMedia as Media)}`
+}
+
+export const getWriting = (crew: Array<Crew>) => {
+    let writing: Array<string> = []
+
+    writing = crew.filter(({ job }) => job === 'Writer').map(({ name }) => name)
+
+    if (writing.length === 0)
+        writing = crew
+            .filter(
+                ({ known_for_department }) => known_for_department === 'Writing'
+            )
+            .map(({ name }) => name)
+
+    return writing.slice(0, 3).join(', ')
 }

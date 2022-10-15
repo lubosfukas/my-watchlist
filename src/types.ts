@@ -97,9 +97,42 @@ export type Video = {
 
 export type Videos = Array<Video>
 
+export type Cast = {
+    adult: boolean
+    cast_id: number
+    character: string
+    credit_id: string
+    gender: 1 | 2
+    id: number
+    known_for_department: string
+    name: string
+    order: number
+    original_name: string
+    popularity: number
+    profile_path: string | null
+}
+
+export type Crew = {
+    adult: boolean
+    credit_id: string
+    department: string
+    gender: 1 | 2
+    id: number
+    job: string
+    known_for_department: string
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string | null
+}
+
 export interface MovieDetailDTO extends Omit<MovieDTO, 'genre_ids'> {
     belongs_to_collection: BelongsToCollection
     budget: number
+    credits: {
+        cast: Array<Cast>
+        crew: Array<Crew>
+    }
     genres: Genres
     homepage: string
     imdb_id: string
@@ -134,6 +167,10 @@ export type Season = {
 export type TvDetailDTO = {
     backdrop_path: string | null
     createdBy: CreatedBy
+    credits: {
+        cast: Array<Cast>
+        crew: Array<Crew>
+    }
     episode_run_time: Array<number>
     first_air_date: string
     genres: Genres
