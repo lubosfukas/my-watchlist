@@ -98,7 +98,11 @@ export const DetailMd: React.FC<Props> = ({
                                 </Stack>
                             </Grid>
                             <Grid item md>
-                                <Stack spacing={1}>
+                                <Stack
+                                    justifyContent="center"
+                                    spacing={1}
+                                    sx={{ height: '100%' }}
+                                >
                                     <Typography variant="h4">
                                         <strong>{title}</strong>
                                     </Typography>
