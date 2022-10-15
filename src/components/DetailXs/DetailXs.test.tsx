@@ -8,6 +8,13 @@ describe('DetailXs', () => {
             <DetailXs
                 backdropImageUrl="http://image.tmdb.org/t/p/original/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
                 description="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
+                detailItems={[
+                    { label: 'Writing', value: 'Stan Lee' },
+                    {
+                        label: 'Cast',
+                        value: 'Tom Holland, Zendaya, Benedict Cumberbatch, Jacob Batalon, Jon Favreau',
+                    },
+                ]}
                 genres={['Action', 'Adventure', 'Science Fiction']}
                 listItems={['2022', '2h 28m', '86%']}
                 tagline="The Multiverse unleashed."
