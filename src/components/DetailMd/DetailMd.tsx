@@ -129,6 +129,7 @@ export const DetailMd: React.FC<Props> = ({
                                             .map((item) => {
                                                 return (
                                                     <DetailItem
+                                                        key={item?.label}
                                                         label={
                                                             item?.label ?? ''
                                                         }

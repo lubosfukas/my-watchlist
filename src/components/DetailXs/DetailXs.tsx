@@ -57,7 +57,11 @@ export const DetailXs = ({
             {detailItems
                 .filter((item) => !!item)
                 .map((item) => (
-                    <DetailItem label={item?.label ?? ''} value={item?.value} />
+                    <DetailItem
+                        key={item?.label}
+                        label={item?.label ?? ''}
+                        value={item?.value}
+                    />
                 ))}
         </Stack>
     )
