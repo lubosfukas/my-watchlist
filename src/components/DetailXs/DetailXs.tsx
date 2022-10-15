@@ -13,6 +13,7 @@ type Props = {
     description: string
     genres: Array<string>
     title: string
+    cast?: string
     directing?: string
     tagline?: string
     trailer?: Video
@@ -21,6 +22,7 @@ type Props = {
 
 export const DetailXs = ({
     backdropImageUrl,
+    cast,
     description,
     directing,
     genres,
@@ -55,6 +57,7 @@ export const DetailXs = ({
             <Divider sx={{ my: 1 }} />
             <DetailItem label="Directing" value={directing} />
             <DetailItem label="Writing" value={writing} />
+            <DetailItem label="Cast" value={cast} />
         </Stack>
     )
 }

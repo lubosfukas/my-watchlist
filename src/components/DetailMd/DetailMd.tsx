@@ -17,6 +17,7 @@ type Props = {
     posterPath: string
     tagline: string
     title: string
+    cast?: string
     directing?: string
     writing?: string
     trailer?: Video
@@ -24,6 +25,7 @@ type Props = {
 
 export const DetailMd: React.FC<Props> = ({
     backdropImageUrl,
+    cast,
     description,
     directing,
     genres,
@@ -132,6 +134,7 @@ export const DetailMd: React.FC<Props> = ({
                                             label="Writing"
                                             value={writing}
                                         />
+                                        <DetailItem label="Cast" value={cast} />
                                     </Box>
                                 </Stack>
                             </Grid>

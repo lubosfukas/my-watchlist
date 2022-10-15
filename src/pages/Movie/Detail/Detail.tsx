@@ -61,7 +61,11 @@ export const Detail = () => {
 
     const averageVote = getAverageVote(data.vote_average)
     const backdropImageUrl = `${API_IMAGE_BASE_URL}/original${data.backdrop_path}`
-    const directing = data.credits?.crew
+    const cast = data.credits.cast
+        .slice(0, 5)
+        .map(({ name }) => name)
+        .join(', ')
+    const directing = data.credits.crew
         .filter(({ job }) => job === 'Director')
         .map(({ name }) => name)
         .join(', ')
@@ -78,6 +82,7 @@ export const Detail = () => {
         return (
             <DetailMd
                 backdropImageUrl={backdropImageUrl}
+                cast={cast}
                 description={data.overview}
                 directing={directing}
                 genres={genreNames}
@@ -92,6 +97,7 @@ export const Detail = () => {
     return (
         <DetailXs
             backdropImageUrl={backdropImageUrl}
+            cast={cast}
             description={data.overview}
             directing={directing}
             genres={genreNames}
