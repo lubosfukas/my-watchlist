@@ -9,16 +9,20 @@ export const DetailItem = <T,>({
     label: string
     value?: T
     component?: JSX.Element
-}) => (
-    <Box sx={{ flex: '1 50%' }}>
-        <Typography gutterBottom variant="h6">
-            {label}
-        </Typography>
-        {component}
-        {!component && (
-            <Typography aria-label={label} gutterBottom variant="body1">
-                {value || '—'}
+}) => {
+    if (!component && !value) return null
+
+    return (
+        <Box sx={{ flex: '1 50%' }}>
+            <Typography gutterBottom variant="h6">
+                {label}
             </Typography>
-        )}
-    </Box>
-)
+            {component}
+            {!component && (
+                <Typography aria-label={label} gutterBottom variant="body1">
+                    {value}
+                </Typography>
+            )}
+        </Box>
+    )
+}

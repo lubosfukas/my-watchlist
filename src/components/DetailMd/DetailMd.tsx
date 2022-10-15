@@ -13,28 +13,24 @@ import { YOUTUBE_WATCH_URL } from '../../utils/constants'
 type Props = {
     backdropImageUrl: string
     description: string
+    detailItems: Array<{ label: string; value: string } | undefined>
     genres: Array<string>
     posterPath: string
     tagline: string
     title: string
-    cast?: string
-    directing?: string
-    writing?: string
     trailer?: Video
 } & Pick<ListProps, 'listItems'>
 
 export const DetailMd: React.FC<Props> = ({
     backdropImageUrl,
-    cast,
     description,
-    directing,
+    detailItems,
     genres,
     listItems,
     posterPath,
     tagline,
     title,
     trailer,
-    writing,
 }) => {
     const height = trailer ? 530 : 500
 
@@ -126,15 +122,20 @@ export const DetailMd: React.FC<Props> = ({
                                             flexWrap: 'wrap',
                                         }}
                                     >
-                                        <DetailItem
-                                            label="Directing"
-                                            value={directing}
-                                        />
-                                        <DetailItem
-                                            label="Writing"
-                                            value={writing}
-                                        />
-                                        <DetailItem label="Cast" value={cast} />
+                                        {detailItems
+                                            .filter(
+                                                (item) => item !== undefined
+                                            )
+                                            .map((item) => {
+                                                return (
+                                                    <DetailItem
+                                                        label={
+                                                            item?.label ?? ''
+                                                        }
+                                                        value={item?.value}
+                                                    />
+                                                )
+                                            })}
                                     </Box>
                                 </Stack>
                             </Grid>

@@ -78,35 +78,36 @@ export const Detail = () => {
     ]
     const trailer = getTrailer(data.videos['results'])
     const writing = getWriting(data.credits.crew)
+    const detailItems = [
+        { label: 'Directing', value: directing },
+        { label: 'Writing', value: writing },
+        { label: 'Cast', value: cast },
+    ]
 
     if (isMd)
         return (
             <DetailMd
                 backdropImageUrl={backdropImageUrl}
-                cast={cast}
                 description={data.overview}
-                directing={directing}
+                detailItems={detailItems}
                 genres={genreNames}
                 listItems={listItems}
                 posterPath={data.poster_path}
                 tagline={data.tagline}
                 title={data.name}
                 trailer={trailer}
-                writing={writing}
             />
         )
     return (
         <DetailXs
             backdropImageUrl={backdropImageUrl}
-            cast={cast}
             description={data.overview}
-            directing={directing}
+            detailItems={detailItems}
             genres={genreNames}
             listItems={listItems}
             tagline={data.tagline}
             title={data.name}
             trailer={trailer}
-            writing={writing}
         />
     )
 }

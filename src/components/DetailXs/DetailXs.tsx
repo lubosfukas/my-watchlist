@@ -11,6 +11,7 @@ import { DetailItem } from '../DetailItem'
 type Props = {
     backdropImageUrl: string
     description: string
+    detailItems: Array<{ label: string; value: string } | undefined>
     genres: Array<string>
     title: string
     cast?: string
@@ -22,15 +23,13 @@ type Props = {
 
 export const DetailXs = ({
     backdropImageUrl,
-    cast,
     description,
-    directing,
+    detailItems,
     genres,
     listItems,
     tagline,
     title,
     trailer,
-    writing,
 }: Props) => {
     const isSm = useMediaQuery(device.sm)
 
@@ -55,9 +54,11 @@ export const DetailXs = ({
                 {description}
             </Typography>
             <Divider sx={{ my: 1 }} />
-            <DetailItem label="Directing" value={directing} />
-            <DetailItem label="Writing" value={writing} />
-            <DetailItem label="Cast" value={cast} />
+            {detailItems
+                .filter((item) => !!item)
+                .map((item) => (
+                    <DetailItem label={item?.label ?? ''} value={item?.value} />
+                ))}
         </Stack>
     )
 }
